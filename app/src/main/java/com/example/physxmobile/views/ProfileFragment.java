@@ -1,14 +1,12 @@
 package com.example.physxmobile.views;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -16,10 +14,13 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
+import com.example.physxmobile.models.User;
+import com.example.physxmobile.viewmodels.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileFragment extends Fragment {
@@ -39,9 +40,20 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        TextView profileNameTextView = view.findViewById(R.id.profileNameTextView);
+        TextView profileEmailTextView = view.findViewById(R.id.profileEmailTextView);
+
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
         profileViewModel.init(helper.getAccessToken());
+
+        profileViewModel.getUser().observe(getViewLifecycleOwner(), new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                profileNameTextView.setText(user.getName());
+                profileEmailTextView.setText(user.getEmail());
+            }
+        });
 
         bottomNavigationView = getActivity().findViewById(R.id.mainBottomNavigationView);
         btn_logout = view.findViewById(R.id.btn_logout);

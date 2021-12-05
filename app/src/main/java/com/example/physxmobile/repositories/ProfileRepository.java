@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.physxmobile.api.RetrofitService;
+import com.example.physxmobile.models.LoginResponse;
+import com.example.physxmobile.models.User;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -38,6 +40,34 @@ public class ProfileRepository {
         if (profileRepository != null) {
             profileRepository = null;
         }
+    }
+
+    public MutableLiveData<User> getUser(){
+        MutableLiveData<User> user = new MutableLiveData<>();
+
+        apiService.getUser().enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()){
+                    Log.d(TAG, "onResponse: "+response.code());
+                    if(response.code() == 200){
+                        if (response.body()!=null){
+                            Log.d(TAG, "onResponse: "+response.body().getEmail());
+                            user.postValue(response.body());
+                        }
+                    }
+                }else{
+                    Log.d(TAG, "onResponse: "+response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e(TAG, "onFailure: "+ t.getMessage());
+            }
+        });
+
+        return user;
     }
 
     public LiveData<String> logout() {

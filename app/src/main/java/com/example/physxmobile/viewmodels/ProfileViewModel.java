@@ -1,4 +1,4 @@
-package com.example.physxmobile.views;
+package com.example.physxmobile.viewmodels;
 
 import android.app.Application;
 import android.util.Log;
@@ -6,7 +6,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
+import com.example.physxmobile.models.User;
 import com.example.physxmobile.repositories.ProfileRepository;
 
 public class ProfileViewModel extends AndroidViewModel {
@@ -20,6 +22,12 @@ public class ProfileViewModel extends AndroidViewModel {
     public void init (String token) {
         Log.d(TAG, "token: " + token);
         profileRepository = ProfileRepository.getInstance(token);
+    }
+
+    private MutableLiveData<User> user = new MutableLiveData<>();
+    public LiveData<User> getUser() {
+        user = profileRepository.getUser();
+        return user;
     }
 
     public LiveData<String> logout() {

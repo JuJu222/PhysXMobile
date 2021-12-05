@@ -1,4 +1,4 @@
-package com.example.physxmobile.views;
+package com.example.physxmobile.viewmodels;
 
 import android.app.Application;
 

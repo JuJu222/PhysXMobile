@@ -7,17 +7,17 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.physxmobile.models.LoginResponse;
-import com.example.physxmobile.repositories.UserRepository;
+import com.example.physxmobile.repositories.AuthRepository;
 
 public class LoginViewModel extends AndroidViewModel {
-    private UserRepository userRepository;
+    private AuthRepository authRepository;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
-        userRepository = UserRepository.getInstance();
+        authRepository = AuthRepository.getInstance();
     }
 
     public MutableLiveData<LoginResponse> login(String email, String password){
-        return userRepository.login(email, password);
+        return authRepository.login(email, password);
     }
 }

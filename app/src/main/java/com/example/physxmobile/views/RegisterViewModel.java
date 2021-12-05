@@ -7,20 +7,20 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.physxmobile.models.RegisterResponse;
-import com.example.physxmobile.repositories.UserRepository;
+import com.example.physxmobile.repositories.AuthRepository;
 
 public class RegisterViewModel extends AndroidViewModel {
-    private UserRepository userRepository;
+    private AuthRepository authRepository;
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
-        userRepository = UserRepository.getInstance();
+        authRepository = AuthRepository.getInstance();
     }
 
     public MutableLiveData<RegisterResponse> register(String name, String email, String password,
                                                         String password_confirmation, String username,
                                                         String school, String city, int birthyear) {
-        return userRepository.register(name, email, password, password_confirmation, username,
+        return authRepository.register(name, email, password, password_confirmation, username,
                 school, city, birthyear);
     }
 }

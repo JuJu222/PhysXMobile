@@ -3,6 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.RegisterResponse;
+import com.google.gson.JsonObject;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -60,20 +61,8 @@ public class RetrofitService {
                                                String school, String city, int birthyear) {
         return api.register(name, email, password, password_confirmation, username, school, city, birthyear);
     }
-//
-//    public Call<Course> getCourses()  {
-//        return api.getCourses();
-//    }
-//
-//    public Call<Course> getCourseDetail(String code)  {
-//        return api.getCourseDetail(code);
-//    }
-//
-//    public Call<Course.Courses> createCourse(Course.Courses course) {
-//        return api.createCourse(course);
-//    }
-//
-//    public Call<JsonObject> logout()  {
-//        return api.logout();
-//    }
+
+    public Call<JsonObject> logout()  {
+        return api.logout();
+    }
 }

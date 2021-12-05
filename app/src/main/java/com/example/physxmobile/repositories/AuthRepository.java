@@ -12,18 +12,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserRepository {
-    private static UserRepository userRepository;
+public class AuthRepository {
+    private static AuthRepository userRepository;
     private RetrofitService apiService;
     private static final String TAG = "AuthRepository";
 
-    private UserRepository(){
+    private AuthRepository(){
         apiService = RetrofitService.getInstance("");
     }
 
-    public static UserRepository getInstance(){
+    public static AuthRepository getInstance(){
         if (userRepository == null){
-            userRepository = new UserRepository();
+            userRepository = new AuthRepository();
         }
         return userRepository;
     }

@@ -2,6 +2,7 @@ package com.example.physxmobile.api;
 
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.RegisterResponse;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -24,4 +25,7 @@ public interface ApiEndPoint {
                                     @Field("school") String school,
                                     @Field("city") String city,
                                     @Field("birthyear") int birthyear);
+
+    @POST("logout")
+    Call<JsonObject> logout();
 }

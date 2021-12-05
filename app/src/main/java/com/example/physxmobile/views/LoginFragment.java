@@ -10,6 +10,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,13 +19,14 @@ import android.widget.Toast;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginFragment extends Fragment {
-
     Button btn_login;
     TextInputLayout input_email_login, input_password_login;
     TextView buttonRegister, buttonRegister1;
+    BottomNavigationView bottomNavigationView;
 
     private LoginViewModel loginViewModel;
     private SharedPreferenceHelper helper;
@@ -32,7 +34,6 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
     @Override
@@ -48,6 +49,7 @@ public class LoginFragment extends Fragment {
         btn_login = view.findViewById(R.id.btn_login);
         buttonRegister = getActivity().findViewById(R.id.buttonRegister);
         buttonRegister1 = getActivity().findViewById(R.id.buttonRegister1);
+        bottomNavigationView = getActivity().findViewById(R.id.mainBottomNavigationView);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +77,13 @@ public class LoginFragment extends Fragment {
                 loginViewModel.login(email, pass).observe(requireActivity(), loginResponse -> {
                     if (loginResponse != null){
                         helper.saveAccessToken(loginResponse.getAuthorization());
-                        NavDirections actions = LoginFragmentDirections.actionLoginFragmentToAccountFragment();
+                        NavDirections actions = LoginFragmentDirections.actionLoginFragmentToHomeFragment();
                         Navigation.findNavController(view1).navigate(actions);
                         Toast.makeText(requireActivity(), "Login Success", Toast.LENGTH_SHORT).show();
+
+                        Menu menu = bottomNavigationView.getMenu();
+                        menu.getItem(2).setVisible(false);
+                        menu.getItem(3).setVisible(true);
                     }else{
                         Toast.makeText(requireActivity(), "Login Failed", Toast.LENGTH_SHORT).show();
                     }

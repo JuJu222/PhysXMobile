@@ -26,16 +26,11 @@ public class RegisterFragment extends Fragment {
     TextInputLayout input_name_register, input_username_register, input_password_register,input_passwordconfirmation_register,input_school_register,input_city_register,input_birthyear_register, input_email_register;
 
     private RegisterViewModel registerViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -47,15 +42,13 @@ public class RegisterFragment extends Fragment {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment();
-                Navigation.findNavController(view).navigate(action);
+                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
             }
         });
         buttonLogin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavDirections action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment();
-                Navigation.findNavController(view).navigate(action);
+                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
             }
         });
 
@@ -93,8 +86,7 @@ public class RegisterFragment extends Fragment {
                     String school = input_school_register.getEditText().getText().toString().trim();
                     registerViewModel.register(name, email, pass, passconfirmation, username, school, city, finalbirthyear).observe(requireActivity(), registerResponse -> {
                         if (registerResponse!=null){
-                            NavDirections actions = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment();
-                            Navigation.findNavController(view).navigate(actions);
+                            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
                             Toast.makeText(requireActivity(), "Register Success", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(requireActivity(), "Register Failed", Toast.LENGTH_SHORT).show();
@@ -106,7 +98,4 @@ public class RegisterFragment extends Fragment {
             }
         });
     }
-
-
-
 }

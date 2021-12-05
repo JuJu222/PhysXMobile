@@ -45,4 +45,8 @@ public class LoginResponse {
     public void setRefresh_token(String refresh_token) {
         this.refresh_token = refresh_token;
     }
+
+    public String getAuthorization(){
+        return this.token_type + " " + this.access_token;
+    }
 }

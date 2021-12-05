@@ -3,15 +3,19 @@
 
     <item
         android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_house_fill"
         android:title="Home" />
     <item
         android:id="@+id/leaderboardFragment"
+        android:icon="@drawable/ic_leaderboard"
         android:title="Leaderboard" />
     <item
         android:id="@+id/loginFragment"
+        android:icon="@drawable/ic_person_fill"
         android:title="Profile" />
     <item
         android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_person_fill"
         android:title="Profile"
         android:visible="false" />
 </menu>

@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/nunito_bold"
         android:text="Daftar di sini"
         android:textColor="@color/primary"
         android:textSize="16sp"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/nunito_bold"
         android:text="Login"
         android:textColor="#6F69AC"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginTop="28dp"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/nunito_bold"
         android:text="Register"
         android:textColor="#C4C4C4"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -95,6 +95,8 @@
         android:layout_marginTop="24dp"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeWidth="1dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
@@ -102,6 +104,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,6 +115,8 @@
         android:layout_marginTop="16dp"
         app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeWidth="1dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_email_login">
@@ -119,6 +124,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
             android:hint="Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -126,12 +132,16 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/shadow_box"
-        android:text="LOGIN"
+        android:backgroundTint="#EFEBFE"
+        android:fontFamily="@font/nunito_bold"
+        android:stateListAnimator="@null"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/primary"
+        app:cornerRadius="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password_login" />
 

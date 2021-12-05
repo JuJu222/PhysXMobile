@@ -37,11 +37,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="Username" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,11 +54,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="Name" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,11 +71,14 @@
                     android:layout_height="56dp"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="Email" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,11 +88,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="Password"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -94,11 +106,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="Password Confirmation"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -109,11 +124,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="School" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,11 +141,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="Birth Year" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,11 +158,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
-                    app:boxStrokeWidth="1dp">
+                    app:boxStrokeWidth="1dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/color_text_input_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
                         android:hint="City" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,21 +176,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/nunito"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/nunito_bold"
                 android:text="Login di sini"
                 android:textColor="@color/primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView9"
-                app:layout_constraintTop_toBottomOf="@+id/button_register" />
+                app:layout_constraintTop_toTopOf="@+id/textView9" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="92dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/nunito"
                 android:text="Sudah terdaftar?"
                 android:textColor="@color/black"
@@ -190,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
                 android:layout_marginTop="28dp"
-                android:fontFamily="@font/nunito"
+                android:fontFamily="@font/nunito_bold"
                 android:text="Register"
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toEndOf="@+id/buttonLogin1"
@@ -211,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="28dp"
-                android:fontFamily="@font/nunito"
+                android:fontFamily="@font/nunito_bold"
                 android:text="Login"
                 android:textColor="#C4C4C4"
                 app:layout_constraintStart_toStartOf="parent"
@@ -231,9 +256,15 @@
             <Button
                 android:id="@+id/button_register"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="REGISTER"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="#EFEBFE"
+                android:fontFamily="@font/nunito_bold"
+                android:stateListAnimator="@null"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="@color/primary"
+                app:cornerRadius="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

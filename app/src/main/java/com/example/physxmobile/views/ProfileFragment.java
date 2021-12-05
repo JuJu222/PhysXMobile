@@ -42,6 +42,10 @@ public class ProfileFragment extends Fragment {
 
         TextView profileNameTextView = view.findViewById(R.id.profileNameTextView);
         TextView profileEmailTextView = view.findViewById(R.id.profileEmailTextView);
+        TextView profileBirthyearTextView = view.findViewById(R.id.profileBirthyearTextView);
+        TextView profileUsernameTextView = view.findViewById(R.id.profileUsernameTextView);
+        TextView profileSchoolTextView = view.findViewById(R.id.profileSchoolTextView);
+        TextView profileCityTextView = view.findViewById(R.id.profileCityTextView);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
@@ -52,6 +56,10 @@ public class ProfileFragment extends Fragment {
             public void onChanged(User user) {
                 profileNameTextView.setText(user.getName());
                 profileEmailTextView.setText(user.getEmail());
+                profileBirthyearTextView.setText(String.valueOf(user.getBirthyear()));
+                profileUsernameTextView.setText(user.getUsername());
+                profileSchoolTextView.setText(user.getSchool());
+                profileCityTextView.setText(user.getCity());
             }
         });
 

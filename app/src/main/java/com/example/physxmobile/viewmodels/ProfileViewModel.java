@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.physxmobile.models.User;
+import com.example.physxmobile.models.UserModel;
 import com.example.physxmobile.repositories.ProfileRepository;
 
 public class ProfileViewModel extends AndroidViewModel {
@@ -24,8 +24,8 @@ public class ProfileViewModel extends AndroidViewModel {
         profileRepository = ProfileRepository.getInstance(token);
     }
 
-    private MutableLiveData<User> user = new MutableLiveData<>();
-    public LiveData<User> getUser() {
+    private MutableLiveData<UserModel> user = new MutableLiveData<>();
+    public LiveData<UserModel> getUser() {
         user = profileRepository.getUser();
         return user;
     }

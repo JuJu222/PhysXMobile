@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
-import com.example.physxmobile.models.User;
+import com.example.physxmobile.models.UserModel;
 import com.example.physxmobile.viewmodels.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -51,15 +51,15 @@ public class ProfileFragment extends Fragment {
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
         profileViewModel.init(helper.getAccessToken());
 
-        profileViewModel.getUser().observe(getViewLifecycleOwner(), new Observer<User>() {
+        profileViewModel.getUser().observe(getViewLifecycleOwner(), new Observer<UserModel>() {
             @Override
-            public void onChanged(User user) {
-                profileNameTextView.setText(user.getName());
-                profileEmailTextView.setText(user.getEmail());
-                profileBirthyearTextView.setText(String.valueOf(user.getBirthyear()));
-                profileUsernameTextView.setText(user.getUsername());
-                profileSchoolTextView.setText(user.getSchool());
-                profileCityTextView.setText(user.getCity());
+            public void onChanged(UserModel user) {
+                profileNameTextView.setText(user.getUser().getName());
+                profileEmailTextView.setText(user.getUser().getEmail());
+                profileBirthyearTextView.setText(String.valueOf(user.getUser().getBirthyear()));
+                profileUsernameTextView.setText(user.getUser().getUsername());
+                profileSchoolTextView.setText(user.getUser().getSchool());
+                profileCityTextView.setText(user.getUser().getCity());
             }
         });
 

@@ -4,7 +4,7 @@ import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItems;
-import com.example.physxmobile.models.User;
+import com.example.physxmobile.models.UserModel;
 import com.google.gson.JsonObject;
 
 import okhttp3.OkHttpClient;
@@ -58,7 +58,7 @@ public class RetrofitService {
         return api.login(email, password);
     }
 
-    public Call<User> getUser(){
+    public Call<UserModel> getUser(){
         return api.getUser();
     }
 

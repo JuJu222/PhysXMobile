@@ -3,7 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItems;
-import com.example.physxmobile.models.User;
+import com.example.physxmobile.models.UserModel;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -19,7 +19,7 @@ public interface ApiEndPoint {
                               @Field("password") String password);
 
     @GET("user")
-    Call<User> getUser();
+    Call<UserModel> getUser();
 
     @POST("register")
     @FormUrlEncoded

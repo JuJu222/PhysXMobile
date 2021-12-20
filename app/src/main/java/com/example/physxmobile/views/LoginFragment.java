@@ -83,8 +83,8 @@ public class LoginFragment extends Fragment {
                         Toast.makeText(requireActivity(), "Login Success", Toast.LENGTH_SHORT).show();
 
                         Menu menu = bottomNavigationView.getMenu();
-                        menu.getItem(2).setVisible(false);
-                        menu.getItem(3).setVisible(true);
+                        menu.getItem(3).setVisible(false);
+                        menu.getItem(4).setVisible(true);
                     }else{
                         Toast.makeText(requireActivity(), "Login Failed", Toast.LENGTH_SHORT).show();
                     }

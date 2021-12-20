@@ -73,8 +73,8 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();
 
                     Menu menu = bottomNavigationView.getMenu();
-                    menu.getItem(3).setVisible(false);
-                    menu.getItem(2).setVisible(true);
+                    menu.getItem(4).setVisible(false);
+                    menu.getItem(3).setVisible(true);
                 }
             });
         });

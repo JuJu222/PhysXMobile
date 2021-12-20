@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (!helper.getAccessToken().isEmpty()){
             Menu menu = bottomNavigationView.getMenu();
-            menu.getItem(2).setVisible(false);
-            menu.getItem(3).setVisible(true);
+            menu.getItem(3).setVisible(false);
+            menu.getItem(4).setVisible(true);
         }
     }
 }

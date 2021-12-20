@@ -3,6 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.RegisterResponse;
+import com.example.physxmobile.models.ShopItems;
 import com.example.physxmobile.models.User;
 import com.google.gson.JsonObject;
 
@@ -69,5 +70,9 @@ public class RetrofitService {
 
     public Call<JsonObject> logout()  {
         return api.logout();
+    }
+
+    public Call<ShopItems> getShopItems()  {
+        return api.getShopItems();
     }
 }

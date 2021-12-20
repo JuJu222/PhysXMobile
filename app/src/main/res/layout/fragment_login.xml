@@ -49,7 +49,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Login"
@@ -61,10 +61,9 @@
         android:id="@+id/imageView2"
         android:layout_width="90dp"
         android:layout_height="3dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:src="@drawable/custom_button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageView
@@ -90,13 +89,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_email_login"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxStrokeWidth="1dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="@color/color_text_input_layout"
+        app:boxStrokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
@@ -110,13 +111,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_password_login"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxStrokeWidth="1dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:boxBackgroundColor="#FFFFFF"
         app:boxStrokeColor="@color/color_text_input_layout"
+        app:boxStrokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_email_login">

@@ -10,6 +10,10 @@
         android:icon="@drawable/ic_leaderboard"
         android:title="Leaderboard" />
     <item
+        android:id="@+id/shopFragment"
+        android:icon="@drawable/ic_bag_fill"
+        android:title="Shop" />
+    <item
         android:id="@+id/loginFragment"
         android:icon="@drawable/ic_person_fill"
         android:title="Profile" />

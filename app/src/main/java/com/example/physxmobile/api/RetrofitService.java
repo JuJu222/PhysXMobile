@@ -75,4 +75,8 @@ public class RetrofitService {
     public Call<ShopItems> getShopItems()  {
         return api.getShopItems();
     }
+
+    public Call<ShopItems.ShopItemBuyResponse> buyShopItem(int shopItemId)  {
+        return api.buyShopItem(shopItemId);
+    }
 }

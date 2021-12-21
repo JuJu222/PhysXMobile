@@ -53,7 +53,7 @@ public class ShopFragment extends Fragment {
                         temp.add(shopItem);
                     }
                 }
-                ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp);
+                ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp, shopViewModel);
                 shopTitleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopTitleRecyclerView.setAdapter(shopTitleAdapter);
             }
@@ -68,7 +68,7 @@ public class ShopFragment extends Fragment {
                         temp.add(shopItem);
                     }
                 }
-                ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp);
+                ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, shopViewModel);
                 shopAvatarRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopAvatarRecyclerView.setAdapter(shopAvatarAdapter);
             }

@@ -11,30 +11,39 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiEndPoint {
     @POST("login")
     @FormUrlEncoded
-    Call<LoginResponse> login(@Field("email") String email,
-                              @Field("password") String password);
+    Call<LoginResponse> login(
+            @Field("email") String email,
+            @Field("password") String password);
 
     @GET("user")
     Call<UserModel> getUser();
 
     @POST("register")
     @FormUrlEncoded
-    Call<RegisterResponse> register(@Field("name") String name,
-                                    @Field("email") String email,
-                                    @Field("password") String password,
-                                    @Field("password_confirmation") String password_confirmation,
-                                    @Field("username") String username,
-                                    @Field("school") String school,
-                                    @Field("city") String city,
-                                    @Field("birthyear") int birthyear);
+    Call<RegisterResponse> register(
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("password_confirmation") String password_confirmation,
+            @Field("username") String username,
+            @Field("school") String school,
+            @Field("city") String city,
+            @Field("birthyear") int birthyear
+    );
 
     @POST("logout")
     Call<JsonObject> logout();
 
     @GET("shop")
     Call<ShopItems> getShopItems();
+
+    @POST("shop/buy/{id}")
+    Call<ShopItems.ShopItemBuyResponse> buyShopItem(
+            @Path("id") int shopItemId
+    );
 }

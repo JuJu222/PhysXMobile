@@ -30,6 +30,12 @@ public class ShopViewModel extends AndroidViewModel {
         return shopItems;
     }
 
+    private MutableLiveData<ShopItems.ShopItemBuyResponse> shopItemBuyResponse = new MutableLiveData<>();
+    public LiveData<ShopItems.ShopItemBuyResponse> buyShopItem(int shopItemId) {
+        shopItemBuyResponse = shopRepository.buyShopItem(shopItemId);
+        return shopItemBuyResponse;
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

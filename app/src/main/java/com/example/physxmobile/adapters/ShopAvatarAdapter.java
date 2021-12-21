@@ -4,20 +4,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.models.ShopItems;
+import com.example.physxmobile.viewmodels.ShopViewModel;
 
 import java.util.List;
 
 public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.ViewHolder> {
     private List<ShopItems.ShopItem> shopItemList;
+    private ShopViewModel shopViewModel;
 
-    public ShopAvatarAdapter(List<ShopItems.ShopItem> shopItemList) {
+    public ShopAvatarAdapter(List<ShopItems.ShopItem> shopItemList, ShopViewModel shopViewModel) {
         this.shopItemList = shopItemList;
+        this.shopViewModel = shopViewModel;
     }
 
     @NonNull
@@ -33,7 +39,12 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
         holder.rowShopAvatarBuyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                shopViewModel.buyShopItem(shopItemList.get(holder.getAdapterPosition()).getShop_item_id()).observe((LifecycleOwner) holder.rowShopAvatarBuyButton.getContext(), new Observer<ShopItems.ShopItemBuyResponse>() {
+                    @Override
+                    public void onChanged(ShopItems.ShopItemBuyResponse shopItemBuyResponse) {
+                        Toast.makeText(holder.rowShopAvatarItemTextView.getContext(), String.valueOf(shopItemBuyResponse.getFis10user().getAvatar()), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }

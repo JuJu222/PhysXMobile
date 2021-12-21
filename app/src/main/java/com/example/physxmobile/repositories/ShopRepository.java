@@ -58,4 +58,28 @@ public class ShopRepository {
 
         return shopItems;
     }
+
+    public MutableLiveData<ShopItems.ShopItemBuyResponse> buyShopItem(int shopItemId) {
+        final MutableLiveData<ShopItems.ShopItemBuyResponse> shopItemBuyResponse = new MutableLiveData<>();
+
+        apiService.buyShopItem(shopItemId).enqueue(new Callback<ShopItems.ShopItemBuyResponse>() {
+            @Override
+            public void onResponse(Call<ShopItems.ShopItemBuyResponse> call, Response<ShopItems.ShopItemBuyResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: " + response.body().getMessage());
+                        shopItemBuyResponse.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ShopItems.ShopItemBuyResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return shopItemBuyResponse;
+    }
 }

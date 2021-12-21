@@ -157,8 +157,8 @@ public class UserModel {
         private int fis10_user_id;
         private int user_id;
         private int coins;
-        private Object title;
-        private Object avatar;
+        private String title;
+        private String avatar;
         private String created_at;
         private String updated_at;
 
@@ -191,19 +191,19 @@ public class UserModel {
             this.coins = coins;
         }
 
-        public Object getTitle() {
+        public String getTitle() {
             return title;
         }
 
-        public void setTitle(Object title) {
+        public void setTitle(String title) {
             this.title = title;
         }
 
-        public Object getAvatar() {
+        public String getAvatar() {
             return avatar;
         }
 
-        public void setAvatar(Object avatar) {
+        public void setAvatar(String avatar) {
             this.avatar = avatar;
         }
 

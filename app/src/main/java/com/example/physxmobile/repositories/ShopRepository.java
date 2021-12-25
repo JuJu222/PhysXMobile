@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.physxmobile.api.RetrofitService;
-import com.example.physxmobile.models.ShopItems;
+import com.example.physxmobile.models.ShopItem;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,12 +35,12 @@ public class ShopRepository {
         }
     }
 
-    public MutableLiveData<ShopItems> getShopItems() {
-        final MutableLiveData<ShopItems> shopItems = new MutableLiveData<>();
+    public MutableLiveData<ShopItem> getShopItems() {
+        final MutableLiveData<ShopItem> shopItems = new MutableLiveData<>();
 
-        apiService.getShopItems().enqueue(new Callback<ShopItems>() {
+        apiService.getShopItems().enqueue(new Callback<ShopItem>() {
             @Override
-            public void onResponse(Call<ShopItems> call, Response<ShopItems> response) {
+            public void onResponse(Call<ShopItem> call, Response<ShopItem> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -51,7 +51,7 @@ public class ShopRepository {
             }
 
             @Override
-            public void onFailure(Call<ShopItems> call, Throwable t) {
+            public void onFailure(Call<ShopItem> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
@@ -59,12 +59,12 @@ public class ShopRepository {
         return shopItems;
     }
 
-    public MutableLiveData<ShopItems.ShopItemBuyResponse> buyShopItem(int shopItemId) {
-        final MutableLiveData<ShopItems.ShopItemBuyResponse> shopItemBuyResponse = new MutableLiveData<>();
+    public MutableLiveData<ShopItem.ShopItemBuyResponse> buyShopItem(int shopItemId) {
+        final MutableLiveData<ShopItem.ShopItemBuyResponse> shopItemBuyResponse = new MutableLiveData<>();
 
-        apiService.buyShopItem(shopItemId).enqueue(new Callback<ShopItems.ShopItemBuyResponse>() {
+        apiService.buyShopItem(shopItemId).enqueue(new Callback<ShopItem.ShopItemBuyResponse>() {
             @Override
-            public void onResponse(Call<ShopItems.ShopItemBuyResponse> call, Response<ShopItems.ShopItemBuyResponse> response) {
+            public void onResponse(Call<ShopItem.ShopItemBuyResponse> call, Response<ShopItem.ShopItemBuyResponse> response) {
                 Log.d(TAG, "onResponse: " + response.code());
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -75,11 +75,35 @@ public class ShopRepository {
             }
 
             @Override
-            public void onFailure(Call<ShopItems.ShopItemBuyResponse> call, Throwable t) {
+            public void onFailure(Call<ShopItem.ShopItemBuyResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
 
         return shopItemBuyResponse;
+    }
+
+    public MutableLiveData<ShopItem.ShopItemEquipResponse> equipShopItem(int shopItemId) {
+        final MutableLiveData<ShopItem.ShopItemEquipResponse> shopItemEquipResponse = new MutableLiveData<>();
+
+        apiService.equipShopItem(shopItemId).enqueue(new Callback<ShopItem.ShopItemEquipResponse>() {
+            @Override
+            public void onResponse(Call<ShopItem.ShopItemEquipResponse> call, Response<ShopItem.ShopItemEquipResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: " + response.body().getMessage());
+                        shopItemEquipResponse.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ShopItem.ShopItemEquipResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return shopItemEquipResponse;
     }
 }

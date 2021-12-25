@@ -2,7 +2,7 @@ package com.example.physxmobile.api;
 
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.RegisterResponse;
-import com.example.physxmobile.models.ShopItems;
+import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.models.UserModel;
 import com.google.gson.JsonObject;
 
@@ -40,10 +40,15 @@ public interface ApiEndPoint {
     Call<JsonObject> logout();
 
     @GET("shop")
-    Call<ShopItems> getShopItems();
+    Call<ShopItem> getShopItems();
 
     @POST("shop/buy/{id}")
-    Call<ShopItems.ShopItemBuyResponse> buyShopItem(
+    Call<ShopItem.ShopItemBuyResponse> buyShopItem(
+            @Path("id") int shopItemId
+    );
+
+    @POST("shop/equip/{id}")
+    Call<ShopItem.ShopItemEquipResponse> equipShopItem(
             @Path("id") int shopItemId
     );
 }

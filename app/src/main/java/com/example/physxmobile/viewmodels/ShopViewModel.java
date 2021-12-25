@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.physxmobile.models.ShopItems;
+import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.repositories.ShopRepository;
 
 public class ShopViewModel extends AndroidViewModel {
@@ -24,16 +24,22 @@ public class ShopViewModel extends AndroidViewModel {
         shopRepository = ShopRepository.getInstance(token);
     }
 
-    private MutableLiveData<ShopItems> shopItems = new MutableLiveData<>();
-    public LiveData<ShopItems> getShopItems() {
+    private MutableLiveData<ShopItem> shopItems = new MutableLiveData<>();
+    public LiveData<ShopItem> getShopItems() {
         shopItems = shopRepository.getShopItems();
         return shopItems;
     }
 
-    private MutableLiveData<ShopItems.ShopItemBuyResponse> shopItemBuyResponse = new MutableLiveData<>();
-    public LiveData<ShopItems.ShopItemBuyResponse> buyShopItem(int shopItemId) {
+    private MutableLiveData<ShopItem.ShopItemBuyResponse> shopItemBuyResponse = new MutableLiveData<>();
+    public LiveData<ShopItem.ShopItemBuyResponse> buyShopItem(int shopItemId) {
         shopItemBuyResponse = shopRepository.buyShopItem(shopItemId);
         return shopItemBuyResponse;
+    }
+
+    private MutableLiveData<ShopItem.ShopItemEquipResponse> equipShopItemResponse = new MutableLiveData<>();
+    public LiveData<ShopItem.ShopItemEquipResponse> equipShopItem(int shopItemId) {
+        equipShopItemResponse = shopRepository.equipShopItem(shopItemId);
+        return equipShopItemResponse;
     }
 
     @Override

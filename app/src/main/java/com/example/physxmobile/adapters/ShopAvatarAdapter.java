@@ -12,17 +12,19 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.physxmobile.R;
-import com.example.physxmobile.models.ShopItems;
+import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.viewmodels.ShopViewModel;
 
 import java.util.List;
 
 public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.ViewHolder> {
-    private List<ShopItems.ShopItem> shopItemList;
+    private List<ShopItem.ShopItems> shopItemList;
+    private List<ShopItem.OwnedItems> ownedItemList;
     private ShopViewModel shopViewModel;
 
-    public ShopAvatarAdapter(List<ShopItems.ShopItem> shopItemList, ShopViewModel shopViewModel) {
+    public ShopAvatarAdapter(List<ShopItem.ShopItems> shopItemList, List<ShopItem.OwnedItems> ownedItemList, ShopViewModel shopViewModel) {
         this.shopItemList = shopItemList;
+        this.ownedItemList = ownedItemList;
         this.shopViewModel = shopViewModel;
     }
 
@@ -36,13 +38,52 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowShopAvatarItemTextView.setText(shopItemList.get(position).getItem());
         holder.rowShopAvatarPriceTextView.setText(String.valueOf(shopItemList.get(position).getPrice()));
+        for (ShopItem.OwnedItems ownedItem : ownedItemList) {
+            if (shopItemList.get(position).getShop_item_id() == ownedItem.getShop_item_id()) {
+                holder.rowShopAvatarEquipButton.setVisibility(View.VISIBLE);
+                holder.rowShopAvatarBuyButton.setVisibility(View.GONE);
+
+                if (ownedItem.getPivot().getIs_equipped() == 1) {
+                    holder.rowShopAvatarEquipButton.setEnabled(false);
+                } else {
+                    holder.rowShopAvatarEquipButton.setEnabled(true);
+                }
+
+                holder.rowShopAvatarEquipButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        shopViewModel.equipShopItem(shopItemList.get(holder.getAdapterPosition()).getShop_item_id()).observe((LifecycleOwner) holder.rowShopAvatarEquipButton.getContext(), new Observer<ShopItem.ShopItemEquipResponse>() {
+                            @Override
+                            public void onChanged(ShopItem.ShopItemEquipResponse shopItemEquipResponse) {
+                                shopViewModel.getShopItems().observe((LifecycleOwner) holder.rowShopAvatarEquipButton.getContext(), new Observer<ShopItem>() {
+                                    @Override
+                                    public void onChanged(ShopItem shopItem) {
+                                        ownedItemList = shopItem.getOwned_items();
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
         holder.rowShopAvatarBuyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shopViewModel.buyShopItem(shopItemList.get(holder.getAdapterPosition()).getShop_item_id()).observe((LifecycleOwner) holder.rowShopAvatarBuyButton.getContext(), new Observer<ShopItems.ShopItemBuyResponse>() {
+                shopViewModel.buyShopItem(shopItemList.get(holder.getAdapterPosition()).getShop_item_id()).observe((LifecycleOwner) holder.rowShopAvatarBuyButton.getContext(), new Observer<ShopItem.ShopItemBuyResponse>() {
                     @Override
-                    public void onChanged(ShopItems.ShopItemBuyResponse shopItemBuyResponse) {
-                        Toast.makeText(holder.rowShopAvatarItemTextView.getContext(), String.valueOf(shopItemBuyResponse.getFis10user().getAvatar()), Toast.LENGTH_SHORT).show();
+                    public void onChanged(ShopItem.ShopItemBuyResponse shopItemBuyResponse) {
+                        if (shopItemBuyResponse.getMessage().equals("Buy shop item successful")) {
+                            shopViewModel.getShopItems().observe((LifecycleOwner) holder.rowShopAvatarEquipButton.getContext(), new Observer<ShopItem>() {
+                                @Override
+                                public void onChanged(ShopItem shopItem) {
+                                    ownedItemList = shopItem.getOwned_items();
+                                    notifyDataSetChanged();
+                                }
+                            });
+                        }
                     }
                 });
             }
@@ -58,6 +99,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
         TextView rowShopAvatarItemTextView;
         TextView rowShopAvatarPriceTextView;
         TextView rowShopAvatarBuyButton;
+        TextView rowShopAvatarEquipButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,6 +107,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
             rowShopAvatarItemTextView = itemView.findViewById(R.id.rowShopAvatarItemTextView);
             rowShopAvatarPriceTextView = itemView.findViewById(R.id.rowShopAvatarPriceTextView);
             rowShopAvatarBuyButton = itemView.findViewById(R.id.rowShopAvatarBuyButton);
+            rowShopAvatarEquipButton = itemView.findViewById(R.id.rowShopAvatarEquipButton);
         }
     }
 }

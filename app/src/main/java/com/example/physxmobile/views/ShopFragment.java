@@ -18,7 +18,7 @@ import com.example.physxmobile.R;
 import com.example.physxmobile.adapters.ShopAvatarAdapter;
 import com.example.physxmobile.adapters.ShopTitleAdapter;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
-import com.example.physxmobile.models.ShopItems;
+import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.viewmodels.ShopViewModel;
 
 import java.util.ArrayList;
@@ -44,31 +44,43 @@ public class ShopFragment extends Fragment {
 
         shopViewModel.init(helper.getAccessToken());
 
-        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItems>() {
+        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
             @Override
-            public void onChanged(ShopItems shopItems) {
-                List<ShopItems.ShopItem> temp = new ArrayList<>();
-                for (ShopItems.ShopItem shopItem : shopItems.getShop_items()) {
+            public void onChanged(ShopItem shopItems) {
+                List<ShopItem.ShopItems> temp = new ArrayList<>();
+                List<ShopItem.OwnedItems> ownedItems = new ArrayList<>();
+                for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
                     if (shopItem.getType().equals("title")) {
                         temp.add(shopItem);
                     }
                 }
-                ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp, shopViewModel);
+                for (ShopItem.OwnedItems ownedItem : shopItems.getOwned_items()) {
+                    if (ownedItem.getType().equals("title")) {
+                        ownedItems.add(ownedItem);
+                    }
+                }
+                ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp, ownedItems, shopViewModel);
                 shopTitleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopTitleRecyclerView.setAdapter(shopTitleAdapter);
             }
         });
 
-        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItems>() {
+        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
             @Override
-            public void onChanged(ShopItems shopItems) {
-                List<ShopItems.ShopItem> temp = new ArrayList<>();
-                for (ShopItems.ShopItem shopItem : shopItems.getShop_items()) {
+            public void onChanged(ShopItem shopItems) {
+                List<ShopItem.ShopItems> temp = new ArrayList<>();
+                List<ShopItem.OwnedItems> ownedItems = new ArrayList<>();
+                for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
                     if (shopItem.getType().equals("avatar")) {
                         temp.add(shopItem);
                     }
                 }
-                ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, shopViewModel);
+                for (ShopItem.OwnedItems ownedItem : shopItems.getOwned_items()) {
+                    if (ownedItem.getType().equals("avatar")) {
+                        ownedItems.add(ownedItem);
+                    }
+                }
+                ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, ownedItems, shopViewModel);
                 shopAvatarRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopAvatarRecyclerView.setAdapter(shopAvatarAdapter);
             }

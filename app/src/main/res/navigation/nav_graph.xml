@@ -50,4 +50,22 @@
         android:name="com.example.physxmobile.views.ShopFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.physxmobile.views.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.physxmobile.views.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
 </navigation>

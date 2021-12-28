@@ -3,6 +3,7 @@ package com.example.physxmobile.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,8 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.physxmobile.R;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.viewmodels.ShopViewModel;
@@ -38,6 +41,8 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowShopAvatarItemTextView.setText(shopItemList.get(position).getItem());
         holder.rowShopAvatarPriceTextView.setText(String.valueOf(shopItemList.get(position).getPrice()));
+        Glide.with(holder.rowShopAvatarImageView.getContext()).load(shopItemList.get(position).getImage_path())
+                .into(holder.rowShopAvatarImageView);
         for (ShopItem.OwnedItems ownedItem : ownedItemList) {
             if (shopItemList.get(position).getShop_item_id() == ownedItem.getShop_item_id()) {
                 holder.rowShopAvatarEquipButton.setVisibility(View.VISIBLE);
@@ -100,6 +105,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
         TextView rowShopAvatarPriceTextView;
         TextView rowShopAvatarBuyButton;
         TextView rowShopAvatarEquipButton;
+        ImageView rowShopAvatarImageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -108,6 +114,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
             rowShopAvatarPriceTextView = itemView.findViewById(R.id.rowShopAvatarPriceTextView);
             rowShopAvatarBuyButton = itemView.findViewById(R.id.rowShopAvatarBuyButton);
             rowShopAvatarEquipButton = itemView.findViewById(R.id.rowShopAvatarEquipButton);
+            rowShopAvatarImageView = itemView.findViewById(R.id.rowShopAvatarImageView);
         }
     }
 }

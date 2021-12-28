@@ -57,12 +57,14 @@ public class ProfileRepository {
                     }
                 }else{
                     Log.d(TAG, "onResponse: "+response.code());
+                    user.postValue(null);
                 }
             }
 
             @Override
             public void onFailure(Call<UserModel> call, Throwable t) {
                 Log.e(TAG, "onFailure: "+ t.getMessage());
+                user.postValue(null);
             }
         });
 

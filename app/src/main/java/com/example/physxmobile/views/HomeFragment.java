@@ -1,9 +1,12 @@
 package com.example.physxmobile.views;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +45,8 @@ public class HomeFragment extends Fragment {
         FrameLayout frameLayout1 = view.findViewById(R.id.homeTopic1Layout);
 
         homeViewModel.init(helper.getAccessToken());
+        ColorStateList greenCircleColor = ColorStateList.valueOf(Color.parseColor("#95DAC1"));
+        ColorStateList greenTextColor = ColorStateList.valueOf(Color.parseColor("#436F5F"));
 
         homeViewModel.getHome().observe(getViewLifecycleOwner(), new Observer<HomeResponse>() {
             @Override
@@ -49,6 +55,145 @@ public class HomeFragment extends Fragment {
                 homeNameTextView.setText(hiName);
                 homeTotalScoreTextView.setText(String.valueOf(homeResponse.getTotal_score()));
                 homeRankingTextView.setText(String.valueOf(homeResponse.getRanking()));
+                for (HomeResponse.UnlockedTopics unlockedTopic : homeResponse.getUnlocked_topics()) {
+                    switch (unlockedTopic.getTopic_id()) {
+                        case 2:
+                            FrameLayout homeTopic2Layout = view.findViewById(R.id.homeTopic2Layout);
+                            ImageView imageView12 = view.findViewById(R.id.imageView12);
+                            TextView textView16 = view.findViewById(R.id.textView16);
+
+                            ImageViewCompat.setImageTintList(imageView12, greenCircleColor);
+                            textView16.setTextColor(greenTextColor);
+
+                            homeTopic2Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 3:
+                            FrameLayout homeTopic3Layout = view.findViewById(R.id.homeTopic3Layout);
+                            ImageView imageView15 = view.findViewById(R.id.imageView15);
+                            TextView textView17 = view.findViewById(R.id.textView17);
+
+                            ImageViewCompat.setImageTintList(imageView15, greenCircleColor);
+                            textView17.setTextColor(greenTextColor);
+
+                            homeTopic3Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 4:
+                            FrameLayout homeTopic4Layout = view.findViewById(R.id.homeTopic4Layout);
+                            ImageView imageView19 = view.findViewById(R.id.imageView19);
+                            TextView textView18 = view.findViewById(R.id.textView18);
+
+                            ImageViewCompat.setImageTintList(imageView19, greenCircleColor);
+                            textView18.setTextColor(greenTextColor);
+
+                            homeTopic4Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 5:
+                            FrameLayout homeTopic5Layout = view.findViewById(R.id.homeTopic5Layout);
+                            ImageView imageView21 = view.findViewById(R.id.imageView21);
+                            TextView textView20 = view.findViewById(R.id.textView20);
+
+                            ImageViewCompat.setImageTintList(imageView21, greenCircleColor);
+                            textView20.setTextColor(greenTextColor);
+
+                            homeTopic5Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 6:
+                            FrameLayout homeTopic6Layout = view.findViewById(R.id.homeTopic6Layout);
+                            ImageView imageView24 = view.findViewById(R.id.imageView24);
+                            TextView textView21 = view.findViewById(R.id.textView21);
+
+                            ImageViewCompat.setImageTintList(imageView24, greenCircleColor);
+                            textView21.setTextColor(greenTextColor);
+
+                            homeTopic6Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 7:
+                            FrameLayout homeTopic7Layout = view.findViewById(R.id.homeTopic7Layout);
+                            ImageView imageView29 = view.findViewById(R.id.imageView29);
+                            TextView textView22 = view.findViewById(R.id.textView22);
+
+                            ImageViewCompat.setImageTintList(imageView29, greenCircleColor);
+                            textView22.setTextColor(greenTextColor);
+
+                            homeTopic7Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 8:
+                            FrameLayout homeTopic8Layout = view.findViewById(R.id.homeTopic8Layout);
+                            ImageView imageView31 = view.findViewById(R.id.imageView31);
+                            TextView textView23 = view.findViewById(R.id.textView23);
+
+                            ImageViewCompat.setImageTintList(imageView31, greenCircleColor);
+                            textView23.setTextColor(greenTextColor);
+
+                            homeTopic8Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 9:
+                            FrameLayout homeTopic9Layout = view.findViewById(R.id.homeTopic9Layout);
+                            ImageView imageView33 = view.findViewById(R.id.imageView33);
+                            TextView textView24 = view.findViewById(R.id.textView24);
+
+                            ImageViewCompat.setImageTintList(imageView33, greenCircleColor);
+                            textView24.setTextColor(greenTextColor);
+
+                            homeTopic9Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                        case 10:
+                            FrameLayout homeTopic10Layout = view.findViewById(R.id.homeTopic10Layout);
+                            ImageView imageView35 = view.findViewById(R.id.imageView35);
+                            TextView textView25 = view.findViewById(R.id.textView25);
+
+                            ImageViewCompat.setImageTintList(imageView35, greenCircleColor);
+                            textView25.setTextColor(greenTextColor);
+
+                            homeTopic10Layout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // redirect to topic overview
+                                }
+                            });
+                            break;
+                    }
+                }
             }
         });
 

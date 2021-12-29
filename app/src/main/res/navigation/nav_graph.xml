@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -15,7 +15,8 @@
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -44,17 +45,7 @@
         android:id="@+id/leaderboardFragment"
         android:name="com.example.physxmobile.views.LeaderboardFragment"
         android:label="fragment_leaderboard"
-        tools:layout="@layout/fragment_leaderboard" >
-        <action
-            android:id="@+id/action_leaderboardFragment_to_MCQFragment"
-            app:destination="@id/MCQFragment" />
-        <action
-            android:id="@+id/action_leaderboardFragment_to_FITBFragment"
-            app:destination="@id/FITBFragment" />
-        <action
-            android:id="@+id/action_leaderboardFragment_to_TOFFragment"
-            app:destination="@id/TOFFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_leaderboard" />
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.physxmobile.views.ShopFragment"
@@ -65,49 +56,4 @@
         android:name="com.example.physxmobile.views.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" />
-    <fragment
-        android:id="@+id/FITBFragment"
-        android:name="com.example.physxmobile.views.FITBFragment"
-        android:label="fragment_question_fitb"
-        tools:layout="@layout/fragment_question_fitb">
-        <action
-            android:id="@+id/action_FITBFragment_self"
-            app:destination="@id/FITBFragment" />
-        <action
-            android:id="@+id/action_FITBFragment_to_MCQFragment"
-            app:destination="@id/MCQFragment" />
-        <action
-            android:id="@+id/action_FITBFragment_to_TOFFragment"
-            app:destination="@id/TOFFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/TOFFragment"
-        android:name="com.example.physxmobile.views.TOFFragment"
-        android:label="fragment_question_tof"
-        tools:layout="@layout/fragment_question_tof">
-        <action
-            android:id="@+id/action_TOFFragment_self"
-            app:destination="@id/TOFFragment" />
-        <action
-            android:id="@+id/action_TOFFragment_to_FITBFragment"
-            app:destination="@id/FITBFragment" />
-        <action
-            android:id="@+id/action_TOFFragment_to_MCQFragment"
-            app:destination="@id/MCQFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/MCQFragment"
-        android:name="com.example.physxmobile.views.MCQFragment"
-        android:label="fragment_question_mcq"
-        tools:layout="@layout/fragment_question_mcq" >
-        <action
-            android:id="@+id/action_MCQFragment_self2"
-            app:destination="@id/MCQFragment" />
-        <action
-            android:id="@+id/action_MCQFragment_to_FITBFragment2"
-            app:destination="@id/FITBFragment" />
-        <action
-            android:id="@+id/action_MCQFragment_to_TOFFragment2"
-            app:destination="@id/TOFFragment" />
-    </fragment>
 </navigation>

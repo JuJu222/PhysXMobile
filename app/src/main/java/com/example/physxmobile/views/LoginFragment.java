@@ -77,14 +77,13 @@ public class LoginFragment extends Fragment {
 
                 loginViewModel.login(email, pass).observe(requireActivity(), loginResponse -> {
                     if (loginResponse != null){
+                        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.mainBottomNavigationView);
+                        bottomNavigationView.setVisibility(View.VISIBLE);
+
                         helper.saveAccessToken(loginResponse.getAuthorization());
                         NavDirections actions = LoginFragmentDirections.actionLoginFragmentToHomeFragment();
                         Navigation.findNavController(view1).navigate(actions);
                         Toast.makeText(requireActivity(), "Login Success", Toast.LENGTH_SHORT).show();
-
-                        Menu menu = bottomNavigationView.getMenu();
-                        menu.getItem(3).setVisible(false);
-                        menu.getItem(4).setVisible(true);
                     }else{
                         Toast.makeText(requireActivity(), "Login Failed", Toast.LENGTH_SHORT).show();
                     }

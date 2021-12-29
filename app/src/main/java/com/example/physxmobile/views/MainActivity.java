@@ -4,15 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Menu;
+import android.view.View;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
@@ -43,14 +39,13 @@ public class MainActivity extends AppCompatActivity {
                     helper.clearPref();
                 }
 
-                Menu menu = bottomNavigationView.getMenu();
                 if (!helper.getAccessToken().isEmpty()){
-                    menu.getItem(3).setVisible(false);
-                    menu.getItem(4).setVisible(true);
+                    navController.navigate(R.id.action_loginFragment_to_homeFragment);
                 } else {
-                    menu.getItem(3).setVisible(true);
-                    menu.getItem(4).setVisible(false);
+                    bottomNavigationView.setVisibility(View.GONE);
                 }
+
+                profileViewModel.resetRepositoryInstance();
             }
         });
     }

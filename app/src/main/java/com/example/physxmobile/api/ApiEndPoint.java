@@ -1,5 +1,6 @@
 package com.example.physxmobile.api;
 
+import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.RegisterResponse;
@@ -36,6 +37,9 @@ public interface ApiEndPoint {
             @Field("city") String city,
             @Field("birthyear") int birthyear
     );
+
+    @GET("home")
+    Call<HomeResponse> getHome();
 
     @POST("logout")
     Call<JsonObject> logout();

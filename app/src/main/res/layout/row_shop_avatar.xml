@@ -16,8 +16,8 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/rowShopAvatarBuyButton"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintStart_toEndOf="@+id/rowShopAvatarImageView"
+        app:layout_constraintTop_toTopOf="@+id/rowShopAvatarImageView" />
 
     <TextView
         android:id="@+id/textView7"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/rowShopAvatarImageView"
         android:layout_height="100dp"
         android:layout_width="100dp"
         android:layout_marginStart="16dp"

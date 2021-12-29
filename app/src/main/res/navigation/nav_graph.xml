@@ -61,6 +61,11 @@
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" />
     <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.physxmobile.views.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
+    <fragment
         android:id="@+id/FITBFragment"
         android:name="com.example.physxmobile.views.FITBFragment"
         android:label="fragment_question_fitb"

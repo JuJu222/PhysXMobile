@@ -14,12 +14,7 @@
         android:icon="@drawable/ic_bag_fill"
         android:title="Shop" />
     <item
-        android:id="@+id/loginFragment"
-        android:icon="@drawable/ic_person_fill"
-        android:title="Profile" />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_person_fill"
-        android:title="Profile"
-        android:visible="false" />
+        android:title="Profile" />
 </menu>

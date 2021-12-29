@@ -35,6 +35,10 @@ public class ProfileViewModel extends AndroidViewModel {
         return profileRepository.logout();
     }
 
+    public void resetRepositoryInstance() {
+        profileRepository.resetInstance();
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

@@ -69,12 +69,11 @@ public class ProfileFragment extends Fragment {
             profileViewModel.logout().observe(requireActivity(), s -> {
                 if (!s.isEmpty()) {
                     helper.clearPref();
+                    BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.mainBottomNavigationView);
+                    bottomNavigationView.setVisibility(View.GONE);
+
                     Navigation.findNavController(view1).navigate(R.id.action_profileFragment_to_loginFragment);
                     Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();
-
-                    Menu menu = bottomNavigationView.getMenu();
-                    menu.getItem(4).setVisible(false);
-                    menu.getItem(3).setVisible(true);
                 }
             });
         });

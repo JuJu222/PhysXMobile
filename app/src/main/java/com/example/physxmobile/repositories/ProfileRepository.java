@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.physxmobile.api.RetrofitService;
 import com.example.physxmobile.models.UserModel;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import org.json.JSONException;
@@ -47,6 +48,7 @@ public class ProfileRepository {
         apiService.getUser().enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(response.body()));
                 if (response.isSuccessful()){
                     Log.d(TAG, "onResponse: "+response.code());
                     if(response.code() == 200){

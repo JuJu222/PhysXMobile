@@ -7,5 +7,5 @@ public class Const {
 //    public final static String BASE_URL = "http://192.168.43.39/PhysXWeb/public/api/";
 
     //Kevin
-      public final static String BASE_URL = "http://192.168.1.5/PhysXWeb/public/api/";
+      public final static String BASE_URL = "http://192.168.1.5/physxweb/public/api/";
 }

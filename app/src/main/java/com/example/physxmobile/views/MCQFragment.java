@@ -64,13 +64,9 @@ public class MCQFragment extends Fragment {
     private Observer<Question> showQuestionDetail = new Observer<Question>() {
         @Override
             public void onChanged(Question question) {
-
              int noSoal = getArguments().getInt("noSoal",0);
-             int score = getArguments().getInt("score",0);
-
             List<Question.Questions> resultQuestion = question.getQuestions();
             List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
-
             if(question == null){
                 questionmcq_question.setText("Unknown");
                 questionmcq_id.setText("Unknown");
@@ -86,9 +82,7 @@ public class MCQFragment extends Fragment {
 
                 questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                     @Override
-                    public void onChanged(Question question) {
-
-                    }
+                    public void onChanged(Question question) {}
                 });
             }
 

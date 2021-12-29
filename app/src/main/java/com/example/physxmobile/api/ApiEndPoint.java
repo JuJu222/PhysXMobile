@@ -45,7 +45,7 @@ public interface ApiEndPoint {
 
     @GET("questions/{topic}")
     Call<Question> getQuestions(
-            @Path("id") int topicId
+            @Path("topic") int topicId
     );
 
     @POST("shop/buy/{id}")

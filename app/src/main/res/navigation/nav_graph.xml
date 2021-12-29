@@ -44,7 +44,17 @@
         android:id="@+id/leaderboardFragment"
         android:name="com.example.physxmobile.views.LeaderboardFragment"
         android:label="fragment_leaderboard"
-        tools:layout="@layout/fragment_leaderboard" />
+        tools:layout="@layout/fragment_leaderboard" >
+        <action
+            android:id="@+id/action_leaderboardFragment_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_leaderboardFragment_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+        <action
+            android:id="@+id/action_leaderboardFragment_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.physxmobile.views.ShopFragment"

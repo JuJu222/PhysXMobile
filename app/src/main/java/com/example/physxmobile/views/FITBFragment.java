@@ -69,12 +69,10 @@ public class FITBFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_question_fitb, container, false);
     }
 
-    private Observer<Question> showQuestionDetail = new Observer<Question>() {
+    private final Observer<Question> showQuestionDetail = new Observer<Question>() {
         @Override
         public void onChanged(Question question) {
-
             int noSoal = getArguments().getInt("noSoal", 0);
-
             List<Question.Questions> resultQuestion = question.getQuestions();
             List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
 
@@ -90,15 +88,17 @@ public class FITBFragment extends Fragment {
                 Glide.with(getActivity())
                         .load(Const.BASE_URL + fitb_image)
                         .into(questionfitb_image);
-                questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
+                questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                     @Override
-                    public void onChanged(Question question) {}});
+                    public void onChanged(Question question) {
+                    }
+                });
                 optionfitb_submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String answer = optionfitb_answer.getText().toString();
                         if (answer.equals(optionChoices.get(noSoal).getAnswer())) {
-                            questionViewModel.answerQuestions(topic,resultQuestion.get(noSoal).getQuestion_id(),answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
+                            questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
                                     notify();
@@ -106,7 +106,7 @@ public class FITBFragment extends Fragment {
                             });
                             openCorrectDialog();
                         } else {
-                            questionViewModel.answerQuestions(topic,resultQuestion.get(noSoal).getQuestion_id(),answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
+                            questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
                                     notify();

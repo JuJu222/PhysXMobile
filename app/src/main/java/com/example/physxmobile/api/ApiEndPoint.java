@@ -69,6 +69,7 @@ public interface ApiEndPoint {
     );
 
     @POST("questions/{topic}/{question}")
+    @FormUrlEncoded
     Call<Question> answerQuestions(
             @Path("topic") int topicId,
             @Path("question") int questionId,

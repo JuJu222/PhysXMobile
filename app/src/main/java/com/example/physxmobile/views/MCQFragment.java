@@ -36,7 +36,7 @@ public class MCQFragment extends Fragment {
     private RecyclerView recyclerView;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic = 1;
+    int topic = getArguments().getInt("topicId");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

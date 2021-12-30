@@ -45,7 +45,17 @@
         android:id="@+id/leaderboardFragment"
         android:name="com.example.physxmobile.views.LeaderboardFragment"
         android:label="fragment_leaderboard"
-        tools:layout="@layout/fragment_leaderboard" />
+        tools:layout="@layout/fragment_leaderboard" >
+        <action
+            android:id="@+id/action_leaderboardFragment_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_leaderboardFragment_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_leaderboardFragment_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.physxmobile.views.ShopFragment"
@@ -56,4 +66,46 @@
         android:name="com.example.physxmobile.views.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/MCQFragment"
+        android:name="com.example.physxmobile.views.MCQFragment"
+        android:label="MCQFragment" >
+        <action
+            android:id="@+id/action_MCQFragment_self"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_MCQFragment_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_MCQFragment_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TOFFragment"
+        android:name="com.example.physxmobile.views.TOFFragment"
+        android:label="TOFFragment" >
+        <action
+            android:id="@+id/action_TOFFragment_self"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_TOFFragment_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+        <action
+            android:id="@+id/action_TOFFragment_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FITBFragment"
+        android:name="com.example.physxmobile.views.FITBFragment"
+        android:label="FITBFragment" >
+        <action
+            android:id="@+id/action_FITBFragment_self"
+            app:destination="@id/FITBFragment" />
+        <action
+            android:id="@+id/action_FITBFragment_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_FITBFragment_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+    </fragment>
 </navigation>

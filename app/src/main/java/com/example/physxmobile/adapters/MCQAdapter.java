@@ -115,13 +115,13 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                         if (resultQuestion.get(noSoal + 1) != null) {
                             switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                 case "mcq":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_self2, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_self, bundle);
                                     break;
                                 case "fitb":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_FITBFragment2, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_FITBFragment, bundle);
                                     break;
                                 case "tof":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_TOFFragment2, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_TOFFragment, bundle);
                                     break;
                             }
 
@@ -153,13 +153,13 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                         if (resultQuestion.get(noSoal + 1) != null) {
                             switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                 case "mcq":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_self2, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_self, bundle);
                                     break;
                                 case "fitb":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_FITBFragment2, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_FITBFragment, bundle);
                                     break;
                                 case "tof":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_TOFFragment2, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_TOFFragment, bundle);
                                     break;
                             }
 

@@ -39,7 +39,7 @@ public class TOFFragment extends Fragment {
     Button optiontof_true, optiontof_false;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic = 1;
+    int topic = getArguments().getInt("topicId");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +93,7 @@ public class TOFFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         String answer = optiontof_true.getText().toString();
-                        if (answer.equals("True") && optionChoices.get(noSoal).isTrue_or_false()) {
+                        if (answer.equals("False") && optionChoices.get(noSoal).isTrue_or_false() == 0) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -101,7 +101,7 @@ public class TOFFragment extends Fragment {
                                 }
                             });
                             openCorrectDialog();
-                        } else if (answer.equals("True") && !optionChoices.get(noSoal).isTrue_or_false()) {
+                        } else if (answer.equals("False") && optionChoices.get(noSoal).isTrue_or_false() == 1) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -195,7 +195,7 @@ public class TOFFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         String answer = optiontof_true.getText().toString();
-                        if (answer.equals("True") && optionChoices.get(noSoal).isTrue_or_false()) {
+                        if (answer.equals("True") && optionChoices.get(noSoal).isTrue_or_false() == 1) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -203,7 +203,7 @@ public class TOFFragment extends Fragment {
                                 }
                             });
                             openCorrectDialog();
-                        } else if (answer.equals("True") && !optionChoices.get(noSoal).isTrue_or_false()) {
+                        } else if (answer.equals("True") && optionChoices.get(noSoal).isTrue_or_false() == 0) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {

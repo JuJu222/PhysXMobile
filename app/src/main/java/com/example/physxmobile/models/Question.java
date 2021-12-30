@@ -106,7 +106,7 @@ public class Question {
             private int is_correct;
             private int question_id;
             private int option_tof_id;
-            private boolean true_or_false;
+            private int true_or_false;
             private int option_fitb_id;
             private String answer;
 
@@ -118,11 +118,11 @@ public class Question {
                 this.option_tof_id = option_tof_id;
             }
 
-            public boolean isTrue_or_false() {
+            public int isTrue_or_false() {
                 return true_or_false;
             }
 
-            public void setTrue_or_false(boolean true_or_false) {
+            public void setTrue_or_false(int true_or_false) {
                 this.true_or_false = true_or_false;
             }
 

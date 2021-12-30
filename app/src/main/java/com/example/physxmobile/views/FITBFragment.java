@@ -43,7 +43,7 @@ public class FITBFragment extends Fragment {
     ImageView questionfitb_image;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic = 1;
+    int topic = getArguments().getInt("topicId");
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

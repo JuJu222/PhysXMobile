@@ -38,30 +38,33 @@ public class LeaderboardFragment extends Fragment {
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
         questionViewModel.init(helper.getAccessToken());
-        topik_1.setOnClickListener(view1 -> {
-            questionViewModel.getQuestions(topic);
-            questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
-                @Override
-                public void onChanged(Question question) {
-                    List<Question.Questions> resultQuestion = question.getQuestions();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("noSoal", 0);
-                    bundle.putInt("topicId", topic);
-                    if (resultQuestion.get(0) != null) {
-                        switch (resultQuestion.get(0).getQuestion_type()) {
-                            case "mcq":
-                                Navigation.findNavController(view1).navigate(R.id.action_leaderboardFragment_to_MCQFragment, bundle);
-                                break;
-                            case "fitb":
-                                Navigation.findNavController(view1).navigate(R.id.action_leaderboardFragment_to_FITBFragment, bundle);
-                                break;
-                            case "tof":
-                                Navigation.findNavController(view1).navigate(R.id.action_leaderboardFragment_to_TOFFragment, bundle);
-                                break;
+        topik_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(topic);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", topic);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_leaderboardFragment_to_TOFFragment, bundle);
+                                    break;
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         });
     }
 

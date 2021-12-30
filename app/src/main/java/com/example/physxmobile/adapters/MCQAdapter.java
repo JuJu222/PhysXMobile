@@ -94,7 +94,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             row_question_choices = itemView.findViewById(R.id.row_question_choices);
-            dialog = new Dialog(dialog.getContext());
+            dialog = new Dialog(itemView.getContext());
         }
 
         private void openCorrectDialog() {

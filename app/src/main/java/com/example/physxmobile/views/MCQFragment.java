@@ -36,7 +36,7 @@ public class MCQFragment extends Fragment {
     private RecyclerView recyclerView;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic = getArguments().getInt("topicId");
+    int topic;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +53,7 @@ public class MCQFragment extends Fragment {
         questionmcq_id = view.findViewById(R.id.questionmcq_id);
         questionmcq_image = view.findViewById(R.id.questionmcq_image);
         recyclerView = view.findViewById(R.id.optionmcq_choices);
+        topic = getArguments().getInt("topicId");
 
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());

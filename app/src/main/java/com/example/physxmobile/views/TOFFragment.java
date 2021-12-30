@@ -39,7 +39,7 @@ public class TOFFragment extends Fragment {
     Button optiontof_true, optiontof_false;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic = getArguments().getInt("topicId");
+    int topic;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +57,7 @@ public class TOFFragment extends Fragment {
         questiontof_image = view.findViewById(R.id.questionfitb_image);
         optiontof_true = view.findViewById(R.id.optiontof_true);
         optiontof_false = view.findViewById(R.id.optiontof_false);
+        topic = getArguments().getInt("topicId");
 
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());

@@ -43,7 +43,7 @@ public class FITBFragment extends Fragment {
     ImageView questionfitb_image;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic = getArguments().getInt("topicId");
+    int topic;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class FITBFragment extends Fragment {
         questionfitb_image = view.findViewById(R.id.questionfitb_image);
         optionfitb_answer = view.findViewById(R.id.optionfitb_answer);
         optionfitb_submit = view.findViewById(R.id.optionfitb_submit);
+        topic = getArguments().getInt("topicId");
 
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());

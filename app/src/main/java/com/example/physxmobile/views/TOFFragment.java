@@ -26,6 +26,7 @@ import com.example.physxmobile.R;
 import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
 import com.example.physxmobile.models.Question;
+import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.viewmodels.QuestionViewModel;
 
 import java.util.List;
@@ -52,9 +53,10 @@ public class TOFFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        questiontof_question = view.findViewById(R.id.questionfitb_question);
-        questiontof_id = view.findViewById(R.id.questionfitb_id);
-        questiontof_image = view.findViewById(R.id.questionfitb_image);
+        questiontof_question = view.findViewById(R.id.questiontof_question);
+        questiontof_id = view.findViewById(R.id.questiontof_id);
+        dialog = new Dialog(view.getContext());
+        questiontof_image = view.findViewById(R.id.questiontof_image);
         optiontof_true = view.findViewById(R.id.optiontof_true);
         optiontof_false = view.findViewById(R.id.optiontof_false);
         topic = getArguments().getInt("topicId");
@@ -63,19 +65,13 @@ public class TOFFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(getContext());
         questionViewModel.init(helper.getAccessToken());
         questionViewModel.getQuestions(topic);
-        questionViewModel.getResultQuestions().observe(getActivity(), showQuestionDetail);
-    }
+        questionViewModel.getResultQuestions().observe(getActivity(), new Observer<Question>() {
+            @Override
+            public void onChanged(Question question) {
+                int noSoal = getArguments().getInt("noSoal", 0);
+                List<Question.Questions> resultQuestion = question.getQuestions();
+                List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
 
-    private Observer<Question> showQuestionDetail = new Observer<Question>() {
-        @Override
-        public void onChanged(Question question) {
-            int noSoal = getArguments().getInt("noSoal", 0);
-            List<Question.Questions> resultQuestion = question.getQuestions();
-            List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
-            if (question == null) {
-                questiontof_question.setText("Unknown");
-                questiontof_id.setText("Unknown");
-            } else {
                 String tof_question = resultQuestion.get(noSoal).getQuestion();
                 String tof_id = (noSoal + 1) + "/ " + resultQuestion.size();
                 String tof_image = resultQuestion.get(noSoal).getImage_path();
@@ -93,8 +89,8 @@ public class TOFFragment extends Fragment {
                 optiontof_false.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String answer = optiontof_true.getText().toString();
-                        if (answer.equals("False") && optionChoices.get(noSoal).isTrue_or_false() == 0) {
+                        String answer = optiontof_false.getText().toString();
+                        if (answer.equals("False") && optionChoices.get(0).isTrue_or_false() == 0) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -102,7 +98,7 @@ public class TOFFragment extends Fragment {
                                 }
                             });
                             openCorrectDialog();
-                        } else if (answer.equals("False") && optionChoices.get(noSoal).isTrue_or_false() == 1) {
+                        } else if (answer.equals("False") && optionChoices.get(0).isTrue_or_false() == 1) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -112,7 +108,6 @@ public class TOFFragment extends Fragment {
                             openIncorrectDialog();
                         }
 
-
                     }
 
                     private void openIncorrectDialog() {
@@ -121,15 +116,18 @@ public class TOFFragment extends Fragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         Button wrong_next = dialog.findViewById(R.id.wrong_next);
-                        if (resultQuestion.size() < (noSoal + 1)) {
+                        if (resultQuestion.size() == noSoal + 1) {
                             wrong_next.setText(R.string.finishquiz);
                         }
                         wrong_next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialog.dismiss();
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("noSoal", noSoal + 1);
-                                if (!(resultQuestion.size() < noSoal + 1)) {
+                                bundle.putInt("topicId", topic);
+
+                                if (noSoal + 1 < resultQuestion.size()) {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
@@ -145,8 +143,6 @@ public class TOFFragment extends Fragment {
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    //Redirect ke result page disini
                                 }
                             }
                         });
@@ -159,15 +155,17 @@ public class TOFFragment extends Fragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         Button correct_next = dialog.findViewById(R.id.correct_next);
-                        if (resultQuestion.size() < (noSoal + 1)) {
+                        if (resultQuestion.size() == noSoal + 1) {
                             correct_next.setText(R.string.finishquiz);
                         }
                         correct_next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialog.dismiss();
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("noSoal", noSoal + 1);
-                                if (!(resultQuestion.size() < noSoal + 1)) {
+                                bundle.putInt("topicId", topic);
+                                if (noSoal + 1 < resultQuestion.size()) {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
@@ -183,8 +181,6 @@ public class TOFFragment extends Fragment {
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    //Redirect ke result page disini
                                 }
                             }
                         });
@@ -196,7 +192,7 @@ public class TOFFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         String answer = optiontof_true.getText().toString();
-                        if (answer.equals("True") && optionChoices.get(noSoal).isTrue_or_false() == 1) {
+                        if (answer.equals("True") && optionChoices.get(0).isTrue_or_false() == 1) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -204,7 +200,7 @@ public class TOFFragment extends Fragment {
                                 }
                             });
                             openCorrectDialog();
-                        } else if (answer.equals("True") && optionChoices.get(noSoal).isTrue_or_false() == 0) {
+                        } else if (answer.equals("True") && optionChoices.get(0).isTrue_or_false() == 0) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -213,6 +209,7 @@ public class TOFFragment extends Fragment {
                             });
                             openIncorrectDialog();
                         }
+
                     }
 
                     private void openIncorrectDialog() {
@@ -221,15 +218,17 @@ public class TOFFragment extends Fragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         Button wrong_next = dialog.findViewById(R.id.wrong_next);
-                        if (resultQuestion.size() < (noSoal + 1)) {
+                        if (resultQuestion.size() == noSoal + 1) {
                             wrong_next.setText(R.string.finishquiz);
                         }
                         wrong_next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialog.dismiss();
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("noSoal", noSoal + 1);
-                                if (!(resultQuestion.size() < noSoal + 1)) {
+                                bundle.putInt("topicId", topic);
+                                if (noSoal + 1 < resultQuestion.size()) {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
@@ -245,8 +244,6 @@ public class TOFFragment extends Fragment {
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    //Redirect ke result page disini
                                 }
                             }
                         });
@@ -259,15 +256,17 @@ public class TOFFragment extends Fragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         Button correct_next = dialog.findViewById(R.id.correct_next);
-                        if (resultQuestion.size() < (noSoal + 1)) {
+                        if (resultQuestion.size() == noSoal + 1) {
                             correct_next.setText(R.string.finishquiz);
                         }
                         correct_next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialog.dismiss();
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("noSoal", noSoal + 1);
-                                if (!(resultQuestion.size() < noSoal + 1)) {
+                                bundle.putInt("topicId", topic);
+                                if (noSoal + 1 < resultQuestion.size()) {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
@@ -283,8 +282,6 @@ public class TOFFragment extends Fragment {
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    //Redirect ke result page disini
                                 }
                             }
                         });
@@ -292,7 +289,7 @@ public class TOFFragment extends Fragment {
                     }
                 });
             }
-        }
-    };
 
+        });
+    }
 }

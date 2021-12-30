@@ -38,7 +38,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
     private QuestionViewModel questionViewModel;
     NavController navController;
 
-    public MCQAdapter(List<Question.Questions.Options> optionChoices, int noSoal, List<Question.Questions> resultQuestion,QuestionViewModel questionViewModel, int topic, NavController navController) {
+    public MCQAdapter(List<Question.Questions.Options> optionChoices, int noSoal, List<Question.Questions> resultQuestion, QuestionViewModel questionViewModel, int topic, NavController navController) {
         this.optionChoices = optionChoices;
         this.noSoal = noSoal;
         this.resultQuestion = resultQuestion;
@@ -63,7 +63,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                 String answer = holder.row_question_choices.getText().toString();
                 if (answer.equals(optionChoices.get(holder.getAdapterPosition()).getOption()) && (optionChoices.get(holder.getAdapterPosition()).getIs_correct() == 1)) {
                     Bundle bundle = new Bundle();
-                    questionViewModel.answerQuestions(topic,resultQuestion.get(holder.getAdapterPosition()).getQuestion_id(),answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
+                    questionViewModel.answerQuestions(topic, resultQuestion.get(holder.getAdapterPosition()).getQuestion_id(), answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
                         @Override
                         public void onChanged(Question question) {
                             notifyDataSetChanged();
@@ -72,7 +72,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                     holder.openCorrectDialog();
                 } else if (answer.equals(optionChoices.get(holder.getAdapterPosition()).getOption()) && (optionChoices.get(holder.getAdapterPosition()).getIs_correct() == 0)) {
                     Bundle bundle = new Bundle();
-                    questionViewModel.answerQuestions(topic,resultQuestion.get(holder.getAdapterPosition()).getQuestion_id(),answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
+                    questionViewModel.answerQuestions(topic, resultQuestion.get(holder.getAdapterPosition()).getQuestion_id(), answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
                         @Override
                         public void onChanged(Question question) {
                             notifyDataSetChanged();
@@ -105,15 +105,17 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
             dialog.setCanceledOnTouchOutside(false);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             Button correct_next = dialog.findViewById(R.id.correct_next);
-            if (resultQuestion.size() < (noSoal + 1)) {
+            if (resultQuestion.size() == noSoal + 1) {
                 correct_next.setText(R.string.finishquiz);
             }
             correct_next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    dialog.dismiss();
                     Bundle bundle = new Bundle();
                     bundle.putInt("noSoal", noSoal + 1);
-                    if (!(resultQuestion.size() < noSoal + 1)) {
+                    bundle.putInt("topicId", topic);
+                    if (noSoal + 1 < resultQuestion.size()) {
                         if (resultQuestion.get(noSoal + 1) != null) {
                             switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                 case "mcq":
@@ -129,8 +131,8 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
 
                             Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        //Redirect ke result page disini
+                    }else{
+
                     }
                 }
             });
@@ -143,15 +145,17 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
             dialog.setCanceledOnTouchOutside(false);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             Button wrong_next = dialog.findViewById(R.id.wrong_next);
-            if (resultQuestion.size() < (noSoal + 1)) {
+            if (resultQuestion.size() == noSoal + 1) {
                 wrong_next.setText(R.string.finishquiz);
             }
             wrong_next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    dialog.dismiss();
                     Bundle bundle = new Bundle();
                     bundle.putInt("noSoal", noSoal + 1);
-                    if (!(resultQuestion.size() < noSoal + 1)) {
+                    bundle.putInt("topicId", topic);
+                    if (noSoal + 1 < resultQuestion.size()) {
                         if (resultQuestion.get(noSoal + 1) != null) {
                             switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                 case "mcq":
@@ -167,8 +171,8 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
 
                             Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        //Redirect ke result page disini
+                    }else{
+                        //Redirect disini
                     }
                 }
             });

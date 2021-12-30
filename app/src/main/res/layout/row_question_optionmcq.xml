@@ -9,7 +9,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/stroke"
+        android:backgroundTint="#EFEBFE"
         android:fontFamily="@font/nunito"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
@@ -17,6 +17,7 @@
         android:textAllCaps="false"
         android:textColor="#6F69AC"
         android:textSize="26sp"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

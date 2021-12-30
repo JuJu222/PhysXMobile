@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/btn_true"
+                android:backgroundTint="#76FF03"
                 android:fontFamily="@font/nunito"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
@@ -45,6 +45,7 @@
                 android:textAllCaps="false"
                 android:textColor="#6F69AC"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questiontof_question" />
 
@@ -97,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="70dp"
-                android:background="@drawable/btn_false"
+                android:backgroundTint="#F80000"
                 android:fontFamily="@font/nunito"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
@@ -105,6 +106,7 @@
                 android:textAllCaps="false"
                 android:textColor="#6F69AC"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questiontof_question" />
 

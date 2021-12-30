@@ -45,6 +45,14 @@ public class FITBFragment extends Fragment {
     private QuestionViewModel questionViewModel;
     int topic;
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_question_fitb, container, false);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -54,33 +62,19 @@ public class FITBFragment extends Fragment {
         questionfitb_image = view.findViewById(R.id.questionfitb_image);
         optionfitb_answer = view.findViewById(R.id.optionfitb_answer);
         optionfitb_submit = view.findViewById(R.id.optionfitb_submit);
+        dialog = new Dialog(view.getContext());
         topic = getArguments().getInt("topicId");
 
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
         questionViewModel.init(helper.getAccessToken());
         questionViewModel.getQuestions(topic);
-        questionViewModel.getResultQuestions().observe(getActivity(), showQuestionDetail);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_fitb, container, false);
-    }
-
-    private final Observer<Question> showQuestionDetail = new Observer<Question>() {
-        @Override
-        public void onChanged(Question question) {
-            int noSoal = getArguments().getInt("noSoal", 0);
-            List<Question.Questions> resultQuestion = question.getQuestions();
-            List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
-
-            if (question == null) {
-                questionfitb_question.setText("Unknown");
-                questionfitb_id.setText("Unknown");
-            } else {
+        questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+            @Override
+            public void onChanged(Question question) {
+                int noSoal = getArguments().getInt("noSoal", 0);
+                List<Question.Questions> resultQuestion = question.getQuestions();
+                List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
                 String fitb_question = resultQuestion.get(noSoal).getQuestion();
                 String fitb_id = (noSoal + 1) + "/ " + resultQuestion.size();
                 String fitb_image = resultQuestion.get(noSoal).getImage_path();
@@ -98,7 +92,8 @@ public class FITBFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         String answer = optionfitb_answer.getText().toString();
-                        if (answer.equals(optionChoices.get(noSoal).getAnswer())) {
+
+                        if (answer.equals(optionChoices.get(0).getAnswer())) {
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {
@@ -115,6 +110,7 @@ public class FITBFragment extends Fragment {
                             });
                             openIncorrectDialog();
                         }
+
                     }
 
                     private void openIncorrectDialog() {
@@ -123,32 +119,34 @@ public class FITBFragment extends Fragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         Button wrong_next = dialog.findViewById(R.id.wrong_next);
-                        if (resultQuestion.size() < (noSoal + 1)) {
+                        if (resultQuestion.size() == noSoal + 1) {
                             wrong_next.setText(R.string.finishquiz);
                         }
                         wrong_next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialog.dismiss();
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("noSoal", noSoal + 1);
-                                if (!(resultQuestion.size() < noSoal + 1)) {
+                                bundle.putInt("topicId", topic);
+                                if (noSoal + 1 < resultQuestion.size()) {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
-                                                Navigation.findNavController(view).navigate(R.id.action_FITBFragment_to_MCQFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_MCQFragment, bundle);
                                                 break;
                                             case "fitb":
-                                                Navigation.findNavController(view).navigate(R.id.action_FITBFragment_self, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_self, bundle);
                                                 break;
                                             case "tof":
-                                                Navigation.findNavController(view).navigate(R.id.action_FITBFragment_to_TOFFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_TOFFragment, bundle);
                                                 break;
                                         }
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    //Redirect ke result page disini
+                                    //Redirect Result page disini
                                 }
                             }
                         });
@@ -161,32 +159,32 @@ public class FITBFragment extends Fragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         Button correct_next = dialog.findViewById(R.id.correct_next);
-                        if (resultQuestion.size() < (noSoal + 1)) {
+                        if (resultQuestion.size() == noSoal + 1) {
                             correct_next.setText(R.string.finishquiz);
                         }
                         correct_next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialog.dismiss();
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("noSoal", noSoal + 1);
-                                if (!(resultQuestion.size() < noSoal + 1)) {
+                                bundle.putInt("topicId", topic);
+                                if (noSoal + 1 < resultQuestion.size()) {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
-                                                Navigation.findNavController(view).navigate(R.id.action_FITBFragment_to_MCQFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_MCQFragment, bundle);
                                                 break;
                                             case "fitb":
-                                                Navigation.findNavController(view).navigate(R.id.action_FITBFragment_self, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_self, bundle);
                                                 break;
                                             case "tof":
-                                                Navigation.findNavController(view).navigate(R.id.action_FITBFragment_to_TOFFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_TOFFragment, bundle);
                                                 break;
                                         }
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    //Redirect ke result page disini
                                 }
                             }
                         });
@@ -195,6 +193,6 @@ public class FITBFragment extends Fragment {
                 });
 
             }
-        }
-    };
+        });
+    }
 }

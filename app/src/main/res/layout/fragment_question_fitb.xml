@@ -34,11 +34,11 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/cornerssubmit"
                 android:backgroundTint="#EFEBFE"
                 android:text="Submit"
                 android:textAllCaps="false"
                 android:textColor="#6F69AC"
+                app:cornerRadius="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/optionfitb_answer" />

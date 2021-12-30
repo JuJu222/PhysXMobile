@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,14 +36,15 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
     private int topic;
     private List<Question.Questions> resultQuestion;
     private QuestionViewModel questionViewModel;
+    NavController navController;
 
-    public MCQAdapter(List<Question.Questions.Options> optionChoices, int noSoal, List<Question.Questions> resultQuestion,QuestionViewModel questionViewModel, int topic) {
+    public MCQAdapter(List<Question.Questions.Options> optionChoices, int noSoal, List<Question.Questions> resultQuestion,QuestionViewModel questionViewModel, int topic, NavController navController) {
         this.optionChoices = optionChoices;
         this.noSoal = noSoal;
         this.resultQuestion = resultQuestion;
         this.questionViewModel = questionViewModel;
         this.topic = topic;
-
+        this.navController = navController;
     }
 
     @NonNull
@@ -115,13 +117,13 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                         if (resultQuestion.get(noSoal + 1) != null) {
                             switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                 case "mcq":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_self, bundle);
+                                    navController.navigate(R.id.action_MCQFragment_self, bundle);
                                     break;
                                 case "fitb":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_FITBFragment, bundle);
+                                    navController.navigate(R.id.action_MCQFragment_to_FITBFragment, bundle);
                                     break;
                                 case "tof":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_TOFFragment, bundle);
+                                    navController.navigate(R.id.action_MCQFragment_to_TOFFragment, bundle);
                                     break;
                             }
 
@@ -153,13 +155,13 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                         if (resultQuestion.get(noSoal + 1) != null) {
                             switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                 case "mcq":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_self, bundle);
+                                    navController.navigate(R.id.action_MCQFragment_self, bundle);
                                     break;
                                 case "fitb":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_FITBFragment, bundle);
+                                    navController.navigate(R.id.action_MCQFragment_to_FITBFragment, bundle);
                                     break;
                                 case "tof":
-                                    Navigation.findNavController(view).navigate(R.id.action_MCQFragment_to_TOFFragment, bundle);
+                                    navController.navigate(R.id.action_MCQFragment_to_TOFFragment, bundle);
                                     break;
                             }
 

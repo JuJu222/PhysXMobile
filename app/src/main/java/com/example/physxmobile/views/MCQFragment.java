@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,38 +60,36 @@ public class MCQFragment extends Fragment {
         helper = SharedPreferenceHelper.getInstance(getContext());
         questionViewModel.init(helper.getAccessToken());
         questionViewModel.getQuestions(topic);
-        questionViewModel.getResultQuestions().observe(getActivity(), showQuestionDetail);
-    }
-
-    private Observer<Question> showQuestionDetail = new Observer<Question>() {
-        @Override
+        questionViewModel.getResultQuestions().observe(getActivity(), new Observer<Question>() {
+            @Override
             public void onChanged(Question question) {
-             int noSoal = getArguments().getInt("noSoal",0);
-            List<Question.Questions> resultQuestion = question.getQuestions();
-            List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
-            if(question == null){
-                questionmcq_question.setText("Unknown");
-                questionmcq_id.setText("Unknown");
-            }else{
-                String mcq_question = resultQuestion.get(noSoal).getQuestion();
-                String mcq_id = (noSoal + 1) + "/ " + resultQuestion.size();
-                String mcq_image = resultQuestion.get(noSoal).getImage_path();
-                questionmcq_question.setText(mcq_question);
-                questionmcq_id.setText(mcq_id);
-                Glide.with(getActivity())
-                        .load(Const.BASE_URL + mcq_image)
-                        .into(questionmcq_image);
+                int noSoal = getArguments().getInt("noSoal",0);
+                List<Question.Questions> resultQuestion = question.getQuestions();
+                List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
+                if(question == null){
+                    questionmcq_question.setText("Unknown");
+                    questionmcq_id.setText("Unknown");
+                }else{
+                    String mcq_question = resultQuestion.get(noSoal).getQuestion();
+                    String mcq_id = (noSoal + 1) + "/ " + resultQuestion.size();
+                    String mcq_image = resultQuestion.get(noSoal).getImage_path();
+                    questionmcq_question.setText(mcq_question);
+                    questionmcq_id.setText(mcq_id);
+                    Glide.with(getActivity())
+                            .load(Const.BASE_URL + mcq_image)
+                            .into(questionmcq_image);
 
-                questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
-                    @Override
-                    public void onChanged(Question question) {}
-                });
+                    questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
+                        @Override
+                        public void onChanged(Question question) {}
+                    });
+                }
+
+                //Passing ke Adapter
+                MCQAdapter mcqAdapter = new MCQAdapter(optionChoices,noSoal,resultQuestion,questionViewModel,topic, Navigation.findNavController(view));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView.setAdapter(mcqAdapter);
             }
-
-            //Passing ke Adapter
-            MCQAdapter mcqAdapter = new MCQAdapter(optionChoices,noSoal,resultQuestion,questionViewModel,topic);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(mcqAdapter);
-        }
-    };
+        });
+    }
 }

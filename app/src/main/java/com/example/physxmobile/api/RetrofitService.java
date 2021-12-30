@@ -3,6 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
+import com.example.physxmobile.models.QuestionsResult;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.models.UserModel;
@@ -87,5 +88,9 @@ public class RetrofitService {
 
     public Call<ShopItem.ShopItemEquipResponse> equipShopItem(int shopItemId)  {
         return api.equipShopItem(shopItemId);
+    }
+
+    public Call<QuestionsResult> getQuestionsResult(int topicId)  {
+        return api.getQuestionsResult(topicId);
     }
 }

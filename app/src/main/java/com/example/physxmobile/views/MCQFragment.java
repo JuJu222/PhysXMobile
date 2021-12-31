@@ -71,7 +71,7 @@ public class MCQFragment extends Fragment {
                     questionmcq_id.setText("Unknown");
                 }else{
                     String mcq_question = resultQuestion.get(noSoal).getQuestion();
-                    String mcq_id = (noSoal + 1) + "/ " + resultQuestion.size();
+                    String mcq_id = "Question: " + (noSoal + 1) + "/" + resultQuestion.size();
                     String mcq_image = resultQuestion.get(noSoal).getImage_path();
                     questionmcq_question.setText(mcq_question);
                     questionmcq_id.setText(mcq_id);

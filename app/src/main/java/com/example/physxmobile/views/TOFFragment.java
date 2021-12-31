@@ -73,7 +73,7 @@ public class TOFFragment extends Fragment {
                 List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
 
                 String tof_question = resultQuestion.get(noSoal).getQuestion();
-                String tof_id = (noSoal + 1) + "/ " + resultQuestion.size();
+                String tof_id = "Question: " + (noSoal + 1) + "/" + resultQuestion.size();
                 String tof_image = resultQuestion.get(noSoal).getImage_path();
                 questiontof_question.setText(tof_question);
                 questiontof_id.setText(tof_id);

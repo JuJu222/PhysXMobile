@@ -76,7 +76,7 @@ public class FITBFragment extends Fragment {
                 List<Question.Questions> resultQuestion = question.getQuestions();
                 List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
                 String fitb_question = resultQuestion.get(noSoal).getQuestion();
-                String fitb_id = (noSoal + 1) + "/ " + resultQuestion.size();
+                String fitb_id = "Question: " + (noSoal + 1) + "/" + resultQuestion.size();
                 String fitb_image = resultQuestion.get(noSoal).getImage_path();
                 questionfitb_question.setText(fitb_question);
                 questionfitb_id.setText(fitb_id);

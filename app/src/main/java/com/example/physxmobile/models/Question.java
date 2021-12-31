@@ -25,6 +25,16 @@ public class Question {
         private int question_id;
         private String question_type;
         private String question;
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
+
+        private int score;
         private String image_path;
         private int topic_id;
         private String created_at;

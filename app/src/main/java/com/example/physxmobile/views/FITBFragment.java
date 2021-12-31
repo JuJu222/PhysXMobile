@@ -36,7 +36,7 @@ import java.util.List;
 
 public class FITBFragment extends Fragment {
 
-    TextView questionfitb_question, questionfitb_id;
+    TextView questionfitb_question, questionfitb_id,questionfitb_score;
     EditText optionfitb_answer;
     Button optionfitb_submit;
     Dialog dialog;
@@ -59,6 +59,7 @@ public class FITBFragment extends Fragment {
 
         questionfitb_question = view.findViewById(R.id.questionfitb_question);
         questionfitb_id = view.findViewById(R.id.questionfitb_id);
+        questionfitb_score = view.findViewById(R.id.questionfitb_score);
         questionfitb_image = view.findViewById(R.id.questionfitb_image);
         optionfitb_answer = view.findViewById(R.id.optionfitb_answer);
         optionfitb_submit = view.findViewById(R.id.optionfitb_submit);
@@ -78,7 +79,9 @@ public class FITBFragment extends Fragment {
                 String fitb_question = resultQuestion.get(noSoal).getQuestion();
                 String fitb_id = "Question: " + (noSoal + 1) + "/" + resultQuestion.size();
                 String fitb_image = resultQuestion.get(noSoal).getImage_path();
+                int fitb_score = resultQuestion.get(noSoal).getScore();
                 questionfitb_question.setText(fitb_question);
+                questionfitb_score.setText(fitb_score);
                 questionfitb_id.setText(fitb_id);
                 Glide.with(getActivity())
                         .load(Const.BASE_URL + fitb_image)

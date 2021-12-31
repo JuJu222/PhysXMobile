@@ -16,6 +16,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/questionfitb_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/cornerssubmit"
+                android:backgroundTint="#F7E305"
+                android:fontFamily="@font/nunito_bold"
+                android:padding="10dp"
+                android:text="100 Points"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionfitb_image" />
+
             <View
                 android:id="@+id/divider"
                 android:layout_width="150dp"
@@ -56,8 +70,9 @@
                 android:textColor="#030303"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/questionfitb_image" />
+                app:layout_constraintTop_toBottomOf="@+id/questionfitb_score" />
 
             <ImageView
                 android:id="@+id/questionfitb_image"

@@ -34,7 +34,7 @@ import java.util.List;
 public class TOFFragment extends Fragment {
 
 
-    TextView questiontof_question, questiontof_id;
+    TextView questiontof_question, questiontof_id,questiontof_score;
     Dialog dialog;
     ImageView questiontof_image;
     Button optiontof_true, optiontof_false;
@@ -55,6 +55,7 @@ public class TOFFragment extends Fragment {
 
         questiontof_question = view.findViewById(R.id.questiontof_question);
         questiontof_id = view.findViewById(R.id.questiontof_id);
+        questiontof_score = view.findViewById(R.id.questiontof_Score);
         dialog = new Dialog(view.getContext());
         questiontof_image = view.findViewById(R.id.questiontof_image);
         optiontof_true = view.findViewById(R.id.optiontof_true);
@@ -75,7 +76,9 @@ public class TOFFragment extends Fragment {
                 String tof_question = resultQuestion.get(noSoal).getQuestion();
                 String tof_id = "Question: " + (noSoal + 1) + "/" + resultQuestion.size();
                 String tof_image = resultQuestion.get(noSoal).getImage_path();
+                int tof_score = resultQuestion.get(noSoal).getScore();
                 questiontof_question.setText(tof_question);
+                questiontof_score.setText(tof_score);
                 questiontof_id.setText(tof_id);
                 Glide.with(getActivity())
                         .load(Const.BASE_URL + tof_image)

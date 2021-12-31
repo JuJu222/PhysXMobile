@@ -32,7 +32,7 @@ import java.util.List;
 
 public class MCQFragment extends Fragment {
 
-    TextView questionmcq_question, questionmcq_id;
+    TextView questionmcq_question, questionmcq_id, questionmcq_score;
     ImageView questionmcq_image;
     private RecyclerView recyclerView;
     private SharedPreferenceHelper helper;
@@ -53,6 +53,7 @@ public class MCQFragment extends Fragment {
         questionmcq_question = view.findViewById(R.id.questionmcq_question);
         questionmcq_id = view.findViewById(R.id.questionmcq_id);
         questionmcq_image = view.findViewById(R.id.questionmcq_image);
+        questionmcq_score = view.findViewById(R.id.questionmcq_score);
         recyclerView = view.findViewById(R.id.optionmcq_choices);
         int topic = getArguments().getInt("topicId");
 
@@ -73,7 +74,9 @@ public class MCQFragment extends Fragment {
                     String mcq_question = resultQuestion.get(noSoal).getQuestion();
                     String mcq_id = "Question: " + (noSoal + 1) + "/" + resultQuestion.size();
                     String mcq_image = resultQuestion.get(noSoal).getImage_path();
+                    int mcq_score = resultQuestion.get(noSoal).getScore();
                     questionmcq_question.setText(mcq_question);
+                    questionmcq_score.setText(mcq_score);
                     questionmcq_id.setText(mcq_id);
                     Glide.with(getActivity())
                             .load(Const.BASE_URL + mcq_image)

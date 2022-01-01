@@ -4,6 +4,7 @@ import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.Question;
+import com.example.physxmobile.models.QuestionsResult;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.models.UserModel;
@@ -100,5 +101,9 @@ public class RetrofitService {
 
     public Call<Question> answerQuestions(int topicId, int questionId, String choice){
         return api.answerQuestions(topicId, questionId, choice);
+    }
+      
+    public Call<QuestionsResult> getQuestionsResult(int topicId)  {
+        return api.getQuestionsResult(topicId);
     }
 }

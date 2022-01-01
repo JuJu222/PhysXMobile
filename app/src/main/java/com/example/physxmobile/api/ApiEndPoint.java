@@ -3,6 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.Question;
+import com.example.physxmobile.models.QuestionsResult;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.models.UserModel;
@@ -74,5 +75,10 @@ public interface ApiEndPoint {
             @Path("topic") int topicId,
             @Path("question") int questionId,
             @Field("choice") String choice
+    );
+  
+    @GET("result/{topic}")
+    Call<QuestionsResult> getQuestionsResult(
+            @Path("topic") int topicId
     );
 }

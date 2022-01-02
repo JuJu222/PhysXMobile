@@ -40,7 +40,8 @@ public class TOFFragment extends Fragment {
     Button optiontof_true, optiontof_false;
     private SharedPreferenceHelper helper;
     private QuestionViewModel questionViewModel;
-    int topic;
+    int topic, noSoal;
+    List<Question.Questions> resultQuestion;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,8 +70,8 @@ public class TOFFragment extends Fragment {
         questionViewModel.getResultQuestions().observe(getActivity(), new Observer<Question>() {
             @Override
             public void onChanged(Question question) {
-                int noSoal = getArguments().getInt("noSoal", 0);
-                List<Question.Questions> resultQuestion = question.getQuestions();
+                noSoal = getArguments().getInt("noSoal", 0);
+                resultQuestion = question.getQuestions();
                 List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
 
                 String tof_question = resultQuestion.get(noSoal).getQuestion();
@@ -110,84 +111,6 @@ public class TOFFragment extends Fragment {
                             });
                             openIncorrectDialog();
                         }
-
-                    }
-
-                    private void openIncorrectDialog() {
-                        dialog.setContentView(R.layout.wrong_dialog);
-                        dialog.setCancelable(false);
-                        dialog.setCanceledOnTouchOutside(false);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        Button wrong_next = dialog.findViewById(R.id.wrong_next);
-                        if (resultQuestion.size() == noSoal + 1) {
-                            wrong_next.setText(R.string.finishquiz);
-                        }
-                        wrong_next.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                                Bundle bundle = new Bundle();
-                                bundle.putInt("noSoal", noSoal + 1);
-                                bundle.putInt("topicId", topic);
-
-                                if (noSoal + 1 < resultQuestion.size()) {
-                                    if (resultQuestion.get(noSoal + 1) != null) {
-                                        switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
-                                            case "mcq":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
-                                                break;
-                                            case "fitb":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
-                                                break;
-                                            case "tof":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
-                                                break;
-                                        }
-
-                                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
-                        dialog.show();
-                    }
-
-                    private void openCorrectDialog() {
-                        dialog.setContentView(R.layout.correct_dialog);
-                        dialog.setCancelable(false);
-                        dialog.setCanceledOnTouchOutside(false);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        Button correct_next = dialog.findViewById(R.id.correct_next);
-                        if (resultQuestion.size() == noSoal + 1) {
-                            correct_next.setText(R.string.finishquiz);
-                        }
-                        correct_next.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                                Bundle bundle = new Bundle();
-                                bundle.putInt("noSoal", noSoal + 1);
-                                bundle.putInt("topicId", topic);
-                                if (noSoal + 1 < resultQuestion.size()) {
-                                    if (resultQuestion.get(noSoal + 1) != null) {
-                                        switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
-                                            case "mcq":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
-                                                break;
-                                            case "fitb":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
-                                                break;
-                                            case "tof":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
-                                                break;
-                                        }
-
-                                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
-                        dialog.show();
                     }
                 });
 
@@ -212,87 +135,89 @@ public class TOFFragment extends Fragment {
                             });
                             openIncorrectDialog();
                         }
-
-                    }
-
-                    private void openIncorrectDialog() {
-                        dialog.setContentView(R.layout.wrong_dialog);
-                        dialog.setCancelable(false);
-                        dialog.setCanceledOnTouchOutside(false);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        Button wrong_next = dialog.findViewById(R.id.wrong_next);
-                        if (resultQuestion.size() == noSoal + 1) {
-                            wrong_next.setText(R.string.finishquiz);
-                        }
-                        wrong_next.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                                Bundle bundle = new Bundle();
-                                bundle.putInt("noSoal", noSoal + 1);
-                                bundle.putInt("topicId", topic);
-                                if (noSoal + 1 < resultQuestion.size()) {
-                                    if (resultQuestion.get(noSoal + 1) != null) {
-                                        switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
-                                            case "mcq":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
-                                                break;
-                                            case "fitb":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
-                                                break;
-                                            case "tof":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
-                                                break;
-                                        }
-
-                                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
-                        dialog.show();
-                    }
-
-                    private void openCorrectDialog() {
-                        dialog.setContentView(R.layout.correct_dialog);
-                        dialog.setCancelable(false);
-                        dialog.setCanceledOnTouchOutside(false);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        Button correct_next = dialog.findViewById(R.id.correct_next);
-                        if (resultQuestion.size() == noSoal + 1) {
-                            correct_next.setText(R.string.finishquiz);
-                        }
-                        correct_next.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                                Bundle bundle = new Bundle();
-                                bundle.putInt("noSoal", noSoal + 1);
-                                bundle.putInt("topicId", topic);
-                                if (noSoal + 1 < resultQuestion.size()) {
-                                    if (resultQuestion.get(noSoal + 1) != null) {
-                                        switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
-                                            case "mcq":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
-                                                break;
-                                            case "fitb":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
-                                                break;
-                                            case "tof":
-                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
-                                                break;
-                                        }
-
-                                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
-                        dialog.show();
                     }
                 });
             }
-
         });
+    }
+
+    private void openIncorrectDialog() {
+        dialog.setContentView(R.layout.wrong_dialog);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button wrong_next = dialog.findViewById(R.id.wrong_next);
+        if (resultQuestion.size() == noSoal + 1) {
+            wrong_next.setText(R.string.finishquiz);
+        }
+        wrong_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Bundle bundle = new Bundle();
+                bundle.putInt("noSoal", noSoal + 1);
+                bundle.putInt("topicId", topic);
+                if (noSoal + 1 < resultQuestion.size()) {
+                    if (resultQuestion.get(noSoal + 1) != null) {
+                        switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
+                            case "mcq":
+                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
+                                break;
+                            case "fitb":
+                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
+                                break;
+                            case "tof":
+                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
+                                break;
+                        }
+
+                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_resultFragment, bundle);
+                }
+            }
+        });
+        dialog.show();
+    }
+
+    private void openCorrectDialog() {
+        dialog.setContentView(R.layout.correct_dialog);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button correct_next = dialog.findViewById(R.id.correct_next);
+        if (resultQuestion.size() == noSoal + 1) {
+            correct_next.setText(R.string.finishquiz);
+        }
+        correct_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Bundle bundle = new Bundle();
+                bundle.putInt("noSoal", noSoal + 1);
+                bundle.putInt("topicId", topic);
+                if (noSoal + 1 < resultQuestion.size()) {
+                    if (resultQuestion.get(noSoal + 1) != null) {
+                        switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
+                            case "mcq":
+                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
+                                break;
+                            case "fitb":
+                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
+                                break;
+                            case "tof":
+                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
+                                break;
+                        }
+
+                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_resultFragment, bundle);
+                }
+            }
+        });
+        dialog.show();
     }
 }

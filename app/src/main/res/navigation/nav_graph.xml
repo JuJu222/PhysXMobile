@@ -69,7 +69,11 @@
         android:id="@+id/resultFragment"
         android:name="com.example.physxmobile.views.ResultFragment"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_resultFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.physxmobile.views.EditProfileFragment"
@@ -78,6 +82,7 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/MCQFragment"
         android:name="com.example.physxmobile.views.MCQFragment"
@@ -91,6 +96,9 @@
         <action
             android:id="@+id/action_MCQFragment_to_FITBFragment"
             app:destination="@id/FITBFragment" />
+        <action
+            android:id="@+id/action_MCQFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
     <fragment
         android:id="@+id/TOFFragment"
@@ -105,6 +113,9 @@
         <action
             android:id="@+id/action_TOFFragment_to_MCQFragment"
             app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_TOFFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
     <fragment
         android:id="@+id/FITBFragment"
@@ -119,5 +130,8 @@
         <action
             android:id="@+id/action_FITBFragment_to_TOFFragment"
             app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_FITBFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
 </navigation>

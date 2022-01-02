@@ -149,7 +149,7 @@ public class FITBFragment extends Fragment {
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    //Redirect Result page disini
+                                    Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_resultFragment, bundle);
                                 }
                             }
                         });
@@ -188,6 +188,8 @@ public class FITBFragment extends Fragment {
 
                                         Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
+                                } else {
+                                    Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_resultFragment, bundle);
                                 }
                             }
                         });

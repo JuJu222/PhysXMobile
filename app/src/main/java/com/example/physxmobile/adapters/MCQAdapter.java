@@ -132,7 +132,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                             Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                         }
                     }else{
-
+                        navController.navigate(R.id.action_MCQFragment_to_resultFragment, bundle);
                     }
                 }
             });
@@ -172,7 +172,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                             Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                         }
                     }else{
-                        //Redirect disini
+                        navController.navigate(R.id.action_MCQFragment_to_resultFragment, bundle);
                     }
                 }
             });

@@ -30,6 +30,10 @@ public class ProfileViewModel extends AndroidViewModel {
         return user;
     }
 
+    public MutableLiveData<UserModel.User> editUser(UserModel.User profile){
+        return profileRepository.editUser(profile);
+    }
+
     public LiveData<String> logout() {
         profileRepository.resetInstance();
         return profileRepository.logout();

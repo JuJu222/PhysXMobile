@@ -38,7 +38,7 @@ public class AuthRepository {
                     Log.d(TAG, "onResponse: "+response.code());
                     if(response.code() == 200){
                         if (response.body()!=null){
-                            Log.d(TAG, "onResponse: "+response.body().getAccess_token());
+                            Log.d(TAG, "onResponses: "+response.body().getAccess_token());
                             tokenResponse.postValue(response.body());
                         }
                     }

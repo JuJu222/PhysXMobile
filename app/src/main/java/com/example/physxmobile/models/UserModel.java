@@ -7,6 +7,9 @@ public class UserModel {
     private User user;
     private Fis10user fis10user;
 
+
+
+
     public static UserModel objectFromData(String str) {
 
         return new Gson().fromJson(str, UserModel.class);
@@ -42,6 +45,15 @@ public class UserModel {
         private String role;
         private String created_at;
         private String updated_at;
+
+        public User(String name, String username, String email, int birthyear, String city, String school) {
+            this.name = name;
+            this.username = username;
+            this.email = email;
+            this.birthyear = birthyear;
+            this.city = city;
+            this.school = school;
+        }
 
         public static User objectFromData(String str) {
 

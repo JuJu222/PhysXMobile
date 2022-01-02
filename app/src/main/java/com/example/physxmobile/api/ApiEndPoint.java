@@ -2,6 +2,7 @@ package com.example.physxmobile.api;
 
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
+import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.QuestionsResult;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
@@ -55,6 +56,11 @@ public interface ApiEndPoint {
     @GET("shop")
     Call<ShopItem> getShopItems();
 
+    @GET("questions/{topic}")
+    Call<Question> getQuestions(
+            @Path("topic") int topicId
+    );
+
     @POST("shop/buy/{id}")
     Call<ShopItem.ShopItemBuyResponse> buyShopItem(
             @Path("id") int shopItemId
@@ -65,6 +71,20 @@ public interface ApiEndPoint {
             @Path("id") int shopItemId
     );
 
+    @GET("questions/{topic}/{question}")
+    Call<Question> showQuestions(
+            @Path("topic") int topicId,
+            @Path("question") int questionId
+    );
+
+    @POST("questions/{topic}/{question}")
+    @FormUrlEncoded
+    Call<Question> answerQuestions(
+            @Path("topic") int topicId,
+            @Path("question") int questionId,
+            @Field("choice") String choice
+    );
+  
     @GET("result/{topic}")
     Call<QuestionsResult> getQuestionsResult(
             @Path("topic") int topicId

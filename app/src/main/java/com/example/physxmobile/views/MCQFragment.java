@@ -76,7 +76,7 @@ public class MCQFragment extends Fragment {
                     String mcq_image = resultQuestion.get(noSoal).getImage_path();
                     int mcq_score = resultQuestion.get(noSoal).getScore();
                     questionmcq_question.setText(mcq_question);
-                    questionmcq_score.setText(mcq_score);
+                    questionmcq_score.setText(String.valueOf(mcq_score));
                     questionmcq_id.setText(mcq_id);
                     Glide.with(getActivity())
                             .load(Const.BASE_URL + mcq_image)

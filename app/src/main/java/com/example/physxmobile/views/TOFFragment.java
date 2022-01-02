@@ -78,7 +78,7 @@ public class TOFFragment extends Fragment {
                 String tof_image = resultQuestion.get(noSoal).getImage_path();
                 int tof_score = resultQuestion.get(noSoal).getScore();
                 questiontof_question.setText(tof_question);
-                questiontof_score.setText(tof_score);
+                questiontof_score.setText(String.valueOf(tof_score));
                 questiontof_id.setText(tof_id);
                 Glide.with(getActivity())
                         .load(Const.BASE_URL + tof_image)
@@ -134,13 +134,13 @@ public class TOFFragment extends Fragment {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
                                                 break;
                                             case "fitb":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
                                                 break;
                                             case "tof":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_self, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
                                                 break;
                                         }
 
@@ -172,13 +172,13 @@ public class TOFFragment extends Fragment {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
                                                 break;
                                             case "fitb":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
                                                 break;
                                             case "tof":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_self, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
                                                 break;
                                         }
 
@@ -235,13 +235,13 @@ public class TOFFragment extends Fragment {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
                                                 break;
                                             case "fitb":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
                                                 break;
                                             case "tof":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_self, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
                                                 break;
                                         }
 
@@ -273,13 +273,13 @@ public class TOFFragment extends Fragment {
                                     if (resultQuestion.get(noSoal + 1) != null) {
                                         switch (resultQuestion.get(noSoal + 1).getQuestion_type()) {
                                             case "mcq":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_MCQFragment, bundle);
                                                 break;
                                             case "fitb":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_FITBFragment, bundle);
                                                 break;
                                             case "tof":
-                                                Navigation.findNavController(view).navigate(R.id.action_TOFFragment_self, bundle);
+                                                Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_self, bundle);
                                                 break;
                                         }
 

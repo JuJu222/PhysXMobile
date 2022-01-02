@@ -81,7 +81,7 @@ public class FITBFragment extends Fragment {
                 String fitb_image = resultQuestion.get(noSoal).getImage_path();
                 int fitb_score = resultQuestion.get(noSoal).getScore();
                 questionfitb_question.setText(fitb_question);
-                questionfitb_score.setText(fitb_score);
+                questionfitb_score.setText(String.valueOf(fitb_score));
                 questionfitb_id.setText(fitb_id);
                 Glide.with(getActivity())
                         .load(Const.BASE_URL + fitb_image)

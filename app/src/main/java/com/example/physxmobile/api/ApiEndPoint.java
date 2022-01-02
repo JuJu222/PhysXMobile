@@ -9,10 +9,12 @@ import com.example.physxmobile.models.UserModel;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiEndPoint {
@@ -24,6 +26,12 @@ public interface ApiEndPoint {
 
     @GET("user")
     Call<UserModel> getUser();
+
+    @PUT("user")
+    Call<UserModel.User> editUser(@Body UserModel.User profile);
+
+//    @PUT("user/{id}")
+//    Call<UserModel.User> editUser(@Path("id") int userId, @Body UserModel.User profile);
 
     @POST("register")
     @FormUrlEncoded

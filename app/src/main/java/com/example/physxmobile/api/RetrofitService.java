@@ -64,6 +64,10 @@ public class RetrofitService {
         return api.getUser();
     }
 
+    public Call<UserModel.User> editUser(UserModel.User profile){
+        return api.editUser(profile);
+    }
+
     public Call<RegisterResponse> register(String name, String email, String password,
                                                String password_confirmation, String username,
                                                String school, String city, int birthyear) {

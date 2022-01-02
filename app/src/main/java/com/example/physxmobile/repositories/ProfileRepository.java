@@ -73,6 +73,24 @@ public class ProfileRepository {
         return user;
     }
 
+    public MutableLiveData<UserModel.User> editUser(UserModel.User profile){
+        final MutableLiveData<UserModel.User> listEditUser = new MutableLiveData<>();
+        apiService.editUser(profile).enqueue(new Callback<UserModel.User>() {
+            @Override
+            public void onResponse(Call<UserModel.User> call, Response<UserModel.User> response) {
+                Log.d(TAG, "onResponse: "+response.body());
+                listEditUser.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<UserModel.User> call, Throwable t) {
+                Log.e(TAG, "onFailure: "+t.getMessage());
+            }
+        });
+
+        return listEditUser;
+    }
+
     public LiveData<String> logout() {
         MutableLiveData<String> message = new MutableLiveData<>();
 

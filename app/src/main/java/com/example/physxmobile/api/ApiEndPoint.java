@@ -1,5 +1,6 @@
 package com.example.physxmobile.api;
 
+import com.example.physxmobile.models.History;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.Question;
@@ -8,6 +9,8 @@ import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.models.UserModel;
 import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -31,8 +34,8 @@ public interface ApiEndPoint {
     @PUT("user")
     Call<UserModel.User> editUser(@Body UserModel.User profile);
 
-//    @PUT("user/{id}")
-//    Call<UserModel.User> editUser(@Path("id") int userId, @Body UserModel.User profile);
+    @GET("history")
+    Call<History> getHistory();
 
     @POST("register")
     @FormUrlEncoded

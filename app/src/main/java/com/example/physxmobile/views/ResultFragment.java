@@ -41,7 +41,7 @@ public class ResultFragment extends Fragment {
         TextView resultTopicTextView = view.findViewById(R.id.resultTopicTextView);
         TextView resultTimeTakenTextView = view.findViewById(R.id.resultTimeTakenTextView);
         TextView resultCorrectAnswersTextView = view.findViewById(R.id.resultCorrectAnswersTextView);
-        TextView resultTotalScoreTextView = view.findViewById(R.id.questiontof_score);
+        TextView resultTotalScoreTextView = view.findViewById(R.id.resultTotalScoreTextView);
         Button resultContinueButton = view.findViewById(R.id.resultContinueButton);
 
         resultViewModel.init(helper.getAccessToken());

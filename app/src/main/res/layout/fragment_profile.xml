@@ -62,7 +62,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialCardView" />
+                app:layout_constraintTop_toTopOf="@+id/profileMaterialCardView" />
 
             <TextView
                 android:id="@+id/profileEmailTextView"
@@ -233,7 +233,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_button" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView"
+                android:id="@+id/profileMaterialCardView"
                 style="@style/CustomCardViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"

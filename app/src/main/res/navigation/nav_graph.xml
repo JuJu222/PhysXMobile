@@ -148,4 +148,17 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/nav_graph" />
     </fragment>
+    <fragment
+        android:id="@+id/besaran"
+        android:name="com.example.physxmobile.views.Besaran"
+        android:label="fragment_besaran"
+        tools:layout="@layout/fragment_besaran" />
+    <fragment
+        android:id="@+id/gerakLingkarBeraturan"
+        android:name="com.example.physxmobile.views.GerakLingkarBeraturan"
+        android:label="GerakLingkarBeraturan" />
+    <fragment
+        android:id="@+id/gerakLurus"
+        android:name="com.example.physxmobile.views.GerakLurus"
+        android:label="GerakLurus" />
 </navigation>

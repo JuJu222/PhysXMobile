@@ -3,8 +3,6 @@ package com.example.physxmobile.views;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +12,10 @@ import com.example.physxmobile.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LeaderboardFragment#newInstance} factory method to
+ * Use the {@link GerakLurus#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LeaderboardFragment extends Fragment {
+public class GerakLurus extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +26,7 @@ public class LeaderboardFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LeaderboardFragment() {
+    public GerakLurus() {
         // Required empty public constructor
     }
 
@@ -38,11 +36,11 @@ public class LeaderboardFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LeaderboardFragment.
+     * @return A new instance of fragment GerakLurus.
      */
     // TODO: Rename and change types and number of parameters
-    public static LeaderboardFragment newInstance(String param1, String param2) {
-        LeaderboardFragment fragment = new LeaderboardFragment();
+    public static GerakLurus newInstance(String param1, String param2) {
+        GerakLurus fragment = new GerakLurus();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,11 +61,6 @@ public class LeaderboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
-
-
-        RecyclerView chooseTopic = view.findViewById(R.id.topic_choose_rv);
-        chooseTopic.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        return view;
+        return inflater.inflate(R.layout.fragment_gerak_lurus, container, false);
     }
 }

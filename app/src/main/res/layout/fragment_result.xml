@@ -193,7 +193,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/resultTotalScoreTextView"
+                        android:id="@+id/questiontof_score"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -212,10 +212,10 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="16dp"
                         android:src="@drawable/ic_carbon_condition_point"
-                        app:layout_constraintBottom_toBottomOf="@+id/resultTotalScoreTextView"
+                        app:layout_constraintBottom_toBottomOf="@+id/questiontof_score"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/resultTotalScoreTextView"
-                        app:layout_constraintTop_toTopOf="@+id/resultTotalScoreTextView" />
+                        app:layout_constraintStart_toEndOf="@+id/questiontof_score"
+                        app:layout_constraintTop_toTopOf="@+id/questiontof_score" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

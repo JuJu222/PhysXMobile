@@ -56,7 +56,7 @@ public class TOFFragment extends Fragment {
 
         questiontof_question = view.findViewById(R.id.questiontof_question);
         questiontof_id = view.findViewById(R.id.questiontof_id);
-        questiontof_score = view.findViewById(R.id.questiontof_Score);
+        questiontof_score = view.findViewById(R.id.questiontof_score);
         dialog = new Dialog(view.getContext());
         questiontof_image = view.findViewById(R.id.questiontof_image);
         optiontof_true = view.findViewById(R.id.optiontof_true);

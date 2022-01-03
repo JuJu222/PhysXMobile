@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
@@ -36,7 +37,7 @@ import java.util.List;
  * Use the {@link LeaderboardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LeaderboardFragment extends Fragment {
+public class LeaderboardFragment extends Fragment implements ButtonTopicAdapter.ItemClickListener{
 
     private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
@@ -92,14 +93,29 @@ public class LeaderboardFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.topic_choose_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         ButtonTopicAdapter adapter = new ButtonTopicAdapter(getContext(), topicNames, leaderboardViewModel);
-//        adapter.setClickListener(this);
+        adapter.setClickListener(this::onItemClick);
         recyclerView.setAdapter(adapter);
     }
 
-//    @Override
-//    public void onItemClick(View view, int position) {
-//
-//    }
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "AYE" + position, Toast.LENGTH_SHORT).show();
+        leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(getContext());
+
+        leaderboardViewModel.init(helper.getAccessToken());
+        leaderboardViewModel.getSpecificLeaderboard(position).observe(getActivity(), new Observer<LeaderboardModel>() {
+            @Override
+            public void onChanged(LeaderboardModel leaderboardModel) {
+                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+
+                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
+                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
+                leaderboard.setAdapter(leaderboardAdapter);
+            }
+        });
+    }
 
 
 }

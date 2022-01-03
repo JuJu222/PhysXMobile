@@ -91,7 +91,7 @@ public class ButtonTopicAdapter extends RecyclerView.Adapter<ButtonTopicAdapter.
         return mData.get(id);
     }
 
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 

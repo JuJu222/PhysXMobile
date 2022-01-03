@@ -26,6 +26,7 @@ public class ButtonTopicAdapter extends RecyclerView.Adapter<ButtonTopicAdapter.
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private LeaderboardViewModel leaderboardViewModel;
+    private LeaderboardAdapter leaderboardAdapter;
     // data is passed into the constructor
     public ButtonTopicAdapter(Context context, ArrayList<String> data, LeaderboardViewModel leaderboardViewModel) {
         this.mInflater = LayoutInflater.from(context);
@@ -45,25 +46,25 @@ public class ButtonTopicAdapter extends RecyclerView.Adapter<ButtonTopicAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.b.setText(String.valueOf(mData.get(position)));
 
-//        for (String d: mData){
-//            holder.b.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    leaderboardViewModel.getSpecificLeaderboard(holder.getAdapterPosition()).observe((LifecycleOwner) holder.b.getContext(), new Observer<LeaderboardModel>() {
-//                        @Override
-//                        public void onChanged(LeaderboardModel leaderboardModel) {
-//                            List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+//            for (String d: mData){
+//                holder.b.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        leaderboardViewModel.getSpecificLeaderboard(holder.getAdapterPosition()).observe((LifecycleOwner) holder.b.getContext(), new Observer<LeaderboardModel>() {
+//                            @Override
+//                            public void onChanged(LeaderboardModel leaderboardModel) {
+//                                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
 //
-//                            LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
-//                            RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-//                            leaderboard.setLayoutManager(new LinearLayoutManager(holder.b.getContext()));
-//                            leaderboard.setAdapter(leaderboardAdapter);
-//                        }
-//                    });
-//                }
-//            });
-
-//        }
+//                                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+//                                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
+//                                leaderboard.setLayoutManager(new LinearLayoutManager(holder.b.getContext()));
+//                                leaderboard.setAdapter(leaderboardAdapter);
+//                            }
+//                        });
+//                    }
+//                });
+//
+//            }
     }
 
     @Override

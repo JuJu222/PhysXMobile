@@ -29,7 +29,7 @@ import com.google.android.material.textfield.TextInputLayout;
  */
 public class EditProfileFragment extends Fragment {
 
-    TextInputLayout name_input, email_input, username_input, school_input, birthyear_input, city_input, id_input;
+    TextInputLayout name_input, email_input, username_input, school_input, birthyear_input, city_input;
     SharedPreferenceHelper helper;
     ProfileViewModel profileViewModel;
     Button save_button, back_button;
@@ -92,7 +92,6 @@ public class EditProfileFragment extends Fragment {
         school_input = view.findViewById(R.id.school_input);
         city_input = view.findViewById(R.id.city_input);
         birthyear_input = view.findViewById(R.id.birthyear_input);
-        id_input = view.findViewById(R.id.id_input);
 
         helper = SharedPreferenceHelper.getInstance(requireActivity());
         profileViewModel = new ViewModelProvider(getActivity()).get(ProfileViewModel.class);
@@ -108,7 +107,6 @@ public class EditProfileFragment extends Fragment {
                 username_input.getEditText().setText(user.getUser().getUsername());
                 school_input.getEditText().setText(user.getUser().getSchool());
                 city_input.getEditText().setText(user.getUser().getCity());
-                id_input.getEditText().setText(String.valueOf(user.getUser().getId()));
             }
         });
 
@@ -127,7 +125,6 @@ public class EditProfileFragment extends Fragment {
                 String city = city_input.getEditText().getText().toString().trim();
                 String birthyear = birthyear_input.getEditText().getText().toString().trim();
                 String school = school_input.getEditText().getText().toString().trim();
-                String id = id_input.getEditText().getText().toString().trim();
                 UserModel.User profile = addProfileData(name, username, email, birthyear, city, school);
 
                 profileViewModel.editUser(profile).observe(requireActivity(), userModel -> {

@@ -77,8 +77,8 @@
 
             <ImageView
                 android:id="@+id/questionmcq_image"
-                android:layout_width="362dp"
-                android:layout_height="300dp"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"

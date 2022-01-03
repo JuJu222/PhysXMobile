@@ -31,7 +31,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.physxmobile.views.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_besaran"
+            app:destination="@id/besaran" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.physxmobile.views.ProfileFragment"
@@ -152,7 +156,17 @@
         android:id="@+id/besaran"
         android:name="com.example.physxmobile.views.Besaran"
         android:label="fragment_besaran"
-        tools:layout="@layout/fragment_besaran" />
+        tools:layout="@layout/fragment_besaran" >
+        <action
+            android:id="@+id/action_besaran_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_besaran_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+        <action
+            android:id="@+id/action_besaran_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gerakLingkarBeraturan"
         android:name="com.example.physxmobile.views.GerakLingkarBeraturan"

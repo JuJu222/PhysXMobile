@@ -10,6 +10,7 @@ import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -200,7 +201,7 @@ public class HomeFragment extends Fragment {
         frameLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "a", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_besaran);
             }
         });
     }

@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         ProfileViewModel profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         profileViewModel.init(helper.getAccessToken());
 
+        bottomNavigationView.setVisibility(View.GONE);
+
         profileViewModel.getUser().observe(this, new Observer<UserModel>() {
             @Override
             public void onChanged(UserModel userModel) {
@@ -40,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (!helper.getAccessToken().isEmpty()){
-                    navController.navigate(R.id.action_loginFragment_to_homeFragment);
+                    navController.navigate(R.id.action_splashFragment_to_homeFragment);
+                    bottomNavigationView.setVisibility(View.VISIBLE);
                 } else {
+                    navController.navigate(R.id.action_splashFragment_to_loginFragment);
                     bottomNavigationView.setVisibility(View.GONE);
                 }
 

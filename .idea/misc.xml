@@ -4,21 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_besaran.xml" value="0.264" />
-        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_gerak_lingkar_beraturan.xml" value="0.15806159420289856" />
+        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_gerak_lingkar_beraturan.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_gerak_lurus.xml" value="0.264" />
-        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_gerak_parabola.xml" value="0.151268115942029" />
+        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_gerak_parabola.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_getaran_harmonis.xml" value="0.2" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_home.xml" value="0.16485507246376813" />
-        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_hukum_newton_gerak.xml" value="0.151268115942029" />
-        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_hukum_newton_gravitasi.xml" value="0.151268115942029" />
+        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_hukum_newton_gerak.xml" value="0.2" />
+        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_hukum_newton_gravitasi.xml" value="0.2" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_leaderboard.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_login.xml" value="0.15443840579710144" />
-        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_momentum_dan_impuls.xml" value="0.151268115942029" />
+        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_momentum_dan_impuls.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_profile.xml" value="0.16485507246376813" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_register.xml" value="0.15443840579710144" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_result.xml" value="0.16485507246376813" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_shop.xml" value="0.16485507246376813" />
-        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_usaha_dan_energi.xml" value="0.151268115942029" />
+        <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_usaha_dan_energi.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/fragment_vektor.xml" value="0.264" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/row_shop_avatar.xml" value="0.16485507246376813" />
         <entry key="..\:/Android Studio Projects/PhysXMobile/app/src/main/res/layout/row_shop_title.xml" value="0.16485507246376813" />

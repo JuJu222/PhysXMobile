@@ -46,7 +46,7 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         input_email_login = view.findViewById(R.id.input_email_login);
         input_password_login = view.findViewById(R.id.input_password_login);
-        btn_login = view.findViewById(R.id.btn_mulai_sekarang);
+        btn_login = view.findViewById(R.id.btn_login);
         buttonRegister = getActivity().findViewById(R.id.buttonRegister);
         buttonRegister1 = getActivity().findViewById(R.id.buttonRegister1);
         bottomNavigationView = getActivity().findViewById(R.id.mainBottomNavigationView);

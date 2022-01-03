@@ -3,6 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LoginResponse;
+import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.QuestionsResult;
 import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
@@ -64,6 +65,10 @@ public class RetrofitService {
         return api.getUser();
     }
 
+    public Call<UserModel.User> editUser(UserModel.User profile){
+        return api.editUser(profile);
+    }
+
     public Call<RegisterResponse> register(String name, String email, String password,
                                                String password_confirmation, String username,
                                                String school, String city, int birthyear) {
@@ -82,6 +87,10 @@ public class RetrofitService {
         return api.getShopItems();
     }
 
+    public Call<Question> getQuestions(int topicId){
+        return api.getQuestions(topicId);
+    }
+
     public Call<ShopItem.ShopItemBuyResponse> buyShopItem(int shopItemId)  {
         return api.buyShopItem(shopItemId);
     }
@@ -90,6 +99,14 @@ public class RetrofitService {
         return api.equipShopItem(shopItemId);
     }
 
+    public Call<Question> showQuestions(int topicId, int questionId){
+        return api.showQuestions(topicId, questionId);
+    }
+
+    public Call<Question> answerQuestions(int topicId, int questionId, String choice){
+        return api.answerQuestions(topicId, questionId, choice);
+    }
+      
     public Call<QuestionsResult> getQuestionsResult(int topicId)  {
         return api.getQuestionsResult(topicId);
     }

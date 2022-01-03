@@ -24,7 +24,7 @@ import com.example.physxmobile.viewmodels.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileFragment extends Fragment {
-    Button btn_logout;
+    Button btn_logout, btn_edit;
     BottomNavigationView bottomNavigationView;
 
     SharedPreferenceHelper helper;
@@ -64,6 +64,10 @@ public class ProfileFragment extends Fragment {
         });
 
         bottomNavigationView = getActivity().findViewById(R.id.mainBottomNavigationView);
+        btn_edit = view.findViewById(R.id.edit_button);
+        btn_edit.setOnClickListener(view1 -> {
+            Navigation.findNavController(view1).navigate(R.id.action_profileFragment_to_editProfileFragment);
+        });
         btn_logout = view.findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(view1 -> {
             profileViewModel.logout().observe(requireActivity(), s -> {

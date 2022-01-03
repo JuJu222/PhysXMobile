@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 public class QuestionsResult {
 
+    private String topic_name;
     private int accuracy;
     private int total_score;
     private int total_questions;
@@ -14,6 +15,14 @@ public class QuestionsResult {
     public static QuestionsResult objectFromData(String str) {
 
         return new Gson().fromJson(str, QuestionsResult.class);
+    }
+
+    public String getTopic_name() {
+        return topic_name;
+    }
+
+    public void setTopic_name(String topic_name) {
+        this.topic_name = topic_name;
     }
 
     public int getAccuracy() {

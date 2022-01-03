@@ -82,7 +82,7 @@ public class TOFFragment extends Fragment {
                 questiontof_score.setText(String.valueOf(tof_score));
                 questiontof_id.setText(tof_id);
                 Glide.with(getActivity())
-                        .load(Const.IMG_URL1 + tof_image + Const.IMG_URL2)
+                        .load(tof_image)
                         .into(questiontof_image);
                 questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                     @Override

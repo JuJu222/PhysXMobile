@@ -79,7 +79,7 @@ public class MCQFragment extends Fragment {
                     questionmcq_score.setText(String.valueOf(mcq_score));
                     questionmcq_id.setText(mcq_id);
                     Glide.with(getActivity())
-                            .load(Const.IMG_URL1 + mcq_image + Const.IMG_URL2)
+                            .load(mcq_image)
                             .into(questionmcq_image);
 
                     questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {

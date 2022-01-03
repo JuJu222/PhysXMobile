@@ -84,7 +84,7 @@ public class FITBFragment extends Fragment {
                 questionfitb_score.setText(String.valueOf(fitb_score));
                 questionfitb_id.setText(fitb_id);
                 Glide.with(getActivity())
-                        .load(Const.IMG_URL1 + fitb_image + Const.IMG_URL2)
+                        .load(fitb_image)
                         .into(questionfitb_image);
                 questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                     @Override

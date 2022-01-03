@@ -4,16 +4,25 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
+import com.example.physxmobile.helpers.SharedPreferenceHelper;
+import com.example.physxmobile.models.Question;
+import com.example.physxmobile.viewmodels.QuestionViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +30,8 @@ import com.example.physxmobile.R;
  * create an instance of this fragment.
  */
 public class GetaranHarmonis extends Fragment {
-
+    private QuestionViewModel questionViewModel;
+    private SharedPreferenceHelper helper;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -82,6 +92,71 @@ public class GetaranHarmonis extends Fragment {
         ImageView gambargh4 = view.findViewById(R.id.gambargh4);
         ImageView gambargh5 = view.findViewById(R.id.gambargh5);
         ImageView gambargh6 = view.findViewById(R.id.gambargh6);
+
+        Button button_easy = view.findViewById(R.id.btn_mudah);
+        Button button_hard = view.findViewById(R.id.btn_susah);
+
+        questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(getContext());
+        questionViewModel.init(helper.getAccessToken());
+
+        button_easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(10);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 10);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_getaranHarmonis_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_getaranHarmonis_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_getaranHarmonis_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        button_hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(20);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 20);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_getaranHarmonis_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_getaranHarmonis_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_getaranHarmonis_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             penjelasangh1.setText(Html.fromHtml("<p>Getaran Harmonis adalah sebuah benda yang bergerak secara bolak balik (periodik) melalui titik kesetimbangan. Grafik letak partikel ini diartikan sebagai fungsi waktu yang berupa sinus dinyatakan dalam bentuk sinus dan kosinus. Gerak ini juga sering dinamakan sebagai gerak osilasi.</p>\n" +

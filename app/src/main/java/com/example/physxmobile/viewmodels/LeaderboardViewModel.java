@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.physxmobile.models.LeaderboardModel;
+import com.example.physxmobile.models.Question;
 import com.example.physxmobile.repositories.LeaderboardRepository;
 
 public class LeaderboardViewModel extends AndroidViewModel {
@@ -23,13 +24,11 @@ public class LeaderboardViewModel extends AndroidViewModel {
     }
 
     private MutableLiveData<LeaderboardModel> specificLeaderboards = new MutableLiveData<>();
-    public void getSpecificLeaderboard(int topicId) {
-        specificLeaderboards = leaderboardRepository.getSpecificLeaderboard(topicId);
+    public LiveData<LeaderboardModel> getSpecificLeaderboard(int topicId){specificLeaderboards = leaderboardRepository.getSpecificLeaderboard(topicId);
+        return specificLeaderboards;
     }
 
-    public LiveData<LeaderboardModel> getSpecificLeaderboard(){
-        return leaderboards;
-    }
+
 
     private MutableLiveData<LeaderboardModel> leaderboards = new MutableLiveData<>();
     public LiveData<LeaderboardModel> getLeaderboard(){

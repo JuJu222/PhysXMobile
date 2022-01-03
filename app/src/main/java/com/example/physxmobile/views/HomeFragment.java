@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
                             homeTopic2Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_vektor);
                                 }
                             });
                             break;
@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
                             homeTopic3Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakLurus);
                                 }
                             });
                             break;
@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
                             homeTopic4Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakParabola);
                                 }
                             });
                             break;
@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
                             homeTopic5Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakLingkarBeraturan);
                                 }
                             });
                             break;
@@ -129,7 +129,7 @@ public class HomeFragment extends Fragment {
                             homeTopic6Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_hukumNewtonGerak);
                                 }
                             });
                             break;
@@ -144,7 +144,7 @@ public class HomeFragment extends Fragment {
                             homeTopic7Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_hukumNewtonGravitasi);
                                 }
                             });
                             break;
@@ -159,7 +159,7 @@ public class HomeFragment extends Fragment {
                             homeTopic8Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_usahaDanEnergi);
                                 }
                             });
                             break;
@@ -174,7 +174,7 @@ public class HomeFragment extends Fragment {
                             homeTopic9Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_momentumDanImpuls);
                                 }
                             });
                             break;
@@ -189,7 +189,7 @@ public class HomeFragment extends Fragment {
                             homeTopic10Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    // redirect to topic overview
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_getaranHarmonis);
                                 }
                             });
                             break;

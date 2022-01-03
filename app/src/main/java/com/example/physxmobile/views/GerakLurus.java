@@ -4,16 +4,25 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
+import com.example.physxmobile.helpers.SharedPreferenceHelper;
+import com.example.physxmobile.models.Question;
+import com.example.physxmobile.viewmodels.QuestionViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +30,8 @@ import com.example.physxmobile.R;
  * create an instance of this fragment.
  */
 public class GerakLurus extends Fragment {
-
+    private QuestionViewModel questionViewModel;
+    private SharedPreferenceHelper helper;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -82,6 +92,71 @@ public class GerakLurus extends Fragment {
         ImageView gambargl5 = view.findViewById(R.id.gambargl5);
         ImageView gambargl6 = view.findViewById(R.id.gambargl6);
         ImageView gambargl7 = view.findViewById(R.id.gambargl7);
+
+        Button button_easy = view.findViewById(R.id.btn_mudah);
+        Button button_hard = view.findViewById(R.id.btn_susah);
+
+        questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(getContext());
+        questionViewModel.init(helper.getAccessToken());
+
+        button_easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(3);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 3);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_gerakLurus_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_gerakLurus_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_gerakLurus_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        button_hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(13);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 13);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_gerakLurus_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_gerakLurus_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_gerakLurus_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             penjelasangl1.setText(Html.fromHtml("<p>Gerak adalah <span class=\"fw-bolder\">perubahan kedudukan suatu benda dari posisi awal</span>.</p>\n" +

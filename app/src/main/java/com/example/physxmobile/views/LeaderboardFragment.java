@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
+import com.example.physxmobile.adapters.ButtonTopicAdapter;
 import com.example.physxmobile.adapters.LeaderboardAdapter;
 import com.example.physxmobile.adapters.MCQAdapter;
 import com.example.physxmobile.adapters.ShopTitleAdapter;
@@ -27,6 +28,7 @@ import com.example.physxmobile.models.Question;
 import com.example.physxmobile.viewmodels.LeaderboardViewModel;
 import com.example.physxmobile.viewmodels.QuestionViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,13 +64,11 @@ public class LeaderboardFragment extends Fragment {
         leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
             @Override
             public void onChanged(LeaderboardModel leaderboardModel) {
-                int index = 0;
                 List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
 
                 LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
                 RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-                leaderboard.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                RecyclerView choose_topic = view.findViewById(R.id.topic_choose_rv);
+                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
                 leaderboard.setAdapter(leaderboardAdapter);
 
             }
@@ -76,6 +76,30 @@ public class LeaderboardFragment extends Fragment {
 
         });
 
+        ArrayList<String> topicNames = new ArrayList<>();
+        topicNames.add("Semua");
+        topicNames.add("Besaran dan Satuan");
+        topicNames.add("Vektor");
+        topicNames.add("Gerak Lurus");
+        topicNames.add("Gerak Parabola");
+        topicNames.add("Gerak Melingkar Beraturan");
+        topicNames.add("Hukum Newton (Gerak)");
+        topicNames.add("Hukum Newton (Gravitasi)");
+        topicNames.add("Usaha dan Energi");
+        topicNames.add("Momentum dan Impuls");
+        topicNames.add("Getaran Harmonis");
 
+        RecyclerView recyclerView = view.findViewById(R.id.topic_choose_rv);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        ButtonTopicAdapter adapter = new ButtonTopicAdapter(getContext(), topicNames, leaderboardViewModel);
+//        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
     }
+
+//    @Override
+//    public void onItemClick(View view, int position) {
+//
+//    }
+
+
 }

@@ -4,16 +4,25 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
+import com.example.physxmobile.helpers.SharedPreferenceHelper;
+import com.example.physxmobile.models.Question;
+import com.example.physxmobile.viewmodels.QuestionViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +30,8 @@ import com.example.physxmobile.R;
  * create an instance of this fragment.
  */
 public class UsahaDanEnergi extends Fragment {
-
+    private QuestionViewModel questionViewModel;
+    private SharedPreferenceHelper helper;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -90,6 +100,73 @@ public class UsahaDanEnergi extends Fragment {
         ImageView gambarude9 = view.findViewById(R.id.gambarude9);
         ImageView gambarude92 = view.findViewById(R.id.gambarude92);
         ImageView gambarude93 = view.findViewById(R.id.gambarude93);
+
+
+        Button button_easy = view.findViewById(R.id.btn_mudah);
+        Button button_hard = view.findViewById(R.id.btn_susah);
+
+        questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(getContext());
+        questionViewModel.init(helper.getAccessToken());
+
+        button_easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(8);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 8);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_usahaDanEnergi_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_usahaDanEnergi_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_usahaDanEnergi_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        button_hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(18);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 18);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_usahaDanEnergi_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_usahaDanEnergi_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_usahaDanEnergi_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             penjelasanude1.setText(Html.fromHtml("<h3>Usaha</h3>\n" +
                     "<p class=\"fw-bolder\">Usaha adalah besarnya energi untuk merubah posisi yang diberikan gaya pada benda atau objek. </p>\n" +

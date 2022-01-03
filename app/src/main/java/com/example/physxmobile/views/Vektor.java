@@ -98,13 +98,13 @@ public class Vektor extends Fragment {
                         if (resultQuestion.get(0) != null) {
                             switch (resultQuestion.get(0).getQuestion_type()) {
                                 case "mcq":
-                                    Navigation.findNavController(view).navigate(R.id.action_besaran_to_MCQFragment, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_vektor_to_MCQFragment, bundle);
                                     break;
                                 case "fitb":
-                                    Navigation.findNavController(view).navigate(R.id.action_besaran_to_FITBFragment, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_vektor_to_FITBFragment, bundle);
                                     break;
                                 case "tof":
-                                    Navigation.findNavController(view).navigate(R.id.action_besaran_to_TOFFragment, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_vektor_to_TOFFragment, bundle);
                                     break;
                             }
                         }
@@ -127,13 +127,13 @@ public class Vektor extends Fragment {
                         if (resultQuestion.get(0) != null) {
                             switch (resultQuestion.get(0).getQuestion_type()) {
                                 case "mcq":
-                                    Navigation.findNavController(view).navigate(R.id.action_besaran_to_MCQFragment, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_vektor_to_MCQFragment, bundle);
                                     break;
                                 case "fitb":
-                                    Navigation.findNavController(view).navigate(R.id.action_besaran_to_FITBFragment, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_vektor_to_FITBFragment, bundle);
                                     break;
                                 case "tof":
-                                    Navigation.findNavController(view).navigate(R.id.action_besaran_to_TOFFragment, bundle);
+                                    Navigation.findNavController(view).navigate(R.id.action_vektor_to_TOFFragment, bundle);
                                     break;
                             }
                         }

@@ -17,7 +17,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_mulai_sekarang" />
 
     <TextView
         android:id="@+id/buttonRegister"
@@ -31,7 +31,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_mulai_sekarang" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -130,7 +130,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_mulai_sekarang"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"

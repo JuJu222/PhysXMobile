@@ -2,4 +2,9 @@
     <string name="app_name">PhysXMobile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_topic">Gaya dan Tekanan</string>
+    <string name="sepuluh_soal">10 Soal</string>
+    <string name="simak_playlist_legurules">Simak playlist yang disediakan oleh Le GuruLes terkait Besaran dan Satuan</string>
+    <string name="maksimum">Skor Total Maksimum: 1000</string>
+    <string name="mulai_sekarang">Mulai Sekarang</string>
 </resources>

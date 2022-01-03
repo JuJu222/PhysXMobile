@@ -10,4 +10,5 @@
     <color name="red">#FD6F96</color>
     <color name="primary">#6F69AC</color>
     <color name="yellow">#FFEBA1</color>
+    <color name="text_maksimum_label">#CE9465</color>
 </resources>

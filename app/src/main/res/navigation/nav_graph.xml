@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/gerakLurus">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -57,4 +57,17 @@
         android:name="com.example.physxmobile.views.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/besaran"
+        android:name="com.example.physxmobile.views.Besaran"
+        android:label="fragment_besaran"
+        tools:layout="@layout/fragment_besaran" />
+    <fragment
+        android:id="@+id/gerakLingkarBeraturan"
+        android:name="com.example.physxmobile.views.GerakLingkarBeraturan"
+        android:label="GerakLingkarBeraturan" />
+    <fragment
+        android:id="@+id/gerakLurus"
+        android:name="com.example.physxmobile.views.GerakLurus"
+        android:label="GerakLurus" />
 </navigation>

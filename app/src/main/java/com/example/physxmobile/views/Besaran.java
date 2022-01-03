@@ -1,13 +1,18 @@
 package com.example.physxmobile.views;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
 
 /**
@@ -61,6 +66,74 @@ public class Besaran extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_besaran, container, false);
+        View view = inflater.inflate(R.layout.fragment_besaran, container, false);
+
+        TextView penjelasan1 = view.findViewById(R.id.penjelasanmdi1);
+        TextView penjelasan2 = view.findViewById(R.id.penjelasan2);
+        TextView penjelasan3 = view.findViewById(R.id.penjelasan3);
+        TextView penjelasan4 = view.findViewById(R.id.penjelasan4);
+
+        ImageView gambar1 = view.findViewById(R.id.gambar1);
+        ImageView gambar2 = view.findViewById(R.id.gambar2);
+        ImageView gambar3 = view.findViewById(R.id.gambar3);
+        ImageView gambar4 = view.findViewById(R.id.gambar4);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            penjelasan1.setText(Html.fromHtml("<p>Besaran adalah segala sesuatu yang dapat diukur dan dinyatakan dengan angka, serta memiliki satuan.</p>\n" +
+                    "<p>Satuan adalah segala sesuatu yang menyatakan hasil pengukuran atau pembanding dari suatu besaran.</p>\n" +
+                    "<p>Ada satuan yang baku dan ada yang tidak baku.</p>\n" +
+                    "<p>Yang dipakai dalam Fisika adalah besaran dan satuan yang baku yaitu dari Satuan Internasional (SI)</p>\n" +
+                    "<br/>\n" +
+                    "<h3>Besaran Pokok</h3>\n" +
+                    "<p>Besaran pokok adalah besaran dasar untuk menetapkan besaran yang lain</p>\n" +
+                    "<p>Berikut adalah 7 besaran pokok beserta satuannya yang telah disepakati:</p>", Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            penjelasan1.setText(Html.fromHtml("<p>Besaran adalah segala sesuatu yang dapat diukur dan dinyatakan dengan angka, serta memiliki satuan.</p>\n" +
+                    "<p>Satuan adalah segala sesuatu yang menyatakan hasil pengukuran atau pembanding dari suatu besaran.</p>\n" +
+                    "<p>Ada satuan yang baku dan ada yang tidak baku.</p>\n" +
+                    "<p>Yang dipakai dalam Fisika adalah besaran dan satuan yang baku yaitu dari Satuan Internasional (SI)</p>\n" +
+                    "<br/>\n" +
+                    "<h3>Besaran Pokok</h3>\n" +
+                    "<p>Besaran pokok adalah besaran dasar untuk menetapkan besaran yang lain</p>\n" +
+                    "<p>Berikut adalah 7 besaran pokok beserta satuannya yang telah disepakati:</p>"));
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            penjelasan2.setText(Html.fromHtml("<h3>Besaran Turunan</h3>\n" +
+                    "<p>Besaran turunan adalah besaran yang diturunkan atau berasal dari besaran pokok.</p>\n" +
+                    "<p>Berikut adalah beberapa dari banyak besaran turunan:</p>", Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            penjelasan2.setText(Html.fromHtml("<h3>Besaran Turunan</h3>\n" +
+                    "<p>Besaran turunan adalah besaran yang diturunkan atau berasal dari besaran pokok.</p>\n" +
+                    "<p>Berikut adalah beberapa dari banyak besaran turunan:</p>"));
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            penjelasan3.setText(Html.fromHtml("<h3>Dimensi</h3>\n" +
+                    "<p>Dimensi adalah bentuk penulisan besaran menggunakan lambang satuan besaran pokok.</p>\n" +
+                    "<p>Ciri-cirinya adalah terdapat lambang besaran pokok di dalam kurung siku.</p>", Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            penjelasan3.setText(Html.fromHtml("<h3>Dimensi</h3>\n" +
+                    "<p>Dimensi adalah bentuk penulisan besaran menggunakan lambang satuan besaran pokok.</p>\n" +
+                    "<p>Ciri-cirinya adalah terdapat lambang besaran pokok di dalam kurung siku.</p>"));
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            penjelasan4.setText(Html.fromHtml("<br/>\n" +
+                    "<p>Nah, bagaimana kalau dimensi dibutuhkan untuk perhitungan?</p>", Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            penjelasan4.setText(Html.fromHtml("<br/>\n" +
+                    "<p>Nah, bagaimana kalau dimensi dibutuhkan untuk perhitungan?</p>"));
+        }
+
+        Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1nXmsPHtTV7UmgAMd9q-3Af2gGx6XypKI").into(gambar1);
+        //https://drive.google.com/uc?export=view&id=1HXVB2tF8fQmHldBUmjj8xMqbvNHZBdMO
+        Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1HXVB2tF8fQmHldBUmjj8xMqbvNHZBdMO").into(gambar2);
+        //https://drive.google.com/uc?export=view&id=1HXVB2tF8fQmHldBUmjj8xMqbvNHZBdMO
+        Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=18YXCPCrFjt_d0Ozw6-R6mcWTvLyrAgYN").into(gambar3);
+        //https://drive.google.com/uc?export=view&id=18YXCPCrFjt_d0Ozw6-R6mcWTvLyrAgYN
+        Glide.with(getContext()).load("https://i0.wp.com/www.zenius.net/blog/wp-content/uploads/2021/01/contoh.png?fit=534%2C338&ssl=1").into(gambar4);
+
+        return view;
     }
 }

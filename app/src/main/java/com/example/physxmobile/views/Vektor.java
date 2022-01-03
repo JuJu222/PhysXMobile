@@ -1,12 +1,15 @@
 package com.example.physxmobile.views;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.physxmobile.R;
 
@@ -61,6 +64,24 @@ public class Vektor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vektor, container, false);
+        View view = inflater.inflate(R.layout.fragment_vektor, container, false);
+
+        TextView penjelasanv1 = view.findViewById(R.id.penjelasanv1);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            penjelasanv1.setText(Html.fromHtml("<p>Besaran dapat memiliki arah dan tidak.</p>\n" +
+                    "<p>Besaran yang memiliki arah disebut sebagai besaran <span class=\"fw-bolder\">vektor</span>.</p>\n" +
+                    "<p>Sedangkan, besaran yang tidak memiliki arah disebut sebagai besaran <span class=\"fw-bolder\">skalar</span>.</p>\n" +
+                    "<p>Sehingga, besaran skalar hanya memiliki nilai dan selalu positif, namun besaran vektor adalah besaran yang mempunyai nilai dan arah.</p>\n" +
+                    "<br/>", Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            penjelasanv1.setText(Html.fromHtml("<p>Besaran dapat memiliki arah dan tidak.</p>\n" +
+                    "<p>Besaran yang memiliki arah disebut sebagai besaran <span class=\"fw-bolder\">vektor</span>.</p>\n" +
+                    "<p>Sedangkan, besaran yang tidak memiliki arah disebut sebagai besaran <span class=\"fw-bolder\">skalar</span>.</p>\n" +
+                    "<p>Sehingga, besaran skalar hanya memiliki nilai dan selalu positif, namun besaran vektor adalah besaran yang mempunyai nilai dan arah.</p>\n" +
+                    "<br/>"));
+        }
+
+        return view;
     }
 }

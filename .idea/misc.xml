@@ -11,31 +11,20 @@
         <entry key="..\:/PhysXMobile/app/src/main/res/drawable/unselected_button.xml" value="0.3212962962962963" />
         <entry key="..\:/PhysXMobile/app/src/main/res/drawable/whitebase.xml" value="0.39692307692307693" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/correct_dialog.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/finish_dialog.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_account.xml" value="0.41508379888268154" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_history.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_home.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_leaderboard.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_login.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_question_fitb.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_question_mcq.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_question_tof.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_register.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_result.xml" value="0.38697916666666665" />
         <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_shop.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/fragment_splash.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/row_history.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/row_question_optionmcq.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/row_shop_avatar.xml" value="0.38697916666666665" />
-        <entry key="..\:/PhysXMobile/app/src/main/res/layout/row_shop_title.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/drawable/ic_carbon_condition_point.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/drawable/ic_cash_coin.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_login.xml" value="0.19427083333333334" />
-        <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/menu/menu_bottom.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_account.xml" value="0.24864130434782608" />
-        <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.4552083333333333" />
+        <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.33" />
         <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_history.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/japju/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_leaderboard.xml" value="0.203125" />
@@ -75,11 +64,10 @@
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_profile.xml" value="0.11881937436932391" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_question.xml" value="0.25" />
-        <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_question_fitb.xml" value="0.33" />
+        <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_question_fitb.xml" value="0.25" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_question_mcq.xml" value="0.33" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_question_tof.xml" value="0.25" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_register.xml" value="0.33" />
-        <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_result.xml" value="0.25" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/fragment_shop.xml" value="0.25" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/question_fitb.xml" value="0.25" />
         <entry key="..\:/Users/jinse/AndroidStudioProjects/PhysXMobile/app/src/main/res/layout/question_mcq.xml" value="0.22" />

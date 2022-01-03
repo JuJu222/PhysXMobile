@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.adapters.ShopAvatarAdapter;
@@ -41,8 +43,12 @@ public class ShopFragment extends Fragment {
         SharedPreferenceHelper helper = SharedPreferenceHelper.getInstance(getContext());
         RecyclerView shopTitleRecyclerView = view.findViewById(R.id.shopTitleRecyclerView);
         RecyclerView shopAvatarRecyclerView = view.findViewById(R.id.shopAvatarRecyclerView);
+        NestedScrollView shopNestedScrollView = view.findViewById(R.id.shopNestedScrollView);
+        ProgressBar shopProgressBar = view.findViewById(R.id.shopProgressBar);
 
         shopViewModel.init(helper.getAccessToken());
+        shopProgressBar.setVisibility(View.VISIBLE);
+        shopNestedScrollView.setVisibility(View.GONE);
 
         shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
             @Override
@@ -83,6 +89,9 @@ public class ShopFragment extends Fragment {
                 ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, ownedItems, shopViewModel);
                 shopAvatarRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopAvatarRecyclerView.setAdapter(shopAvatarAdapter);
+                
+                shopProgressBar.setVisibility(View.GONE);
+                shopNestedScrollView.setVisibility(View.VISIBLE);
             }
         });
     }

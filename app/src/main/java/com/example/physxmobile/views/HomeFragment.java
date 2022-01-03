@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.ImageViewCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,10 +45,14 @@ public class HomeFragment extends Fragment {
         TextView homeTotalScoreTextView = view.findViewById(R.id.homeTotalScoreTextView);
         TextView homeRankingTextView = view.findViewById(R.id.homeRankingTextView);
         FrameLayout frameLayout1 = view.findViewById(R.id.homeTopic1Layout);
+        NestedScrollView homeNestedScrollView = view.findViewById(R.id.homeNestedScrollView);
+        ProgressBar homeProgressBar = view.findViewById(R.id.homeProgressBar);
 
         homeViewModel.init(helper.getAccessToken());
         ColorStateList greenCircleColor = ColorStateList.valueOf(Color.parseColor("#95DAC1"));
         ColorStateList greenTextColor = ColorStateList.valueOf(Color.parseColor("#436F5F"));
+        homeProgressBar.setVisibility(View.VISIBLE);
+        homeNestedScrollView.setVisibility(View.GONE);
 
         homeViewModel.getHome().observe(getViewLifecycleOwner(), new Observer<HomeResponse>() {
             @Override
@@ -194,6 +200,9 @@ public class HomeFragment extends Fragment {
                             break;
                     }
                 }
+
+                homeProgressBar.setVisibility(View.GONE);
+                homeNestedScrollView.setVisibility(View.VISIBLE);
             }
         });
 

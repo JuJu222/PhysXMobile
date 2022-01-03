@@ -156,4 +156,45 @@
         android:name="com.example.physxmobile.views.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/besaran"
+        android:name="com.example.physxmobile.views.Besaran"
+        android:label="fragment_besaran"
+        tools:layout="@layout/fragment_besaran" />
+    <fragment
+        android:id="@+id/gerakLingkarBeraturan"
+        android:name="com.example.physxmobile.views.GerakLingkarBeraturan"
+        android:label="GerakLingkarBeraturan" />
+    <fragment
+        android:id="@+id/gerakLurus"
+        android:name="com.example.physxmobile.views.GerakLurus"
+        android:label="GerakLurus" />
+    <fragment
+        android:id="@+id/gerakParabola"
+        android:name="com.example.physxmobile.views.GerakParabola"
+        android:label="GerakParabola" />
+    <fragment
+        android:id="@+id/getaranHarmonis"
+        android:name="com.example.physxmobile.views.GetaranHarmonis"
+        android:label="GetaranHarmonis" />
+    <fragment
+        android:id="@+id/hukumNewtonGerak"
+        android:name="com.example.physxmobile.views.HukumNewtonGerak"
+        android:label="HukumNewtonGerak" />
+    <fragment
+        android:id="@+id/hukumNewtonGravitasi"
+        android:name="com.example.physxmobile.views.HukumNewtonGravitasi"
+        android:label="HukumNewtonGravitasi" />
+    <fragment
+        android:id="@+id/momentumDanImpuls"
+        android:name="com.example.physxmobile.views.MomentumDanImpuls"
+        android:label="MomentumDanImpuls" />
+    <fragment
+        android:id="@+id/usahaDanEnergi"
+        android:name="com.example.physxmobile.views.UsahaDanEnergi"
+        android:label="UsahaDanEnergi" />
+    <fragment
+        android:id="@+id/vektor"
+        android:name="com.example.physxmobile.views.Vektor"
+        android:label="Vektor" />
 </navigation>

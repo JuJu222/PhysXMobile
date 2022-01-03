@@ -56,7 +56,7 @@ public class TOFFragment extends Fragment {
 
         questiontof_question = view.findViewById(R.id.questiontof_question);
         questiontof_id = view.findViewById(R.id.questiontof_id);
-        questiontof_score = view.findViewById(R.id.questiontof_Score);
+        questiontof_score = view.findViewById(R.id.questiontof_score);
         dialog = new Dialog(view.getContext());
         questiontof_image = view.findViewById(R.id.questiontof_image);
         optiontof_true = view.findViewById(R.id.optiontof_true);
@@ -82,7 +82,7 @@ public class TOFFragment extends Fragment {
                 questiontof_score.setText(String.valueOf(tof_score));
                 questiontof_id.setText(tof_id);
                 Glide.with(getActivity())
-                        .load(Const.BASE_URL + tof_image)
+                        .load(tof_image)
                         .into(questiontof_image);
                 questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                     @Override

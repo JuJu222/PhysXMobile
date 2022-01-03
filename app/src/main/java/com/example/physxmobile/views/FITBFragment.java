@@ -8,12 +8,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +23,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
-import com.example.physxmobile.adapters.MCQAdapter;
-import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
 import com.example.physxmobile.models.Question;
 import com.example.physxmobile.viewmodels.QuestionViewModel;
@@ -59,7 +54,7 @@ public class FITBFragment extends Fragment {
 
         questionfitb_question = view.findViewById(R.id.questionfitb_question);
         questionfitb_id = view.findViewById(R.id.questionfitb_id);
-        questionfitb_score = view.findViewById(R.id.questionfitb_score);
+        questionfitb_score = view.findViewById(R.id.questiontof_score);
         questionfitb_image = view.findViewById(R.id.questionfitb_image);
         optionfitb_answer = view.findViewById(R.id.optionfitb_answer);
         optionfitb_submit = view.findViewById(R.id.optionfitb_submit);
@@ -84,7 +79,7 @@ public class FITBFragment extends Fragment {
                 questionfitb_score.setText(String.valueOf(fitb_score));
                 questionfitb_id.setText(fitb_id);
                 Glide.with(getActivity())
-                        .load(Const.BASE_URL + fitb_image)
+                        .load(fitb_image)
                         .into(questionfitb_image);
                 questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                     @Override

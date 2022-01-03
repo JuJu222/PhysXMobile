@@ -20,14 +20,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
 import com.example.physxmobile.adapters.MCQAdapter;
-import com.example.physxmobile.adapters.ShopAvatarAdapter;
-import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
 import com.example.physxmobile.models.Question;
-import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.viewmodels.QuestionViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MCQFragment extends Fragment {
@@ -53,7 +49,7 @@ public class MCQFragment extends Fragment {
         questionmcq_question = view.findViewById(R.id.questionmcq_question);
         questionmcq_id = view.findViewById(R.id.questionmcq_id);
         questionmcq_image = view.findViewById(R.id.questionmcq_image);
-        questionmcq_score = view.findViewById(R.id.questionmcq_score);
+        questionmcq_score = view.findViewById(R.id.questiontof_score);
         recyclerView = view.findViewById(R.id.optionmcq_choices);
         int topic = getArguments().getInt("topicId");
 
@@ -79,7 +75,7 @@ public class MCQFragment extends Fragment {
                     questionmcq_score.setText(String.valueOf(mcq_score));
                     questionmcq_id.setText(mcq_id);
                     Glide.with(getActivity())
-                            .load(Const.BASE_URL + mcq_image)
+                            .load(mcq_image)
                             .into(questionmcq_image);
 
                     questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {

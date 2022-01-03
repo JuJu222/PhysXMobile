@@ -18,19 +18,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/questiontof_Score"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/cornerssubmit"
-                android:backgroundTint="#F7E305"
-                android:fontFamily="@font/nunito_bold"
-                android:padding="10dp"
-                android:text="100 Points"
+                app:cardBackgroundColor="#FFEBA1"
+                app:cardCornerRadius="1000dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/questiontof_image" />
+                app:layout_constraintTop_toBottomOf="@+id/questiontof_image">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="Skor:"
+                        android:textColor="#CE9465"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/questiontof_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text="100"
+                        android:textColor="#CE9465"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView30"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView40"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_carbon_condition_point"
+                        app:layout_constraintBottom_toBottomOf="@+id/questiontof_score"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/questiontof_score"
+                        app:layout_constraintTop_toTopOf="@+id/questiontof_score" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
             <View
                 android:id="@+id/divider5"
@@ -60,6 +104,7 @@
                 android:textColor="#6F69AC"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:cornerRadius="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questiontof_question" />
 
@@ -77,14 +122,14 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/questiontof_Score" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
             <ImageView
                 android:id="@+id/questiontof_image"
-                android:layout_width="380dp"
-                android:layout_height="300dp"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/editshape"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +166,7 @@
                 android:textColor="#6F69AC"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:cornerRadius="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/questiontof_question" />
 

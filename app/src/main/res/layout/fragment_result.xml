@@ -48,7 +48,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialCardView" />
+                app:layout_constraintTop_toTopOf="@+id/resultMaterialCardView" />
 
             <TextView
                 android:id="@+id/textView35"
@@ -220,7 +220,7 @@
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView"
+                android:id="@+id/resultMaterialCardView"
                 style="@style/CustomCardViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"

@@ -1,6 +1,7 @@
 package com.example.physxmobile.api;
 
 import com.example.physxmobile.models.HomeResponse;
+import com.example.physxmobile.models.LeaderboardModel;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.QuestionsResult;
@@ -88,5 +89,13 @@ public interface ApiEndPoint {
     @GET("result/{topic}")
     Call<QuestionsResult> getQuestionsResult(
             @Path("topic") int topicId
+    );
+
+    @GET("leaderboard")
+    Call<LeaderboardModel> getLeaderboard();
+
+    @GET("leaderboard/{id}")
+    Call<LeaderboardModel> getSpecificLeaderboard(
+            @Path("id") int topicId
     );
 }

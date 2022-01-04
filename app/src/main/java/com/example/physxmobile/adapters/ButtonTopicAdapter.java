@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
@@ -70,19 +71,14 @@ public class ButtonTopicAdapter extends RecyclerView.Adapter<ButtonTopicAdapter.
         return mData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        Button b;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView b;
 
         ViewHolder(View itemView) {
             super(itemView);
-            b = itemView.findViewById(R.id.button_name);
-            itemView.setOnClickListener(this);
+            b = itemView.findViewById(R.id.topic_name);
         }
 
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
     }
 
     String getItem(int id) {

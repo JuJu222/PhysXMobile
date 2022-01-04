@@ -9,10 +9,13 @@ public class ShopItem {
 
     private List<ShopItems> shop_items;
     private List<OwnedItems> owned_items;
+    private int coins;
+    private String title;
+    private String avatar;
 
-    public static ShopItems objectFromData(String str) {
+    public static ShopItem objectFromData(String str) {
 
-        return new Gson().fromJson(str, ShopItems.class);
+        return new Gson().fromJson(str, ShopItem.class);
     }
 
     public List<ShopItems> getShop_items() {
@@ -29,6 +32,30 @@ public class ShopItem {
 
     public void setOwned_items(List<OwnedItems> owned_items) {
         this.owned_items = owned_items;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public static class ShopItemBuyResponse {

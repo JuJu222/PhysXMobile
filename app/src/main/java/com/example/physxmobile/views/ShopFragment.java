@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
 import com.example.physxmobile.adapters.ShopAvatarAdapter;
 import com.example.physxmobile.adapters.ShopTitleAdapter;
@@ -43,6 +46,9 @@ public class ShopFragment extends Fragment {
         SharedPreferenceHelper helper = SharedPreferenceHelper.getInstance(getContext());
         RecyclerView shopTitleRecyclerView = view.findViewById(R.id.shopTitleRecyclerView);
         RecyclerView shopAvatarRecyclerView = view.findViewById(R.id.shopAvatarRecyclerView);
+        TextView shopCoinsTextView = view.findViewById(R.id.shopCoinsTextView);
+        TextView shopCurrentTitleTextView = view.findViewById(R.id.shopCurrentTitleTextView);
+        ImageView shopCurrentAvatarImageView = view.findViewById(R.id.shopCurrentAvatarImageView);
         NestedScrollView shopNestedScrollView = view.findViewById(R.id.shopNestedScrollView);
         ProgressBar shopProgressBar = view.findViewById(R.id.shopProgressBar);
 
@@ -53,6 +59,16 @@ public class ShopFragment extends Fragment {
         shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
             @Override
             public void onChanged(ShopItem shopItems) {
+                shopCoinsTextView.setText(String.valueOf(shopItems.getCoins()));
+                shopCurrentTitleTextView.setText(shopItems.getTitle());
+                if (shopItems.getAvatar() == null) {
+                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                            .into(shopCurrentAvatarImageView);
+                } else {
+                    Glide.with(getContext()).load(shopItems.getAvatar())
+                            .into(shopCurrentAvatarImageView);
+                }
+
                 List<ShopItem.ShopItems> temp = new ArrayList<>();
                 List<ShopItem.OwnedItems> ownedItems = new ArrayList<>();
                 for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
@@ -68,14 +84,9 @@ public class ShopFragment extends Fragment {
                 ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp, ownedItems, shopViewModel);
                 shopTitleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopTitleRecyclerView.setAdapter(shopTitleAdapter);
-            }
-        });
 
-        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
-            @Override
-            public void onChanged(ShopItem shopItems) {
-                List<ShopItem.ShopItems> temp = new ArrayList<>();
-                List<ShopItem.OwnedItems> ownedItems = new ArrayList<>();
+                temp = new ArrayList<>();
+                ownedItems = new ArrayList<>();
                 for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
                     if (shopItem.getType().equals("avatar")) {
                         temp.add(shopItem);
@@ -89,7 +100,7 @@ public class ShopFragment extends Fragment {
                 ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, ownedItems, shopViewModel);
                 shopAvatarRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopAvatarRecyclerView.setAdapter(shopAvatarAdapter);
-                
+
                 shopProgressBar.setVisibility(View.GONE);
                 shopNestedScrollView.setVisibility(View.VISIBLE);
             }

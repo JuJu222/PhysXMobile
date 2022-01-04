@@ -1,5 +1,7 @@
 package com.example.physxmobile.adapters;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +47,10 @@ public class ShopTitleAdapter extends RecyclerView.Adapter<ShopTitleAdapter.View
 
                 if (ownedItem.getPivot().getIs_equipped() == 1) {
                     holder.rowShopTitleEquipButton.setEnabled(false);
+                    holder.rowShopTitleEquipButton.setAlpha(0.5f);
                 } else {
                     holder.rowShopTitleEquipButton.setEnabled(true);
+                    holder.rowShopTitleEquipButton.setAlpha(1);
                 }
 
                 holder.rowShopTitleEquipButton.setOnClickListener(new View.OnClickListener() {

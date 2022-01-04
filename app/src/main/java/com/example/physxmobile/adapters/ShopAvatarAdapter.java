@@ -1,5 +1,7 @@
 package com.example.physxmobile.adapters;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +52,10 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
 
                 if (ownedItem.getPivot().getIs_equipped() == 1) {
                     holder.rowShopAvatarEquipButton.setEnabled(false);
+                    holder.rowShopAvatarEquipButton.setAlpha(0.5f);
                 } else {
                     holder.rowShopAvatarEquipButton.setEnabled(true);
+                    holder.rowShopAvatarEquipButton.setAlpha(1);
                 }
 
                 holder.rowShopAvatarEquipButton.setOnClickListener(new View.OnClickListener() {

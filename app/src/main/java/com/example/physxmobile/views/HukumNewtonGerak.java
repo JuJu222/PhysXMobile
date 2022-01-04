@@ -4,16 +4,26 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
+import com.example.physxmobile.helpers.SharedPreferenceHelper;
+import com.example.physxmobile.models.Question;
+import com.example.physxmobile.viewmodels.QuestionViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +31,8 @@ import com.example.physxmobile.R;
  * create an instance of this fragment.
  */
 public class HukumNewtonGerak extends Fragment {
-
+    private QuestionViewModel questionViewModel;
+    private SharedPreferenceHelper helper;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -76,6 +87,78 @@ public class HukumNewtonGerak extends Fragment {
         ImageView gambarhng1 = view.findViewById(R.id.gambarhng1);
         ImageView gambarhng2 = view.findViewById(R.id.gambarhng2);
         ImageView gambarhng3 = view.findViewById(R.id.gambarhng3);
+
+        Button button_easy = view.findViewById(R.id.btn_mudah);
+        Button button_hard = view.findViewById(R.id.btn_susah);
+        ImageButton topic_overview_back = view.findViewById(R.id.topic_overview_back);
+
+        topic_overview_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).popBackStack();
+            }
+        });
+        questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
+        helper = SharedPreferenceHelper.getInstance(getContext());
+        questionViewModel.init(helper.getAccessToken());
+
+        button_easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(6);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 6);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_hukumNewtonGerak_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_hukumNewtonGerak_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_hukumNewtonGerak_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        button_hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                questionViewModel.getQuestions(16);
+                questionViewModel.getResultQuestions().observe(getViewLifecycleOwner(), new Observer<Question>() {
+                    @Override
+                    public void onChanged(Question question) {
+                        List<Question.Questions> resultQuestion = question.getQuestions();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("noSoal", 0);
+                        bundle.putInt("topicId", 16);
+                        if (resultQuestion.get(0) != null) {
+                            switch (resultQuestion.get(0).getQuestion_type()) {
+                                case "mcq":
+                                    Navigation.findNavController(view).navigate(R.id.action_hukumNewtonGerak_to_MCQFragment, bundle);
+                                    break;
+                                case "fitb":
+                                    Navigation.findNavController(view).navigate(R.id.action_hukumNewtonGerak_to_FITBFragment, bundle);
+                                    break;
+                                case "tof":
+                                    Navigation.findNavController(view).navigate(R.id.action_hukumNewtonGerak_to_TOFFragment, bundle);
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             penjelasanhng1.setText(Html.fromHtml("<p>Hukum Newton terkait gerak ada tiga: Hukum Newton I, Hukum Newton II, dan Hukum Newton III.</p>\n" +

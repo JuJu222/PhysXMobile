@@ -71,6 +71,9 @@ public class TOFFragment extends Fragment {
             @Override
             public void onChanged(Question question) {
                 noSoal = getArguments().getInt("noSoal", 0);
+                if (noSoal == 0) {
+                    questionViewModel.clearUsersQuestionsTopic(topic);
+                }
                 resultQuestion = question.getQuestions();
                 List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
 

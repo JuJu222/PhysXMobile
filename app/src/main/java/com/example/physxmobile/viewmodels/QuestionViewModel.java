@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.physxmobile.models.ClearUsersQuestionsTopicResponse;
 import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.repositories.QuestionRepository;
@@ -42,6 +43,12 @@ public class QuestionViewModel extends AndroidViewModel {
     public LiveData<Question> answerQuestions(int topicId, int questionId, String choice){
         answerQuestions = questionRepository.answerQuestions(topicId, questionId,choice);
         return answerQuestions;
+    }
+
+    private MutableLiveData<ClearUsersQuestionsTopicResponse> clearUsersQuestionsTopic = new MutableLiveData<>();
+    public LiveData<ClearUsersQuestionsTopicResponse> clearUsersQuestionsTopic(int topicId){
+        clearUsersQuestionsTopic = questionRepository.clearUsersQuestionsTopic(topicId);
+        return clearUsersQuestionsTopic;
     }
 
     @Override

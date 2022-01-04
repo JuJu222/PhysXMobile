@@ -6,11 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".views.ShopFragment" >
 
+    <ProgressBar
+        android:id="@+id/shopProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:id="@+id/nestedScrollView2">
+        android:id="@+id/shopNestedScrollView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

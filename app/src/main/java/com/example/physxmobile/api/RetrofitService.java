@@ -1,6 +1,7 @@
 package com.example.physxmobile.api;
 
 import com.example.physxmobile.helpers.Const;
+import com.example.physxmobile.models.History;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LeaderboardModel;
 import com.example.physxmobile.models.LoginResponse;
@@ -10,6 +11,8 @@ import com.example.physxmobile.models.RegisterResponse;
 import com.example.physxmobile.models.ShopItem;
 import com.example.physxmobile.models.UserModel;
 import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -86,6 +89,10 @@ public class RetrofitService {
 
     public Call<ShopItem> getShopItems()  {
         return api.getShopItems();
+    }
+
+    public Call<History> getHistory(){
+        return api.getHistory();
     }
 
     public Call<Question> getQuestions(int topicId){

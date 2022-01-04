@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/row_question_choices"
-        android:layout_width="250dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#EFEBFE"
@@ -16,7 +16,7 @@
         android:text="9.80 m/s"
         android:textAllCaps="false"
         android:textColor="#6F69AC"
-        android:textSize="26sp"
+        android:textSize="18sp"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

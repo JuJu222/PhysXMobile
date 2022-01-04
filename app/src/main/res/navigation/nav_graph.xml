@@ -31,7 +31,41 @@
         android:id="@+id/homeFragment"
         android:name="com.example.physxmobile.views.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_besaran"
+            app:destination="@id/besaran" />
+        <action
+            android:id="@+id/action_homeFragment_to_vektor"
+            app:destination="@id/vektor" />
+        <action
+            android:id="@+id/action_homeFragment_to_gerakLurus"
+            app:destination="@id/gerakLurus" />
+        <action
+            android:id="@+id/action_homeFragment_to_gerakParabola"
+            app:destination="@id/gerakParabola" />
+        <action
+            android:id="@+id/action_homeFragment_to_gerakLingkarBeraturan"
+            app:destination="@id/gerakLingkarBeraturan" />
+        <action
+            android:id="@+id/action_homeFragment_to_hukumNewtonGerak"
+            app:destination="@id/hukumNewtonGerak" />
+        <action
+            android:id="@+id/action_homeFragment_to_hukumNewtonGravitasi"
+            app:destination="@id/hukumNewtonGravitasi" />
+        <action
+            android:id="@+id/action_homeFragment_to_usahaDanEnergi"
+            app:destination="@id/usahaDanEnergi" />
+        <action
+            android:id="@+id/action_homeFragment_to_momentumDanImpuls"
+            app:destination="@id/momentumDanImpuls" />
+        <action
+            android:id="@+id/action_homeFragment_to_momentumDanImpuls2"
+            app:destination="@id/momentumDanImpuls" />
+        <action
+            android:id="@+id/action_homeFragment_to_getaranHarmonis"
+            app:destination="@id/getaranHarmonis" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.physxmobile.views.ProfileFragment"
@@ -160,41 +194,141 @@
         android:id="@+id/besaran"
         android:name="com.example.physxmobile.views.Besaran"
         android:label="fragment_besaran"
-        tools:layout="@layout/fragment_besaran" />
+        tools:layout="@layout/fragment_besaran" >
+        <action
+            android:id="@+id/action_besaran_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_besaran_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+        <action
+            android:id="@+id/action_besaran_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gerakLingkarBeraturan"
         android:name="com.example.physxmobile.views.GerakLingkarBeraturan"
-        android:label="GerakLingkarBeraturan" />
+        android:label="GerakLingkarBeraturan" >
+        <action
+            android:id="@+id/action_gerakLingkarBeraturan_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_gerakLingkarBeraturan_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_gerakLingkarBeraturan_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gerakLurus"
         android:name="com.example.physxmobile.views.GerakLurus"
-        android:label="GerakLurus" />
+        android:label="GerakLurus" >
+        <action
+            android:id="@+id/action_gerakLurus_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_gerakLurus_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_gerakLurus_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gerakParabola"
         android:name="com.example.physxmobile.views.GerakParabola"
-        android:label="GerakParabola" />
+        android:label="GerakParabola" >
+        <action
+            android:id="@+id/action_gerakParabola_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_gerakParabola_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_gerakParabola_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/getaranHarmonis"
         android:name="com.example.physxmobile.views.GetaranHarmonis"
-        android:label="GetaranHarmonis" />
+        android:label="GetaranHarmonis" >
+        <action
+            android:id="@+id/action_getaranHarmonis_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_getaranHarmonis_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_getaranHarmonis_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hukumNewtonGerak"
         android:name="com.example.physxmobile.views.HukumNewtonGerak"
-        android:label="HukumNewtonGerak" />
+        android:label="HukumNewtonGerak" >
+        <action
+            android:id="@+id/action_hukumNewtonGerak_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_hukumNewtonGerak_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_hukumNewtonGerak_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hukumNewtonGravitasi"
         android:name="com.example.physxmobile.views.HukumNewtonGravitasi"
-        android:label="HukumNewtonGravitasi" />
+        android:label="HukumNewtonGravitasi" >
+        <action
+            android:id="@+id/action_hukumNewtonGravitasi_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_hukumNewtonGravitasi_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_hukumNewtonGravitasi_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/momentumDanImpuls"
         android:name="com.example.physxmobile.views.MomentumDanImpuls"
-        android:label="MomentumDanImpuls" />
+        android:label="MomentumDanImpuls" >
+        <action
+            android:id="@+id/action_momentumDanImpuls_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_momentumDanImpuls_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_momentumDanImpuls_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/usahaDanEnergi"
         android:name="com.example.physxmobile.views.UsahaDanEnergi"
-        android:label="UsahaDanEnergi" />
+        android:label="UsahaDanEnergi" >
+        <action
+            android:id="@+id/action_usahaDanEnergi_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_usahaDanEnergi_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_usahaDanEnergi_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/vektor"
         android:name="com.example.physxmobile.views.Vektor"
-        android:label="Vektor" />
+        android:label="Vektor" >
+        <action
+            android:id="@+id/action_vektor_to_MCQFragment"
+            app:destination="@id/MCQFragment" />
+        <action
+            android:id="@+id/action_vektor_to_TOFFragment"
+            app:destination="@id/TOFFragment" />
+        <action
+            android:id="@+id/action_vektor_to_FITBFragment"
+            app:destination="@id/FITBFragment" />
+    </fragment>
 </navigation>

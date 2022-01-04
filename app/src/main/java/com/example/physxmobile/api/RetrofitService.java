@@ -3,6 +3,7 @@ package com.example.physxmobile.api;
 import com.example.physxmobile.helpers.Const;
 import com.example.physxmobile.models.History;
 import com.example.physxmobile.models.HomeResponse;
+import com.example.physxmobile.models.LeaderboardModel;
 import com.example.physxmobile.models.LoginResponse;
 import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.QuestionsResult;
@@ -116,5 +117,13 @@ public class RetrofitService {
       
     public Call<QuestionsResult> getQuestionsResult(int topicId)  {
         return api.getQuestionsResult(topicId);
+    }
+
+    public Call<LeaderboardModel> getLeaderboard(){
+        return api.getLeaderboard();
+    }
+
+    public Call<LeaderboardModel> getSpecificLeaderboard(int topicId){
+        return api.getSpecificLeaderboard(topicId);
     }
 }

@@ -98,7 +98,7 @@ public class FITBFragment extends Fragment {
                                 }
                             });
                             openCorrectDialog();
-                        } else {
+                        } else if(!answer.equals(optionChoices.get(0).getAnswer())){
                             questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe(getViewLifecycleOwner(), new Observer<Question>() {
                                 @Override
                                 public void onChanged(Question question) {

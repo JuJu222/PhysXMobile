@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.physxmobile.api.RetrofitService;
+import com.example.physxmobile.models.ClearUsersQuestionsTopicResponse;
 import com.example.physxmobile.models.Question;
 import com.example.physxmobile.models.ShopItem;
 
@@ -105,5 +106,26 @@ public class QuestionRepository {
         return answerquestions;
     }
 
+    public MutableLiveData<ClearUsersQuestionsTopicResponse> clearUsersQuestionsTopic(int topicId) {
+        final MutableLiveData<ClearUsersQuestionsTopicResponse> clearUsersQuestionsTopic = new MutableLiveData<>();
 
+        apiService.clearUsersQuestionsTopic(topicId).enqueue(new Callback<ClearUsersQuestionsTopicResponse>() {
+            @Override
+            public void onResponse(Call<ClearUsersQuestionsTopicResponse> call, Response<ClearUsersQuestionsTopicResponse> response) {
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        clearUsersQuestionsTopic.postValue(response.body());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClearUsersQuestionsTopicResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return clearUsersQuestionsTopic;
+    }
 }

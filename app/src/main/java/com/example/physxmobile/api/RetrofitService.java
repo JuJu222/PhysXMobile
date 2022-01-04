@@ -1,6 +1,7 @@
 package com.example.physxmobile.api;
 
 import com.example.physxmobile.helpers.Const;
+import com.example.physxmobile.models.ClearUsersQuestionsTopicResponse;
 import com.example.physxmobile.models.History;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LeaderboardModel;
@@ -125,5 +126,9 @@ public class RetrofitService {
 
     public Call<LeaderboardModel> getSpecificLeaderboard(int topicId){
         return api.getSpecificLeaderboard(topicId);
+    }
+
+    public Call<ClearUsersQuestionsTopicResponse> clearUsersQuestionsTopic(int topicId)  {
+        return api.clearUsersQuestionsTopic(topicId);
     }
 }

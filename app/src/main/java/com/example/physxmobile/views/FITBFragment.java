@@ -69,6 +69,9 @@ public class FITBFragment extends Fragment {
             @Override
             public void onChanged(Question question) {
                 int noSoal = getArguments().getInt("noSoal", 0);
+                if (noSoal == 0) {
+                    questionViewModel.clearUsersQuestionsTopic(topic);
+                }
                 List<Question.Questions> resultQuestion = question.getQuestions();
                 List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
                 String fitb_question = resultQuestion.get(noSoal).getQuestion();
@@ -81,11 +84,7 @@ public class FITBFragment extends Fragment {
                 Glide.with(getActivity())
                         .load(fitb_image)
                         .into(questionfitb_image);
-                questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
-                    @Override
-                    public void onChanged(Question question) {
-                    }
-                });
+                questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id());
                 optionfitb_submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

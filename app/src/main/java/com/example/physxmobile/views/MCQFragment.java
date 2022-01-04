@@ -61,6 +61,9 @@ public class MCQFragment extends Fragment {
             @Override
             public void onChanged(Question question) {
                 int noSoal = getArguments().getInt("noSoal",0);
+                if (noSoal == 0) {
+                    questionViewModel.clearUsersQuestionsTopic(topic);
+                }
                 List<Question.Questions> resultQuestion = question.getQuestions();
                 List<Question.Questions.Options> optionChoices = resultQuestion.get(noSoal).getOptions();
                 if(question == null){

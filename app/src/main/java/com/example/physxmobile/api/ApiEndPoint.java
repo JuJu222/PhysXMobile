@@ -1,5 +1,6 @@
 package com.example.physxmobile.api;
 
+import com.example.physxmobile.models.ClearUsersQuestionsTopicResponse;
 import com.example.physxmobile.models.History;
 import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.models.LeaderboardModel;
@@ -87,6 +88,11 @@ public interface ApiEndPoint {
             @Path("topic") int topicId,
             @Path("question") int questionId,
             @Field("choice") String choice
+    );
+
+    @POST("questionsclear/{topic}")
+    Call<ClearUsersQuestionsTopicResponse> clearUsersQuestionsTopic(
+            @Path("topic") int topicId
     );
   
     @GET("result/{topic}")

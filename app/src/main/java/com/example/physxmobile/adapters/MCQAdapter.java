@@ -63,7 +63,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                 String answer = holder.row_question_choices.getText().toString();
                 if (answer.equals(optionChoices.get(holder.getAdapterPosition()).getOption()) && (optionChoices.get(holder.getAdapterPosition()).getIs_correct() == 1)) {
                     Bundle bundle = new Bundle();
-                    questionViewModel.answerQuestions(topic, resultQuestion.get(holder.getAdapterPosition()).getQuestion_id(), answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
+                    questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
                         @Override
                         public void onChanged(Question question) {
                             notifyDataSetChanged();
@@ -72,7 +72,7 @@ public class MCQAdapter extends RecyclerView.Adapter<MCQAdapter.ViewHolder> {
                     holder.openCorrectDialog();
                 } else if (answer.equals(optionChoices.get(holder.getAdapterPosition()).getOption()) && (optionChoices.get(holder.getAdapterPosition()).getIs_correct() == 0)) {
                     Bundle bundle = new Bundle();
-                    questionViewModel.answerQuestions(topic, resultQuestion.get(holder.getAdapterPosition()).getQuestion_id(), answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
+                    questionViewModel.answerQuestions(topic, resultQuestion.get(noSoal).getQuestion_id(), answer).observe((LifecycleOwner) holder.row_question_choices.getContext(), new Observer<Question>() {
                         @Override
                         public void onChanged(Question question) {
                             notifyDataSetChanged();

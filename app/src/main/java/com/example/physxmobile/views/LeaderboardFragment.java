@@ -91,6 +91,16 @@ public class LeaderboardFragment extends Fragment{
         topicNames.add("Usaha dan Energi");
         topicNames.add("Momentum dan Impuls");
         topicNames.add("Getaran Harmonis");
+        topicNames.add("Besaran dan Satuan - Susah");
+        topicNames.add("Vektor - Susah");
+        topicNames.add("Gerak Lurus - Susah)");
+        topicNames.add("Gerak Parabola - Susah");
+        topicNames.add("Gerak Melingkar Beraturan - Susah");
+        topicNames.add("Hukum Newton (Gerak) - Susah");
+        topicNames.add("Hukum Newton (Gravitasi) - Susah");
+        topicNames.add("Usaha dan Energi - Susah");
+        topicNames.add("Momentum dan Impuls - Susah");
+        topicNames.add("Getaran Harmonis - Susah");
 
         RecyclerView recyclerView = view.findViewById(R.id.topic_choose_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -102,6 +112,7 @@ public class LeaderboardFragment extends Fragment{
                 Log.e("IN","already in");
                 switch(position){
                     case 0:
+                        Log.e("IN","No: " + position);
                         leaderboardViewModel.init(helper.getAccessToken());
                         leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
                             @Override
@@ -120,6 +131,7 @@ public class LeaderboardFragment extends Fragment{
                         break;
 
                     default:
+                        Log.e("IN","No: " + position);
                         leaderboardViewModel.init(helper.getAccessToken());
                         leaderboardViewModel.getSpecificLeaderboard(position).observe(getActivity(), new Observer<LeaderboardModel>() {
                             @Override

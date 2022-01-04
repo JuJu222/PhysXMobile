@@ -25,13 +25,11 @@ public class ButtonTopicAdapter extends RecyclerView.Adapter<ButtonTopicAdapter.
     private ArrayList<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
-    private LeaderboardViewModel leaderboardViewModel;
-    private LeaderboardAdapter leaderboardAdapter;
+
     // data is passed into the constructor
-    public ButtonTopicAdapter(Context context, ArrayList<String> data, LeaderboardViewModel leaderboardViewModel) {
+    public ButtonTopicAdapter(Context context, ArrayList<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
-        this.leaderboardViewModel = leaderboardViewModel;
     }
 
     // inflates the row layout from xml when needed

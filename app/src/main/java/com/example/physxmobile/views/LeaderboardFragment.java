@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.example.physxmobile.adapters.ButtonTopicAdapter;
 import com.example.physxmobile.adapters.LeaderboardAdapter;
 import com.example.physxmobile.adapters.MCQAdapter;
 import com.example.physxmobile.adapters.ShopTitleAdapter;
+import com.example.physxmobile.helpers.ItemClickSupport;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
 import com.example.physxmobile.models.LeaderboardModel;
 import com.example.physxmobile.models.Question;
@@ -37,7 +39,7 @@ import java.util.List;
  * Use the {@link LeaderboardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LeaderboardFragment extends Fragment implements ButtonTopicAdapter.ItemClickListener{
+public class LeaderboardFragment extends Fragment{
 
     private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
@@ -92,30 +94,54 @@ public class LeaderboardFragment extends Fragment implements ButtonTopicAdapter.
 
         RecyclerView recyclerView = view.findViewById(R.id.topic_choose_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        ButtonTopicAdapter adapter = new ButtonTopicAdapter(getContext(), topicNames, leaderboardViewModel);
-        adapter.setClickListener(this::onItemClick);
+        ButtonTopicAdapter adapter = new ButtonTopicAdapter(getContext(), topicNames);
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "AYE" + position, Toast.LENGTH_SHORT).show();
-        leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
-        helper = SharedPreferenceHelper.getInstance(getContext());
-
-        leaderboardViewModel.init(helper.getAccessToken());
-        leaderboardViewModel.getSpecificLeaderboard(position).observe(getActivity(), new Observer<LeaderboardModel>() {
+        ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
-            public void onChanged(LeaderboardModel leaderboardModel) {
-                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Log.e("IN","already in");
+                switch(position){
+                    case 0:
+                        leaderboardViewModel.init(helper.getAccessToken());
+                        leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
+                            @Override
+                            public void onChanged(LeaderboardModel leaderboardModel) {
+                                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
 
-                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
-                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
-                leaderboard.setAdapter(leaderboardAdapter);
+                                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
+                                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
+                                leaderboard.setAdapter(leaderboardAdapter);
+
+                            }
+
+
+                        });
+                        break;
+
+                    default:
+                        leaderboardViewModel.init(helper.getAccessToken());
+                        leaderboardViewModel.getSpecificLeaderboard(position).observe(getActivity(), new Observer<LeaderboardModel>() {
+                            @Override
+                            public void onChanged(LeaderboardModel leaderboardModel) {
+                                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+
+                                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
+                                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
+                                leaderboard.setAdapter(leaderboardAdapter);
+
+                            }
+
+
+                        });
+                        break;
+                }
             }
         });
     }
+
+
 
 
 }

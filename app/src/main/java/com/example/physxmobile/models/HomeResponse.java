@@ -10,6 +10,9 @@ public class HomeResponse {
     private List<UnlockedTopics> unlocked_topics;
     private int total_score;
     private int ranking;
+    private int coins;
+    private String title;
+    private String avatar;
 
     public static HomeResponse objectFromData(String str) {
 
@@ -46,6 +49,30 @@ public class HomeResponse {
 
     public void setRanking(int ranking) {
         this.ranking = ranking;
+    }
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public static class UnlockedTopics {

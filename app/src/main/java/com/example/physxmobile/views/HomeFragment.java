@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.physxmobile.R;
 import com.example.physxmobile.helpers.SharedPreferenceHelper;
 import com.example.physxmobile.models.HomeResponse;
@@ -45,6 +46,9 @@ public class HomeFragment extends Fragment {
         TextView homeNameTextView = view.findViewById(R.id.homeNameTextView);
         TextView homeTotalScoreTextView = view.findViewById(R.id.homeTotalScoreTextView);
         TextView homeRankingTextView = view.findViewById(R.id.homeRankingTextView);
+        TextView homeCoinsTextView = view.findViewById(R.id.homeCoinsTextView);
+        TextView homeTitleTextView = view.findViewById(R.id.homeTitleTextView);
+        ImageView homeAvatarImageView = view.findViewById(R.id.homeAvatarImageView);
         FrameLayout frameLayout1 = view.findViewById(R.id.homeTopic1Layout);
         NestedScrollView homeNestedScrollView = view.findViewById(R.id.homeNestedScrollView);
         ProgressBar homeProgressBar = view.findViewById(R.id.homeProgressBar);
@@ -62,6 +66,16 @@ public class HomeFragment extends Fragment {
                 homeNameTextView.setText(hiName);
                 homeTotalScoreTextView.setText(String.valueOf(homeResponse.getTotal_score()));
                 homeRankingTextView.setText(String.valueOf(homeResponse.getRanking()));
+                homeCoinsTextView.setText(String.valueOf(homeResponse.getCoins()));
+                homeTitleTextView.setText(homeResponse.getTitle());
+                if (homeResponse.getAvatar() == null) {
+                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                            .into(homeAvatarImageView);
+                } else {
+                    Glide.with(getContext()).load(homeResponse.getAvatar())
+                            .into(homeAvatarImageView);
+                }
+
                 for (HomeResponse.UnlockedTopics unlockedTopic : homeResponse.getUnlocked_topics()) {
                     switch (unlockedTopic.getTopic_id()) {
                         case 2:

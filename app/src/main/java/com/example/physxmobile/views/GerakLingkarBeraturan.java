@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -90,7 +91,14 @@ public class GerakLingkarBeraturan extends Fragment {
 
         Button button_easy = view.findViewById(R.id.btn_mudah);
         Button button_hard = view.findViewById(R.id.btn_susah);
+        ImageButton topic_overview_back = view.findViewById(R.id.topic_overview_back);
 
+        topic_overview_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).popBackStack();
+            }
+        });
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
         questionViewModel.init(helper.getAccessToken());

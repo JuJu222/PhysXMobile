@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -44,7 +45,7 @@ public class LeaderboardFragment extends Fragment{
     private LeaderboardViewModel leaderboardViewModel;
     private SharedPreferenceHelper helper;
 
-
+    private int code_pos = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,12 +58,12 @@ public class LeaderboardFragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        Button easy = view.findViewById(R.id.easy_button);
+        Button hard = view.findViewById(R.id.hard_button);
         RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-
+        Button keseluruhan = view.findViewById(R.id.keseluruhan_button);
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
-
         leaderboardViewModel.init(helper.getAccessToken());
         leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
             @Override
@@ -70,8 +71,8 @@ public class LeaderboardFragment extends Fragment{
                 List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
 
                 LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
-                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
                 leaderboard.setAdapter(leaderboardAdapter);
 
             }
@@ -80,7 +81,6 @@ public class LeaderboardFragment extends Fragment{
         });
 
         ArrayList<String> topicNames = new ArrayList<>();
-        topicNames.add("Semua");
         topicNames.add("Besaran dan Satuan");
         topicNames.add("Vektor");
         topicNames.add("Gerak Lurus");
@@ -92,7 +92,6 @@ public class LeaderboardFragment extends Fragment{
         topicNames.add("Momentum dan Impuls");
         topicNames.add("Getaran Harmonis");
 
-
         RecyclerView recyclerView = view.findViewById(R.id.topic_choose_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         ButtonTopicAdapter adapter = new ButtonTopicAdapter(getContext(), topicNames);
@@ -100,45 +99,90 @@ public class LeaderboardFragment extends Fragment{
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                Log.e("IN","already in");
-                switch(position){
-                    case 0:
-                        Log.e("IN","No: " + position);
-                        leaderboardViewModel.init(helper.getAccessToken());
-                        leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
-                            @Override
-                            public void onChanged(LeaderboardModel leaderboardModel) {
-                                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+                Log.e("IN","No: " + position);
+                code_pos = position+1;
+                Log.e("IN","No: " + code_pos);
+                leaderboardViewModel.init(helper.getAccessToken());
+                leaderboardViewModel.getSpecificLeaderboard(position+1).observe(getActivity(), new Observer<LeaderboardModel>() {
+                    @Override
+                    public void onChanged(LeaderboardModel leaderboardModel) {
+                        List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
 
-                                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
-                                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-                                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
-                                leaderboard.setAdapter(leaderboardAdapter);
+                        LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                        leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                        leaderboard.setAdapter(leaderboardAdapter);
 
-                            }
+                    }
 
 
-                        });
-                        break;
-
-                    default:
-                        Log.e("IN","No: " + position);
-                        leaderboardViewModel.init(helper.getAccessToken());
-                        leaderboardViewModel.getSpecificLeaderboard(position + 10).observe(getActivity(), new Observer<LeaderboardModel>() {
-                            @Override
-                            public void onChanged(LeaderboardModel leaderboardModel) {
-                                List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
-
-                                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
-                                RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
-                                leaderboard.setLayoutManager(new LinearLayoutManager(getContext()));
-                                leaderboard.setAdapter(leaderboardAdapter);
-
-                            }
+                });
 
 
-                        });
-                        break;
+            }
+        });
+        keseluruhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                code_pos = 0;
+                leaderboardViewModel.init(helper.getAccessToken());
+                leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
+                    @Override
+                    public void onChanged(LeaderboardModel leaderboardModel) {
+                        List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+
+                        LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                        leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                        leaderboard.setAdapter(leaderboardAdapter);
+
+                    }
+
+
+                });
+            }
+        });
+        easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (code_pos == 0){
+
+                }else {
+                    leaderboardViewModel.init(helper.getAccessToken());
+                    leaderboardViewModel.getSpecificLeaderboard(code_pos).observe(getActivity(), new Observer<LeaderboardModel>() {
+                        @Override
+                        public void onChanged(LeaderboardModel leaderboardModel) {
+                            List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+
+                            LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                            leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                            leaderboard.setAdapter(leaderboardAdapter);
+
+                        }
+
+
+                    });
+                }
+            }
+        });
+        hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (code_pos == 0){
+
+                }else {
+                    leaderboardViewModel.init(helper.getAccessToken());
+                    leaderboardViewModel.getSpecificLeaderboard(code_pos + 10).observe(getActivity(), new Observer<LeaderboardModel>() {
+                        @Override
+                        public void onChanged(LeaderboardModel leaderboardModel) {
+                            List<LeaderboardModel.Leaderboard> leaderboardList = leaderboardModel.getLeaderboard();
+
+                            LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(leaderboardList);
+                            leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                            leaderboard.setAdapter(leaderboardAdapter);
+
+                        }
+
+
+                    });
                 }
             }
         });

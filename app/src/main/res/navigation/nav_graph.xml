@@ -126,16 +126,20 @@
         android:label="MCQFragment" >
         <action
             android:id="@+id/action_MCQFragment_self"
-            app:destination="@id/MCQFragment" />
+            app:destination="@id/MCQFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_MCQFragment_to_TOFFragment"
-            app:destination="@id/TOFFragment" />
+            app:destination="@id/TOFFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_MCQFragment_to_FITBFragment"
-            app:destination="@id/FITBFragment" />
+            app:destination="@id/FITBFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_MCQFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/TOFFragment"
@@ -143,16 +147,20 @@
         android:label="TOFFragment" >
         <action
             android:id="@+id/action_TOFFragment_self"
-            app:destination="@id/TOFFragment" />
+            app:destination="@id/TOFFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_TOFFragment_to_FITBFragment"
-            app:destination="@id/FITBFragment" />
+            app:destination="@id/FITBFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_TOFFragment_to_MCQFragment"
-            app:destination="@id/MCQFragment" />
+            app:destination="@id/MCQFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_TOFFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/FITBFragment"
@@ -160,16 +168,20 @@
         android:label="FITBFragment" >
         <action
             android:id="@+id/action_FITBFragment_self"
-            app:destination="@id/FITBFragment" />
+            app:destination="@id/FITBFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_FITBFragment_to_MCQFragment"
-            app:destination="@id/MCQFragment" />
+            app:destination="@id/MCQFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_FITBFragment_to_TOFFragment"
-            app:destination="@id/TOFFragment" />
+            app:destination="@id/TOFFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_FITBFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

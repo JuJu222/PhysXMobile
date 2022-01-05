@@ -60,7 +60,11 @@ public class ShopFragment extends Fragment {
             @Override
             public void onChanged(ShopItem shopItems) {
                 shopCoinsTextView.setText(String.valueOf(shopItems.getCoins()));
-                shopCurrentTitleTextView.setText(shopItems.getTitle());
+                if (shopItems.getTitle() == null) {
+                    shopCurrentTitleTextView.setText("Novice");
+                } else {
+                    shopCurrentTitleTextView.setText(shopItems.getTitle());
+                }
                 if (shopItems.getAvatar() == null) {
                     Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
                             .into(shopCurrentAvatarImageView);
@@ -81,7 +85,8 @@ public class ShopFragment extends Fragment {
                         ownedItems.add(ownedItem);
                     }
                 }
-                ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp, ownedItems, shopViewModel);
+
+                ShopTitleAdapter shopTitleAdapter = new ShopTitleAdapter(temp, ownedItems, shopViewModel, shopItems.getCoins());
                 shopTitleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopTitleRecyclerView.setAdapter(shopTitleAdapter);
 
@@ -97,9 +102,129 @@ public class ShopFragment extends Fragment {
                         ownedItems.add(ownedItem);
                     }
                 }
-                ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, ownedItems, shopViewModel);
+                ShopAvatarAdapter shopAvatarAdapter = new ShopAvatarAdapter(temp, ownedItems, shopViewModel, shopItems.getCoins());
                 shopAvatarRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 shopAvatarRecyclerView.setAdapter(shopAvatarAdapter);
+
+                shopTitleAdapter.setCallBack(new ShopTitleAdapter.CallBack() {
+                    @Override
+                    public void refresh() {
+                        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
+                            @Override
+                            public void onChanged(ShopItem shopItems) {
+                                shopCoinsTextView.setText(String.valueOf(shopItems.getCoins()));
+                                if (shopItems.getTitle() == null) {
+                                    shopCurrentTitleTextView.setText("Novice");
+                                } else {
+                                    shopCurrentTitleTextView.setText(shopItems.getTitle());
+                                }
+                                if (shopItems.getAvatar() == null) {
+                                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                                            .into(shopCurrentAvatarImageView);
+                                } else {
+                                    Glide.with(getContext()).load(shopItems.getAvatar())
+                                            .into(shopCurrentAvatarImageView);
+                                }
+
+                                List<ShopItem.ShopItems> temp = new ArrayList<>();
+                                List<ShopItem.OwnedItems> ownedItems = new ArrayList<>();
+                                for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
+                                    if (shopItem.getType().equals("title")) {
+                                        temp.add(shopItem);
+                                    }
+                                }
+                                for (ShopItem.OwnedItems ownedItem : shopItems.getOwned_items()) {
+                                    if (ownedItem.getType().equals("title")) {
+                                        ownedItems.add(ownedItem);
+                                    }
+                                }
+
+                                shopTitleAdapter.setShopItemList(temp);
+                                shopTitleAdapter.setOwnedItemList(ownedItems);
+                                shopTitleAdapter.setCoins(shopItems.getCoins());
+                                shopTitleAdapter.notifyDataSetChanged();
+
+                                temp = new ArrayList<>();
+                                ownedItems = new ArrayList<>();
+                                for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
+                                    if (shopItem.getType().equals("avatar")) {
+                                        temp.add(shopItem);
+                                    }
+                                }
+                                for (ShopItem.OwnedItems ownedItem : shopItems.getOwned_items()) {
+                                    if (ownedItem.getType().equals("avatar")) {
+                                        ownedItems.add(ownedItem);
+                                    }
+                                }
+
+                                shopAvatarAdapter.setShopItemList(temp);
+                                shopAvatarAdapter.setOwnedItemList(ownedItems);
+                                shopAvatarAdapter.setCoins(shopItems.getCoins());
+                                shopAvatarAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                });
+
+                shopAvatarAdapter.setCallBack(new ShopAvatarAdapter.CallBack() {
+                    @Override
+                    public void refresh() {
+                        shopViewModel.getShopItems().observe(getViewLifecycleOwner(), new Observer<ShopItem>() {
+                            @Override
+                            public void onChanged(ShopItem shopItems) {
+                                shopCoinsTextView.setText(String.valueOf(shopItems.getCoins()));
+                                if (shopItems.getTitle() == null) {
+                                    shopCurrentTitleTextView.setText("Novice");
+                                } else {
+                                    shopCurrentTitleTextView.setText(shopItems.getTitle());
+                                }
+                                if (shopItems.getAvatar() == null) {
+                                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                                            .into(shopCurrentAvatarImageView);
+                                } else {
+                                    Glide.with(getContext()).load(shopItems.getAvatar())
+                                            .into(shopCurrentAvatarImageView);
+                                }
+
+                                List<ShopItem.ShopItems> temp = new ArrayList<>();
+                                List<ShopItem.OwnedItems> ownedItems = new ArrayList<>();
+                                for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
+                                    if (shopItem.getType().equals("title")) {
+                                        temp.add(shopItem);
+                                    }
+                                }
+                                for (ShopItem.OwnedItems ownedItem : shopItems.getOwned_items()) {
+                                    if (ownedItem.getType().equals("title")) {
+                                        ownedItems.add(ownedItem);
+                                    }
+                                }
+
+                                shopTitleAdapter.setShopItemList(temp);
+                                shopTitleAdapter.setOwnedItemList(ownedItems);
+                                shopTitleAdapter.setCoins(shopItems.getCoins());
+                                shopTitleAdapter.notifyDataSetChanged();
+
+                                temp = new ArrayList<>();
+                                ownedItems = new ArrayList<>();
+                                for (ShopItem.ShopItems shopItem : shopItems.getShop_items()) {
+                                    if (shopItem.getType().equals("avatar")) {
+                                        temp.add(shopItem);
+                                    }
+                                }
+                                for (ShopItem.OwnedItems ownedItem : shopItems.getOwned_items()) {
+                                    if (ownedItem.getType().equals("avatar")) {
+                                        ownedItems.add(ownedItem);
+                                    }
+                                }
+
+                                shopAvatarAdapter.setShopItemList(temp);
+                                shopAvatarAdapter.setOwnedItemList(ownedItems);
+                                shopAvatarAdapter.setCoins(shopItems.getCoins());
+                                shopAvatarAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                });
 
                 shopProgressBar.setVisibility(View.GONE);
                 shopNestedScrollView.setVisibility(View.VISIBLE);

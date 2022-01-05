@@ -26,11 +26,14 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
     private List<ShopItem.ShopItems> shopItemList;
     private List<ShopItem.OwnedItems> ownedItemList;
     private ShopViewModel shopViewModel;
+    private int coins;
+    private ShopAvatarAdapter.CallBack callBack;
 
-    public ShopAvatarAdapter(List<ShopItem.ShopItems> shopItemList, List<ShopItem.OwnedItems> ownedItemList, ShopViewModel shopViewModel) {
+    public ShopAvatarAdapter(List<ShopItem.ShopItems> shopItemList, List<ShopItem.OwnedItems> ownedItemList, ShopViewModel shopViewModel, int coins) {
         this.shopItemList = shopItemList;
         this.ownedItemList = ownedItemList;
         this.shopViewModel = shopViewModel;
+        this.coins = coins;
     }
 
     @NonNull
@@ -45,6 +48,14 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
         holder.rowShopAvatarPriceTextView.setText(String.valueOf(shopItemList.get(position).getPrice()));
         Glide.with(holder.rowShopAvatarImageView.getContext()).load(shopItemList.get(position).getImage_path())
                 .into(holder.rowShopAvatarImageView);
+        if (coins >= shopItemList.get(position).getPrice()) {
+            holder.rowShopAvatarBuyButton.setEnabled(true);
+            holder.rowShopAvatarBuyButton.setAlpha(1);
+        } else {
+            holder.rowShopAvatarBuyButton.setEnabled(false);
+            holder.rowShopAvatarBuyButton.setAlpha(0.5f);
+        }
+
         for (ShopItem.OwnedItems ownedItem : ownedItemList) {
             if (shopItemList.get(position).getShop_item_id() == ownedItem.getShop_item_id()) {
                 holder.rowShopAvatarEquipButton.setVisibility(View.VISIBLE);
@@ -64,13 +75,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
                         shopViewModel.equipShopItem(shopItemList.get(holder.getAdapterPosition()).getShop_item_id()).observe((LifecycleOwner) holder.rowShopAvatarEquipButton.getContext(), new Observer<ShopItem.ShopItemEquipResponse>() {
                             @Override
                             public void onChanged(ShopItem.ShopItemEquipResponse shopItemEquipResponse) {
-                                shopViewModel.getShopItems().observe((LifecycleOwner) holder.rowShopAvatarEquipButton.getContext(), new Observer<ShopItem>() {
-                                    @Override
-                                    public void onChanged(ShopItem shopItem) {
-                                        ownedItemList = shopItem.getOwned_items();
-                                        notifyDataSetChanged();
-                                    }
-                                });
+                                callBack.refresh();
                             }
                         });
                     }
@@ -85,13 +90,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
                     @Override
                     public void onChanged(ShopItem.ShopItemBuyResponse shopItemBuyResponse) {
                         if (shopItemBuyResponse.getMessage().equals("Buy shop item successful")) {
-                            shopViewModel.getShopItems().observe((LifecycleOwner) holder.rowShopAvatarEquipButton.getContext(), new Observer<ShopItem>() {
-                                @Override
-                                public void onChanged(ShopItem shopItem) {
-                                    ownedItemList = shopItem.getOwned_items();
-                                    notifyDataSetChanged();
-                                }
-                            });
+                            callBack.refresh();
                         }
                     }
                 });
@@ -120,5 +119,25 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
             rowShopAvatarEquipButton = itemView.findViewById(R.id.rowShopAvatarEquipButton);
             rowShopAvatarImageView = itemView.findViewById(R.id.rowShopAvatarImageView);
         }
+    }
+
+    public void setShopItemList(List<ShopItem.ShopItems> shopItemList) {
+        this.shopItemList = shopItemList;
+    }
+
+    public void setOwnedItemList(List<ShopItem.OwnedItems> ownedItemList) {
+        this.ownedItemList = ownedItemList;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public interface CallBack{
+        void refresh();
+    }
+
+    public void setCallBack(ShopAvatarAdapter.CallBack callBack) {
+        this.callBack = callBack;
     }
 }

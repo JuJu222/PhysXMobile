@@ -67,7 +67,11 @@ public class HomeFragment extends Fragment {
                 homeTotalScoreTextView.setText(String.valueOf(homeResponse.getTotal_score()));
                 homeRankingTextView.setText(String.valueOf(homeResponse.getRanking()));
                 homeCoinsTextView.setText(String.valueOf(homeResponse.getCoins()));
-                homeTitleTextView.setText(homeResponse.getTitle());
+                if (homeResponse.getTitle() == null) {
+                    homeTitleTextView.setText("Novice");
+                } else {
+                    homeTitleTextView.setText(homeResponse.getTitle());
+                }
                 if (homeResponse.getAvatar() == null) {
                     Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
                             .into(homeAvatarImageView);

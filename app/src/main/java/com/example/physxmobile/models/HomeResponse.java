@@ -9,7 +9,7 @@ public class HomeResponse {
     private String name;
     private List<UnlockedTopics> unlocked_topics;
     private int total_score;
-    private int ranking;
+    private String ranking;
     private int coins;
     private String title;
     private String avatar;
@@ -43,11 +43,11 @@ public class HomeResponse {
         this.total_score = total_score;
     }
 
-    public int getRanking() {
+    public String getRanking() {
         return ranking;
     }
 
-    public void setRanking(int ranking) {
+    public void setRanking(String ranking) {
         this.ranking = ranking;
     }
 

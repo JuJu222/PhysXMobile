@@ -29,6 +29,7 @@ import com.example.physxmobile.models.HomeResponse;
 import com.example.physxmobile.viewmodels.HomeViewModel;
 
 public class HomeFragment extends Fragment {
+    boolean isHardUnlocked;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,10 +91,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView12, greenCircleColor);
                             textView16.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 12) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic2Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_vektor);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_vektor, bundle);
                                 }
                             });
                             break;
@@ -105,10 +116,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView15, greenCircleColor);
                             textView17.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 13) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic3Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakLurus);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakLurus, bundle);
                                 }
                             });
                             break;
@@ -120,10 +141,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView19, greenCircleColor);
                             textView18.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 14) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic4Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakParabola);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakParabola, bundle);
                                 }
                             });
                             break;
@@ -135,10 +166,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView21, greenCircleColor);
                             textView20.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 15) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic5Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakLingkarBeraturan);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_gerakLingkarBeraturan, bundle);
                                 }
                             });
                             break;
@@ -150,10 +191,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView24, greenCircleColor);
                             textView21.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 16) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic6Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_hukumNewtonGerak);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_hukumNewtonGerak, bundle);
                                 }
                             });
                             break;
@@ -165,10 +216,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView29, greenCircleColor);
                             textView22.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 17) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic7Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_hukumNewtonGravitasi);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_hukumNewtonGravitasi, bundle);
                                 }
                             });
                             break;
@@ -180,10 +241,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView31, greenCircleColor);
                             textView23.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 18) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic8Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_usahaDanEnergi);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_usahaDanEnergi, bundle);
                                 }
                             });
                             break;
@@ -195,10 +266,20 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView33, greenCircleColor);
                             textView24.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 19) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic9Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_momentumDanImpuls);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_momentumDanImpuls, bundle);
                                 }
                             });
                             break;
@@ -210,13 +291,32 @@ public class HomeFragment extends Fragment {
                             ImageViewCompat.setImageTintList(imageView35, greenCircleColor);
                             textView25.setTextColor(greenTextColor);
 
+                            isHardUnlocked = false;
+                            for (HomeResponse.UnlockedTopics topic : homeResponse.getUnlocked_topics()) {
+                                if (topic.getTopic_id() == 20) {
+                                    isHardUnlocked = true;
+                                    break;
+                                }
+                            }
+
                             homeTopic10Layout.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_getaranHarmonis);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", isHardUnlocked);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_getaranHarmonis, bundle);
                                 }
                             });
                             break;
+                        case 11:
+                            frameLayout1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isHardUnlocked", true);
+                                    Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_besaran, bundle);
+                                }
+                            });
                     }
                 }
 
@@ -228,7 +328,9 @@ public class HomeFragment extends Fragment {
         frameLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_besaran);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isHardUnlocked", false);
+                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_besaran, bundle);
             }
         });
     }

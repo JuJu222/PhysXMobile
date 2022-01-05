@@ -81,6 +81,15 @@ public class Vektor extends Fragment {
         Button button_easy = view.findViewById(R.id.btn_mudah);
         Button button_hard = view.findViewById(R.id.btn_susah);
 
+        boolean isHardUnlocked = getArguments().getBoolean("isHardUnlocked");
+        if (isHardUnlocked) {
+            button_hard.setEnabled(true);
+            button_hard.setAlpha(1);
+        } else {
+            button_hard.setEnabled(false);
+            button_hard.setAlpha(0.5f);
+        }
+
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
         questionViewModel.init(helper.getAccessToken());

@@ -98,6 +98,15 @@ public class GerakLurus extends Fragment {
         Button button_hard = view.findViewById(R.id.btn_susah);
         ImageButton topic_overview_back = view.findViewById(R.id.topic_overview_back);
 
+        boolean isHardUnlocked = getArguments().getBoolean("isHardUnlocked");
+        if (isHardUnlocked) {
+            button_hard.setEnabled(true);
+            button_hard.setAlpha(1);
+        } else {
+            button_hard.setEnabled(false);
+            button_hard.setAlpha(0.5f);
+        }
+
         topic_overview_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

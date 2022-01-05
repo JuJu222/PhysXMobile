@@ -104,6 +104,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,7 +121,8 @@
         app:boxStrokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_email_login">
+        app:layout_constraintTop_toBottomOf="@+id/input_email_login"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

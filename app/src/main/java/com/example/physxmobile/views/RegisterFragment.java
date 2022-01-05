@@ -41,13 +41,13 @@ public class RegisterFragment extends Fragment {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
+                Navigation.findNavController(view).popBackStack();
             }
         });
         buttonLogin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
+                Navigation.findNavController(view).popBackStack();
             }
         });
 
@@ -86,7 +86,7 @@ public class RegisterFragment extends Fragment {
                     registerViewModel.register(name, email, pass, passconfirmation, username, school, city, finalbirthyear).observe(requireActivity(), registerResponse -> {
                         if (registerResponse!=null){
                             Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment);
-                            Toast.makeText(requireActivity(), "Register Success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireActivity(), "Register Successful, Please Login", Toast.LENGTH_SHORT).show();
                         }else{
                             Toast.makeText(requireActivity(), "Register Failed", Toast.LENGTH_SHORT).show();
                         }

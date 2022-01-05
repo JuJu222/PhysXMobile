@@ -92,7 +92,7 @@
                     android:id="@+id/input_email_register"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxStrokeColor="@color/color_text_input_layout"

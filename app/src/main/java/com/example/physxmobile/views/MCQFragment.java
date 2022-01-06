@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -51,7 +54,12 @@ public class MCQFragment extends Fragment {
         questionmcq_image = view.findViewById(R.id.questionmcq_image);
         questionmcq_score = view.findViewById(R.id.questiontof_score);
         recyclerView = view.findViewById(R.id.optionmcq_choices);
+        NestedScrollView questionmcq_nestedscrollview = view.findViewById(R.id.questionmcq_nestedscrollview);
+        ProgressBar mcqProgressBar = view.findViewById(R.id.mcqProgressBar);
         int topic = getArguments().getInt("topicId");
+
+        mcqProgressBar.setVisibility(View.VISIBLE);
+        questionmcq_nestedscrollview.setVisibility(View.GONE);
 
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
@@ -77,10 +85,20 @@ public class MCQFragment extends Fragment {
                     questionmcq_question.setText(mcq_question);
                     questionmcq_score.setText(String.valueOf(mcq_score));
                     questionmcq_id.setText(mcq_id);
-                    Glide.with(getActivity())
-                            .load(mcq_image)
-                            .into(questionmcq_image);
-
+                    if (mcq_image != null) {
+                        Glide.with(getActivity())
+                                .load(mcq_image)
+                                .into(questionmcq_image);
+                    } else {
+                        questionmcq_image.setVisibility(View.INVISIBLE);
+                        final float scale = getResources().getDisplayMetrics().density;
+                        int dpWidthInPx  = (int) (300 * scale);
+                        int dpHeightInPx = (int) (200 * scale);
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dpWidthInPx, dpHeightInPx);
+                        questionmcq_image.setLayoutParams(layoutParams);
+                    }
+                    mcqProgressBar.setVisibility(View.GONE);
+                    questionmcq_nestedscrollview.setVisibility(View.VISIBLE);
                     questionViewModel.showQuestions(topic,resultQuestion.get(noSoal).getQuestion_id()).observe(getViewLifecycleOwner(), new Observer<Question>() {
                         @Override
                         public void onChanged(Question question) {}

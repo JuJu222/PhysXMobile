@@ -5,7 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ProgressBar
+        android:id="@+id/fitbProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/questionfitb_nestedscrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -90,12 +103,14 @@
             <Button
                 android:id="@+id/optionfitb_submit"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#EFEBFE"
+                android:elevation="0dp"
                 android:text="Submit"
                 android:textAllCaps="false"
                 android:textColor="#6F69AC"
+                android:textSize="16sp"
                 app:cornerRadius="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

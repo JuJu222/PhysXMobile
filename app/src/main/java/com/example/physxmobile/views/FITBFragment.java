@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +62,12 @@ public class FITBFragment extends Fragment {
         optionfitb_answer = view.findViewById(R.id.optionfitb_answer);
         optionfitb_submit = view.findViewById(R.id.optionfitb_submit);
         dialog = new Dialog(view.getContext());
+        NestedScrollView questionfitb_nestedscrollview = view.findViewById(R.id.questionfitb_nestedscrollview);
+        ProgressBar fitbProgressBar = view.findViewById(R.id.fitbProgressBar);
         topic = getArguments().getInt("topicId");
+
+        fitbProgressBar.setVisibility(View.VISIBLE);
+        questionfitb_nestedscrollview.setVisibility(View.GONE);
 
         questionViewModel = new ViewModelProvider(getActivity()).get(QuestionViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
@@ -81,9 +89,20 @@ public class FITBFragment extends Fragment {
                 questionfitb_question.setText(fitb_question);
                 questionfitb_score.setText(String.valueOf(fitb_score));
                 questionfitb_id.setText(fitb_id);
-                Glide.with(getActivity())
-                        .load(fitb_image)
-                        .into(questionfitb_image);
+                if (fitb_image != null) {
+                    Glide.with(getActivity())
+                            .load(fitb_image)
+                            .into(questionfitb_image);
+                } else {
+                    questionfitb_image.setVisibility(View.INVISIBLE);
+                    final float scale = getResources().getDisplayMetrics().density;
+                    int dpWidthInPx  = (int) (300 * scale);
+                    int dpHeightInPx = (int) (200 * scale);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dpWidthInPx, dpHeightInPx);
+                    questionfitb_image.setLayoutParams(layoutParams);
+                }
+                fitbProgressBar.setVisibility(View.GONE);
+                questionfitb_nestedscrollview.setVisibility(View.VISIBLE);
                 questionViewModel.showQuestions(topic, resultQuestion.get(noSoal).getQuestion_id());
                 optionfitb_submit.setOnClickListener(new View.OnClickListener() {
                     @Override

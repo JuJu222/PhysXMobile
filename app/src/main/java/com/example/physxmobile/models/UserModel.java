@@ -6,9 +6,8 @@ public class UserModel {
 
     private User user;
     private Fis10user fis10user;
-
-
-
+    private String title;
+    private String avatar;
 
     public static UserModel objectFromData(String str) {
 
@@ -31,13 +30,27 @@ public class UserModel {
         this.fis10user = fis10user;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public static class User {
         private int id;
         private String name;
         private String email;
         private Object email_verified_at;
-        private String is_login;
-        private String is_active;
         private String username;
         private String school;
         private String city;
@@ -90,22 +103,6 @@ public class UserModel {
 
         public void setEmail_verified_at(Object email_verified_at) {
             this.email_verified_at = email_verified_at;
-        }
-
-        public String getIs_login() {
-            return is_login;
-        }
-
-        public void setIs_login(String is_login) {
-            this.is_login = is_login;
-        }
-
-        public String getIs_active() {
-            return is_active;
-        }
-
-        public void setIs_active(String is_active) {
-            this.is_active = is_active;
         }
 
         public String getUsername() {
@@ -169,8 +166,6 @@ public class UserModel {
         private int fis10_user_id;
         private int user_id;
         private int coins;
-        private String title;
-        private String avatar;
         private String created_at;
         private String updated_at;
 
@@ -201,22 +196,6 @@ public class UserModel {
 
         public void setCoins(int coins) {
             this.coins = coins;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getAvatar() {
-            return avatar;
-        }
-
-        public void setAvatar(String avatar) {
-            this.avatar = avatar;
         }
 
         public String getCreated_at() {

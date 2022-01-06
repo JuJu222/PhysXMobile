@@ -13,19 +13,73 @@
         android:id="@+id/topic_choose_rv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/keseluruhan_button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboard_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv" />
+        app:layout_constraintTop_toBottomOf="@+id/easy_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/keseluruhan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#F0EAFF"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="4dp"
+        android:text="@string/keseluruhan_text"
+        android:textAllCaps="false"
+        android:textColor="#6F69AC"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#F0EAFF" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/easy_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#F0EAFF"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="4dp"
+        android:text="Mudah"
+        android:textAllCaps="false"
+        android:textColor="#6F69AC"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv"
+        app:strokeColor="#F0EAFF" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/hard_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#F0EAFF"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="4dp"
+        android:text="Susah"
+        android:textAllCaps="false"
+        android:textColor="#6F69AC"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv"
+        app:strokeColor="#F0EAFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,6 @@ public class ResultFragment extends Fragment {
                 resultTopicTextView.setText(questionsResult.getTopic_name());
                 String temp = questionsResult.getAccuracy() + "%";
                 resultAccuracyTextView.setText(temp);
-                resultAccuracyTextView.setText(String.valueOf(questionsResult.getAccuracy()));
                 resultTotalScoreTextView.setText(String.valueOf(questionsResult.getTotal_score()));
                 temp = questionsResult.getTotal_correct() + "/" + questionsResult.getTotal_questions() + " Soal";
                 resultCorrectAnswersTextView.setText(temp);

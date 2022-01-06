@@ -9,6 +9,20 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:id="@+id/leaderboard_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Leaderboard"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topic_choose_rv"
         android:layout_width="wrap_content"
@@ -27,14 +41,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easy_button" />
+        app:layout_constraintTop_toBottomOf="@+id/peringkat_title" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/keseluruhan_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="#F0EAFF"
+        android:background="@drawable/btn_capsule"
         android:fontFamily="@font/nunito_bold"
         android:padding="4dp"
         android:text="@string/keseluruhan_text"
@@ -43,7 +57,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/leaderboard_title"
         app:strokeColor="#F0EAFF" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -51,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="#F0EAFF"
+        android:background="@drawable/btn_capsule"
         android:fontFamily="@font/nunito_bold"
         android:padding="4dp"
         android:text="Mudah"
@@ -69,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="#F0EAFF"
+        android:background="@drawable/btn_capsule"
         android:fontFamily="@font/nunito_bold"
         android:padding="4dp"
         android:text="Susah"
@@ -81,5 +95,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv"
         app:strokeColor="#F0EAFF" />
+
+    <TextView
+        android:id="@+id/peringkat_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Peringkat Keseluruhan"
+        android:textColor="#6F69AC"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hard_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,10 +66,10 @@ public class ShopFragment extends Fragment {
                     shopCurrentTitleTextView.setText(shopItems.getTitle());
                 }
                 if (shopItems.getAvatar() == null) {
-                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/avatar_1.png")
                             .into(shopCurrentAvatarImageView);
                 } else {
-                    Glide.with(getContext()).load(shopItems.getAvatar())
+                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/" + shopItems.getAvatar())
                             .into(shopCurrentAvatarImageView);
                 }
 
@@ -119,10 +119,10 @@ public class ShopFragment extends Fragment {
                                     shopCurrentTitleTextView.setText(shopItems.getTitle());
                                 }
                                 if (shopItems.getAvatar() == null) {
-                                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/avatar_1.png")
                                             .into(shopCurrentAvatarImageView);
                                 } else {
-                                    Glide.with(getContext()).load(shopItems.getAvatar())
+                                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/" + shopItems.getAvatar())
                                             .into(shopCurrentAvatarImageView);
                                 }
 
@@ -179,10 +179,10 @@ public class ShopFragment extends Fragment {
                                     shopCurrentTitleTextView.setText(shopItems.getTitle());
                                 }
                                 if (shopItems.getAvatar() == null) {
-                                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/avatar_1.png")
                                             .into(shopCurrentAvatarImageView);
                                 } else {
-                                    Glide.with(getContext()).load(shopItems.getAvatar())
+                                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/" + shopItems.getAvatar())
                                             .into(shopCurrentAvatarImageView);
                                 }
 

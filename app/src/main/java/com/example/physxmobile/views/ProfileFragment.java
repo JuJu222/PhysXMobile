@@ -78,10 +78,10 @@ public class ProfileFragment extends Fragment {
                     profileTitleTextView.setText(user.getTitle());
                 }
                 if (user.getAvatar() == null) {
-                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/avatar_1.png")
                             .into(profileAvatarImageView);
                 } else {
-                    Glide.with(getContext()).load(user.getAvatar())
+                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/" + user.getAvatar())
                             .into(profileAvatarImageView);
                 }
 

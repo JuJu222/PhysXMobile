@@ -39,10 +39,10 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             holder.leaderboardTitleTextView.setText(leaderboardList.get(position).getTitle());
         }
         if (leaderboardList.get(position).getAvatar() == null) {
-            Glide.with(holder.leaderboardAvatarImageView.getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+            Glide.with(holder.leaderboardAvatarImageView.getContext()).load("http://159.89.208.113/img/avatars/avatar_1.png")
                     .into(holder.leaderboardAvatarImageView);
         } else {
-            Glide.with(holder.leaderboardAvatarImageView.getContext()).load(leaderboardList.get(position).getAvatar())
+            Glide.with(holder.leaderboardAvatarImageView.getContext()).load("http://159.89.208.113/img/avatars/" + leaderboardList.get(position).getAvatar())
                     .into(holder.leaderboardAvatarImageView);
         }
     }

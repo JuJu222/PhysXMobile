@@ -74,10 +74,10 @@ public class HomeFragment extends Fragment {
                     homeTitleTextView.setText(homeResponse.getTitle());
                 }
                 if (homeResponse.getAvatar() == null) {
-                    Glide.with(getContext()).load("https://drive.google.com/uc?export=view&id=1YW9i_gxGd2H66Rqa5YICNA2S30dUTeN-")
+                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/avatar_1.png")
                             .into(homeAvatarImageView);
                 } else {
-                    Glide.with(getContext()).load(homeResponse.getAvatar())
+                    Glide.with(getContext()).load("http://159.89.208.113/img/avatars/" + homeResponse.getAvatar())
                             .into(homeAvatarImageView);
                 }
 

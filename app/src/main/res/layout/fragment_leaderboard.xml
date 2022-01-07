@@ -9,104 +9,130 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/leaderboard_title"
+    <ProgressBar
+        android:id="@+id/leaderboardProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Leaderboard"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topic_choose_rv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keseluruhan_button" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/leaderboardNestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/leaderboard_rv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/peringkat_title" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/keseluruhan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_capsule"
-        android:fontFamily="@font/nunito_bold"
-        android:padding="4dp"
-        android:text="@string/keseluruhan_text"
-        android:textAllCaps="false"
-        android:textColor="#6F69AC"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboard_title"
-        app:strokeColor="#F0EAFF" />
+            <TextView
+                android:id="@+id/leaderboard_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Leaderboard"
+                android:textColor="@android:color/black"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/easy_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/btn_capsule"
-        android:fontFamily="@font/nunito_bold"
-        android:padding="4dp"
-        android:text="Mudah"
-        android:textAllCaps="false"
-        android:textColor="#6F69AC"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv"
-        app:strokeColor="#F0EAFF" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topic_choose_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/keseluruhan_button" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/hard_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/btn_capsule"
-        android:fontFamily="@font/nunito_bold"
-        android:padding="4dp"
-        android:text="Susah"
-        android:textAllCaps="false"
-        android:textColor="#6F69AC"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.731"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv"
-        app:strokeColor="#F0EAFF" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/leaderboard_rv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/easy_button" />
 
-    <TextView
-        android:id="@+id/peringkat_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Peringkat Keseluruhan"
-        android:textColor="#6F69AC"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hard_button" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/keseluruhan_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/btn_capsule"
+                android:fontFamily="@font/nunito_bold"
+                android:padding="4dp"
+                android:text="@string/keseluruhan_text"
+                android:textAllCaps="false"
+                android:textColor="#6F69AC"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/leaderboard_title"
+                app:strokeColor="#F0EAFF" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/easy_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_capsule"
+                android:fontFamily="@font/nunito_bold"
+                android:padding="4dp"
+                android:text="Mudah"
+                android:textAllCaps="false"
+                android:textColor="#6F69AC"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/hard_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/peringkat_title"
+                app:strokeColor="#F0EAFF" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/hard_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_capsule"
+                android:fontFamily="@font/nunito_bold"
+                android:padding="4dp"
+                android:text="Susah"
+                android:textAllCaps="false"
+                android:textColor="#6F69AC"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/easy_button"
+                app:layout_constraintTop_toTopOf="@+id/easy_button"
+                app:strokeColor="#F0EAFF" />
+
+            <TextView
+                android:id="@+id/peringkat_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Peringkat Keseluruhan"
+                android:textColor="#6F69AC"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topic_choose_rv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.physxmobile.R;
@@ -43,8 +45,12 @@ public class ResultFragment extends Fragment {
         TextView resultCorrectAnswersTextView = view.findViewById(R.id.resultCorrectAnswersTextView);
         TextView resultTotalScoreTextView = view.findViewById(R.id.resultTotalScoreTextView);
         Button resultContinueButton = view.findViewById(R.id.resultContinueButton);
+        ProgressBar resultProgressBar = view.findViewById(R.id.resultProgressBar);
+        ScrollView resultScrollView = view.findViewById(R.id.resultScrollView);
 
         resultViewModel.init(helper.getAccessToken());
+        resultProgressBar.setVisibility(View.VISIBLE);
+        resultScrollView.setVisibility(View.GONE);
 
         resultViewModel.getQuestionsResult(topicId).observe(getViewLifecycleOwner(), new Observer<QuestionsResult>() {
             @Override
@@ -61,6 +67,9 @@ public class ResultFragment extends Fragment {
                     temp = questionsResult.getTotal_minutes() + " menit " + questionsResult.getTotal_seconds() + " detik";
                 }
                 resultTimeTakenTextView.setText(temp);
+
+                resultProgressBar.setVisibility(View.GONE);
+                resultScrollView.setVisibility(View.VISIBLE);
             }
         });
 

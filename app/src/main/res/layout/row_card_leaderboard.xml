@@ -24,7 +24,7 @@
                 android:id="@+id/index_leaderboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/nunito_bold"
@@ -38,23 +38,25 @@
 
             <TextView
                 android:id="@+id/name_leaderboard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Riana"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView16"
+                app:layout_constraintEnd_toStartOf="@+id/cardView4"
+                app:layout_constraintStart_toEndOf="@+id/leaderboardAvatarImageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView16"
+                android:id="@+id/leaderboardAvatarImageView"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -64,24 +66,28 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:id="@+id/leaderboardTitleTextView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/nunito"
                 android:text="TextView"
                 android:textColor="#6F69AC"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView16" />
+                app:layout_constraintEnd_toEndOf="@+id/name_leaderboard"
+                app:layout_constraintStart_toEndOf="@+id/leaderboardAvatarImageView"
+                app:layout_constraintTop_toBottomOf="@+id/name_leaderboard" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
+                android:layout_marginEnd="24dp"
                 app:cardBackgroundColor="#FFEBA1"
                 app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -94,7 +100,7 @@
                         android:id="@+id/score_leaderboard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:fontFamily="@font/nunito_bold"
@@ -112,7 +118,7 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

@@ -193,7 +193,6 @@ public class TOFFragment extends Fragment {
                                 break;
                         }
 
-                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_resultFragment, bundle);
@@ -233,7 +232,6 @@ public class TOFFragment extends Fragment {
                                 break;
                         }
 
-                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Navigation.findNavController(getView()).navigate(R.id.action_TOFFragment_to_resultFragment, bundle);

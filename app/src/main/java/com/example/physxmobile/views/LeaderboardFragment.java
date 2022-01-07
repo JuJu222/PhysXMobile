@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -17,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -35,11 +38,6 @@ import com.example.physxmobile.viewmodels.QuestionViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LeaderboardFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LeaderboardFragment extends Fragment{
 
     private LeaderboardViewModel leaderboardViewModel;
@@ -62,9 +60,14 @@ public class LeaderboardFragment extends Fragment{
         Button hard = view.findViewById(R.id.hard_button);
         RecyclerView leaderboard = view.findViewById(R.id.leaderboard_rv);
         Button keseluruhan = view.findViewById(R.id.keseluruhan_button);
+        TextView peringkat_title = view.findViewById(R.id.peringkat_title);
+        ProgressBar leaderboardProgressBar = view.findViewById(R.id.leaderboardProgressBar);
+        NestedScrollView leaderboardNestedScrollView = view.findViewById(R.id.leaderboardNestedScrollView);
         leaderboardViewModel = new ViewModelProvider(getActivity()).get(LeaderboardViewModel.class);
         helper = SharedPreferenceHelper.getInstance(getContext());
         leaderboardViewModel.init(helper.getAccessToken());
+        leaderboardProgressBar.setVisibility(View.VISIBLE);
+        leaderboardNestedScrollView.setVisibility(View.GONE);
         leaderboardViewModel.getLeaderboard().observe(getActivity(), new Observer<LeaderboardModel>() {
             @Override
             public void onChanged(LeaderboardModel leaderboardModel) {
@@ -75,9 +78,15 @@ public class LeaderboardFragment extends Fragment{
                 leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
                 leaderboard.setAdapter(leaderboardAdapter);
 
+                easy.setVisibility(View.GONE);
+                hard.setVisibility(View.GONE);
+
+                String temp = "Peringkat " + leaderboardModel.getTopic();
+                peringkat_title.setText(temp);
+
+                leaderboardProgressBar.setVisibility(View.GONE);
+                leaderboardNestedScrollView.setVisibility(View.VISIBLE);
             }
-
-
         });
 
         ArrayList<String> topicNames = new ArrayList<>();
@@ -112,9 +121,12 @@ public class LeaderboardFragment extends Fragment{
                         leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
                         leaderboard.setAdapter(leaderboardAdapter);
 
+                        easy.setVisibility(View.VISIBLE);
+                        hard.setVisibility(View.VISIBLE);
+
+                        String temp = "Peringkat " + leaderboardModel.getTopic();
+                        peringkat_title.setText(temp);
                     }
-
-
                 });
 
 
@@ -134,9 +146,12 @@ public class LeaderboardFragment extends Fragment{
                         leaderboard.setLayoutManager(new LinearLayoutManager(view.getContext()));
                         leaderboard.setAdapter(leaderboardAdapter);
 
+                        String temp = "Peringkat " + leaderboardModel.getTopic();
+                        peringkat_title.setText(temp);
+
+                        easy.setVisibility(View.GONE);
+                        hard.setVisibility(View.GONE);
                     }
-
-
                 });
             }
         });

@@ -159,7 +159,6 @@ public class FITBFragment extends Fragment {
                                                 break;
                                         }
 
-                                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_resultFragment, bundle);
@@ -199,7 +198,6 @@ public class FITBFragment extends Fragment {
                                                 break;
                                         }
 
-                                        Toast.makeText(dialog.getContext(), "Soal Berikut", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     Navigation.findNavController(getView()).navigate(R.id.action_FITBFragment_to_resultFragment, bundle);

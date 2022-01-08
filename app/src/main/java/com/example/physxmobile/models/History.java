@@ -6,7 +6,6 @@ import java.util.List;
 
 public class History {
 
-
     private List<Histories> histories;
 
     public static History objectFromData(String str) {
@@ -25,6 +24,7 @@ public class History {
     public static class Histories {
         private String topic_name;
         private int total_score;
+        private String difficulty;
 
         public static Histories objectFromData(String str) {
 
@@ -45,6 +45,14 @@ public class History {
 
         public void setTotal_score(int total_score) {
             this.total_score = total_score;
+        }
+
+        public String getDifficulty() {
+            return difficulty;
+        }
+
+        public void setDifficulty(String difficulty) {
+            this.difficulty = difficulty;
         }
     }
 }

@@ -7,12 +7,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.physxmobile.R;
 import com.example.physxmobile.adapters.HistoryAdapter;
@@ -102,5 +104,12 @@ public class HistoryFragment extends Fragment {
             }
         });
 
+        ImageButton historyBackImageButton = view.findViewById(R.id.historyBackImageButton);
+        historyBackImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).popBackStack();
+            }
+        });
     }
 }

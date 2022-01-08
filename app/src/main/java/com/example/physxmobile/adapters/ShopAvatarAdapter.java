@@ -46,7 +46,7 @@ public class ShopAvatarAdapter extends RecyclerView.Adapter<ShopAvatarAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowShopAvatarItemTextView.setText(shopItemList.get(position).getItem());
         holder.rowShopAvatarPriceTextView.setText(String.valueOf(shopItemList.get(position).getPrice()));
-        Glide.with(holder.rowShopAvatarImageView.getContext()).load(shopItemList.get(position).getImage_path())
+        Glide.with(holder.rowShopAvatarImageView.getContext()).load("http://159.89.208.113/img/avatars/" + shopItemList.get(position).getImage_path())
                 .into(holder.rowShopAvatarImageView);
         if (coins >= shopItemList.get(position).getPrice()) {
             holder.rowShopAvatarBuyButton.setEnabled(true);
